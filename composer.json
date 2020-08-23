@@ -3,6 +3,7 @@
   "description": "Async VK API client built on top of ReactPHP",
   "type": "library",
   "require": {
+    "php": ">=7.4",
     "ext-mbstring": "*",
     "ext-json": "*",
     "react/react": "^1.0",
