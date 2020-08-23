@@ -1,0 +1,23 @@
+{
+  "name": "catferq/reactphp-vk",
+  "description": "Async VK API client built on top of ReactPHP",
+  "type": "library",
+  "require": {
+    "ext-mbstring": "*",
+    "ext-json": "*",
+    "react/react": "^1.0",
+    "clue/buzz-react": "^2.8.2",
+    "ext-curl": "*"
+  },
+  "authors": [
+    {
+      "name": "catferq",
+      "email": "catferq@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ReactPHPVK\\": "src/ReactPHPVK"
+    }
+  }
+}
