@@ -51,6 +51,7 @@ class LongPollClient
     public function getUpdates($newTs = null)
     {
         if ($newTs) $this->actualTs = $newTs;
+
         if (!$this->actualServer) {
             return $this->getLongPollInfo()->then(
                 function ($response) {
@@ -61,6 +62,7 @@ class LongPollClient
                 }
             );
         }
+
         return $this->client->provider->browser->get("{$this->actualServer}?" . http_build_query([
                 'act' => 'a_check',
                 'key' => $this->actualKey,
@@ -93,7 +95,7 @@ class LongPollClient
                         );
                     }
                 }
-                if(empty($response['ts'])) var_dump($response);
+
                 $this->actualTs = (int)$response['ts'];
 
                 return $response;
