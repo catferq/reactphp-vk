@@ -95,7 +95,7 @@ class AVKClient
      * @param string|null $language
      * @param QManager|null $qManager
      */
-    public function __construct(LoopInterface $loop, string $accessToken, Browser $browser = null, float $limiter = 0, float $version = 5.107, $language = null, QManager $qManager = null)
+    public function __construct(LoopInterface $loop, string $accessToken, Browser $browser = null, float $limiter = 0, float $version = 5.122, $language = null, QManager $qManager = null)
     {
         $this->provider = new Provider($loop, $accessToken, $browser, $limiter, $version, $language, $qManager);
     }

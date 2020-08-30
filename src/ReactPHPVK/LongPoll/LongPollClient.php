@@ -22,7 +22,7 @@ class LongPollClient
     private int $wait;
     private int $mode;
 
-    public function __construct(AVKClient $AVKClient, int $groupId, int $wait = 10, $mode = 2)
+    public function __construct(AVKClient $AVKClient, int $groupId, int $wait = 25, $mode = 2)
     {
         $this->client = $AVKClient;
         $this->groupId = $groupId;
@@ -64,14 +64,16 @@ class LongPollClient
         return $this->client->provider->browser->get("{$this->actualServer}?" . http_build_query([
                 'act' => 'a_check',
                 'key' => $this->actualKey,
-                'ts' => $this->actualTs
+                'ts' => $this->actualTs,
+                'mode' => $this->mode,
+                'wait' => $this->wait
             ])
         )->then(
             function (ResponseInterface $response) {
                 $response = json_decode($response->getBody(), true);
-                if (isset($response['error'])) {
-                    if ($response['error'] === 1) return $this->getUpdates($response['ts']);
-                    if ($response['error'] === 2) {
+                if (isset($response['failed'])) {
+                    if ($response['failed'] === 1) return $this->getUpdates($response['ts']);
+                    if ($response['failed'] === 2) {
                         return $this->getLongPollInfo()->then(
                             function ($response) {
                                 $this->actualKey = $response['key'];
@@ -80,9 +82,10 @@ class LongPollClient
                             }
                         );
                     }
-                    if ($response['error'] === 3) {
+                    if ($response['failed'] === 3) {
                         return $this->getLongPollInfo()->then(
                             function ($response) {
+                                $this->actualTs = $response['ts'];
                                 $this->actualKey = $response['key'];
                                 $this->actualServer = $response['server'];
                                 return $this->getUpdates();
@@ -90,8 +93,8 @@ class LongPollClient
                         );
                     }
                 }
-
-                $this->actualTs = $response['ts'];
+                if(empty($response['ts'])) var_dump($response);
+                $this->actualTs = (int)$response['ts'];
 
                 return $response;
             }
