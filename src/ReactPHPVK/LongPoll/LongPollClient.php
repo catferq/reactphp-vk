@@ -34,6 +34,7 @@ class LongPollClient
     public function handle(callable $callable)
     {
         if ($this->work === self::STATUS_STOP || $this->work === self::STATUS_FAST_STOP) return null;
+
         return
             $this->getUpdates()
                 ->then(
@@ -53,6 +54,7 @@ class LongPollClient
     public function getUpdates($newTs = null)
     {
         if ($newTs) $this->actualTs = $newTs;
+
         if (!$this->actualServer) {
             return $this->getLongPollInfo()->then(
                 function ($response) {
@@ -78,12 +80,12 @@ class LongPollClient
                 $this->client->provider->logger->debug("[AVK] LP response TS:{$this->actualTs} KEY:{$this->actualKey} SERVER:{$this->actualServer} HTTP_CODE:{$response->getStatusCode()} BODY:{$response->getBody()}");
 
                 $response = json_decode($response->getBody(), true);
-                if (isset($response['error'])) {
-                    if ($response['error'] === 1) {
+                if (isset($response['failed'])) {
+                    if ($response['failed'] === 1) {
                         $this->client->provider->logger->error("[AVK] LP error 1");
                         return $this->getUpdates($response['ts']);
                     }
-                    if ($response['error'] === 2) {
+                    if ($response['failed'] === 2) {
                         $this->client->provider->logger->error("[AVK] LP error 2");
                         return $this->getLongPollInfo()->then(
                             function ($response) {
@@ -93,10 +95,11 @@ class LongPollClient
                             }
                         );
                     }
-                    if ($response['error'] === 3) {
+                    if ($response['failed'] === 3) {
                         $this->client->provider->logger->error("[AVK] LP error 3");
                         return $this->getLongPollInfo()->then(
                             function ($response) {
+                                $this->actualTs = $response['ts'];
                                 $this->actualKey = $response['key'];
                                 $this->actualServer = $response['server'];
                                 return $this->getUpdates();

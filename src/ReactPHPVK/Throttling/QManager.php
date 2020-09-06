@@ -20,6 +20,7 @@ class QManager
     public function limiter(Closure $closure, float $limitPerSecond, $tag): Promise
     {
         if($limitPerSecond == 0) return $closure();
+
         return resolve($this->getTimer($tag, 1 / $limitPerSecond), $this->loop)->then(
             fn () => $closure()
         );
@@ -29,12 +30,15 @@ class QManager
     {
         $q = $this->getQHistoryStack($tag);
         $current = microtime(true);
+
         if (intval(end($q)) < time()) {
             $timer = $current;
         } else {
             $timer = end($q) + $limiter;
         }
+
         $this->pushQHistoryStack($tag, $timer);
+
         return $timer - $current;
     }
 
