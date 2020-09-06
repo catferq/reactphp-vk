@@ -2,6 +2,7 @@
 
 namespace ReactPHPVK\Client;
 
+use Psr\Log\LoggerInterface;
 use ReactPHPVK\Actions\Sections\Account;
 use ReactPHPVK\Actions\Sections\Ads;
 use ReactPHPVK\Actions\Sections\AppWidgets;
@@ -95,9 +96,9 @@ class AVKClient
      * @param string|null $language
      * @param QManager|null $qManager
      */
-    public function __construct(LoopInterface $loop, string $accessToken, Browser $browser = null, float $limiter = 0, float $version = 5.122, $language = null, QManager $qManager = null)
+    public function __construct(LoopInterface $loop, string $accessToken, Browser $browser = null, float $limiter = 0, float $version = 5.122, $language = null, QManager $qManager = null, LoggerInterface $logger = null)
     {
-        $this->provider = new Provider($loop, $accessToken, $browser, $limiter, $version, $language, $qManager);
+        $this->provider = new Provider($loop, $accessToken, $browser, $limiter, $version, $language, $qManager, $logger);
     }
 
     public function account(): Account
