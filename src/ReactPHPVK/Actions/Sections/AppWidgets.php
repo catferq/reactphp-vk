@@ -3,34 +3,29 @@
 namespace ReactPHPVK\Actions\Sections;
 
 use ReactPHPVK\Client\Provider;
-use React\Promise\Promise;
+
+use ReactPHPVK\Actions\Sections\AppWidgets\Update;
 
 class AppWidgets
 {
-    private Provider $provider;
+    private Provider $_provider;
+
+    private ?AppWidgets\Update $update = null;
 
     public function __construct(Provider $provider)
     {
-        $this->provider = $provider;
+        $this->_provider = $provider;
     }
 
     /**
      * Allows to update community app widget
-     * 
-     * @param string $code
-     * @param string $type
-     * @param array|null $custom
-     * @return Promise
      */
-    function update(string $code, string $type, ?array $custom = [])
+    public function update(): Update
     {
-        $sendParams = [];
-
-        $sendParams['code'] = $code;
-        $sendParams['type'] = $type;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('appWidgets.update', $sendParams);
+        if (!$this->update) {
+            $this->update = new Update($this->_provider);
+        }
+        return $this->update;
     }
+
 }

@@ -3,48 +3,42 @@
 namespace ReactPHPVK\Actions\Sections;
 
 use ReactPHPVK\Client\Provider;
-use React\Promise\Promise;
+
+use ReactPHPVK\Actions\Sections\Streaming\GetServerUrl;
+use ReactPHPVK\Actions\Sections\Streaming\SetSettings;
 
 class Streaming
 {
-    private Provider $provider;
+    private Provider $_provider;
+
+    private ?Streaming\GetServerUrl $getServerUrl = null;
+    private ?Streaming\SetSettings $setSettings = null;
 
     public function __construct(Provider $provider)
     {
-        $this->provider = $provider;
+        $this->_provider = $provider;
     }
 
     /**
      * Allows to receive data for the connection to Streaming API.
-     * 
-     * @param array|null $custom
-     * @return Promise
      */
-    function getServerUrl(?array $custom = [])
+    public function getServerUrl(): GetServerUrl
     {
-        $sendParams = [];
-
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('streaming.getServerUrl', $sendParams);
+        if (!$this->getServerUrl) {
+            $this->getServerUrl = new GetServerUrl($this->_provider);
+        }
+        return $this->getServerUrl;
     }
 
     /**
-     * streaming.setSettings
      * 
-     * @param string|null $monthlyTier
-     * @param array|null $custom
-     * @return Promise
      */
-    function setSettings(?string $monthlyTier = '', ?array $custom = [])
+    public function setSettings(): SetSettings
     {
-        $sendParams = [];
-
-        if ($monthlyTier !== '' && $monthlyTier != null) $sendParams['monthly_tier'] = $monthlyTier;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('streaming.setSettings', $sendParams);
+        if (!$this->setSettings) {
+            $this->setSettings = new SetSettings($this->_provider);
+        }
+        return $this->setSettings;
     }
+
 }

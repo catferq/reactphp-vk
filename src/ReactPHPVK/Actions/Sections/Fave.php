@@ -3,470 +3,302 @@
 namespace ReactPHPVK\Actions\Sections;
 
 use ReactPHPVK\Client\Provider;
-use React\Promise\Promise;
+
+use ReactPHPVK\Actions\Sections\Fave\AddArticle;
+use ReactPHPVK\Actions\Sections\Fave\AddLink;
+use ReactPHPVK\Actions\Sections\Fave\AddPage;
+use ReactPHPVK\Actions\Sections\Fave\AddPost;
+use ReactPHPVK\Actions\Sections\Fave\AddProduct;
+use ReactPHPVK\Actions\Sections\Fave\AddTag;
+use ReactPHPVK\Actions\Sections\Fave\AddVideo;
+use ReactPHPVK\Actions\Sections\Fave\EditTag;
+use ReactPHPVK\Actions\Sections\Fave\Get;
+use ReactPHPVK\Actions\Sections\Fave\GetPages;
+use ReactPHPVK\Actions\Sections\Fave\GetTags;
+use ReactPHPVK\Actions\Sections\Fave\MarkSeen;
+use ReactPHPVK\Actions\Sections\Fave\RemoveArticle;
+use ReactPHPVK\Actions\Sections\Fave\RemoveLink;
+use ReactPHPVK\Actions\Sections\Fave\RemovePage;
+use ReactPHPVK\Actions\Sections\Fave\RemovePost;
+use ReactPHPVK\Actions\Sections\Fave\RemoveProduct;
+use ReactPHPVK\Actions\Sections\Fave\RemoveTag;
+use ReactPHPVK\Actions\Sections\Fave\ReorderTags;
+use ReactPHPVK\Actions\Sections\Fave\SetPageTags;
+use ReactPHPVK\Actions\Sections\Fave\SetTags;
+use ReactPHPVK\Actions\Sections\Fave\TrackPageInteraction;
 
 class Fave
 {
-    private Provider $provider;
+    private Provider $_provider;
+
+    private ?Fave\AddArticle $addArticle = null;
+    private ?Fave\AddLink $addLink = null;
+    private ?Fave\AddPage $addPage = null;
+    private ?Fave\AddPost $addPost = null;
+    private ?Fave\AddProduct $addProduct = null;
+    private ?Fave\AddTag $addTag = null;
+    private ?Fave\AddVideo $addVideo = null;
+    private ?Fave\EditTag $editTag = null;
+    private ?Fave\Get $get = null;
+    private ?Fave\GetPages $getPages = null;
+    private ?Fave\GetTags $getTags = null;
+    private ?Fave\MarkSeen $markSeen = null;
+    private ?Fave\RemoveArticle $removeArticle = null;
+    private ?Fave\RemoveLink $removeLink = null;
+    private ?Fave\RemovePage $removePage = null;
+    private ?Fave\RemovePost $removePost = null;
+    private ?Fave\RemoveProduct $removeProduct = null;
+    private ?Fave\RemoveTag $removeTag = null;
+    private ?Fave\ReorderTags $reorderTags = null;
+    private ?Fave\SetPageTags $setPageTags = null;
+    private ?Fave\SetTags $setTags = null;
+    private ?Fave\TrackPageInteraction $trackPageInteraction = null;
 
     public function __construct(Provider $provider)
     {
-        $this->provider = $provider;
+        $this->_provider = $provider;
     }
 
     /**
-     * fave.addArticle
      * 
-     * @param string $url
-     * @param array|null $custom
-     * @return Promise
      */
-    function addArticle(string $url, ?array $custom = [])
+    public function addArticle(): AddArticle
     {
-        $sendParams = [];
-
-        $sendParams['url'] = $url;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addArticle', $sendParams);
+        if (!$this->addArticle) {
+            $this->addArticle = new AddArticle($this->_provider);
+        }
+        return $this->addArticle;
     }
 
     /**
      * Adds a link to user faves.
-     * 
-     * @param string $link Link URL.
-     * @param array|null $custom
-     * @return Promise
      */
-    function addLink(string $link, ?array $custom = [])
+    public function addLink(): AddLink
     {
-        $sendParams = [];
-
-        $sendParams['link'] = $link;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addLink', $sendParams);
+        if (!$this->addLink) {
+            $this->addLink = new AddLink($this->_provider);
+        }
+        return $this->addLink;
     }
 
     /**
-     * fave.addPage
      * 
-     * @param int|null $userId
-     * @param int|null $groupId
-     * @param array|null $custom
-     * @return Promise
      */
-    function addPage(?int $userId = 0, ?int $groupId = 0, ?array $custom = [])
+    public function addPage(): AddPage
     {
-        $sendParams = [];
-
-        if ($userId !== 0 && $userId != null) $sendParams['user_id'] = $userId;
-        if ($groupId !== 0 && $groupId != null) $sendParams['group_id'] = $groupId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addPage', $sendParams);
+        if (!$this->addPage) {
+            $this->addPage = new AddPage($this->_provider);
+        }
+        return $this->addPage;
     }
 
     /**
-     * fave.addPost
      * 
-     * @param int $ownerId
-     * @param int $id
-     * @param string|null $accessKey
-     * @param array|null $custom
-     * @return Promise
      */
-    function addPost(int $ownerId, int $id, ?string $accessKey = '', ?array $custom = [])
+    public function addPost(): AddPost
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['id'] = $id;
-        if ($accessKey !== '' && $accessKey != null) $sendParams['access_key'] = $accessKey;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addPost', $sendParams);
+        if (!$this->addPost) {
+            $this->addPost = new AddPost($this->_provider);
+        }
+        return $this->addPost;
     }
 
     /**
-     * fave.addProduct
      * 
-     * @param int $ownerId
-     * @param int $id
-     * @param string|null $accessKey
-     * @param array|null $custom
-     * @return Promise
      */
-    function addProduct(int $ownerId, int $id, ?string $accessKey = '', ?array $custom = [])
+    public function addProduct(): AddProduct
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['id'] = $id;
-        if ($accessKey !== '' && $accessKey != null) $sendParams['access_key'] = $accessKey;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addProduct', $sendParams);
+        if (!$this->addProduct) {
+            $this->addProduct = new AddProduct($this->_provider);
+        }
+        return $this->addProduct;
     }
 
     /**
-     * fave.addTag
      * 
-     * @param string|null $name
-     * @param string|null $position
-     * @param array|null $custom
-     * @return Promise
      */
-    function addTag(?string $name = '', ?string $position = 'back', ?array $custom = [])
+    public function addTag(): AddTag
     {
-        $sendParams = [];
-
-        if ($name !== '' && $name != null) $sendParams['name'] = $name;
-        if ($position !== 'back' && $position != null) $sendParams['position'] = $position;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addTag', $sendParams);
+        if (!$this->addTag) {
+            $this->addTag = new AddTag($this->_provider);
+        }
+        return $this->addTag;
     }
 
     /**
-     * fave.addVideo
      * 
-     * @param int $ownerId
-     * @param int $id
-     * @param string|null $accessKey
-     * @param array|null $custom
-     * @return Promise
      */
-    function addVideo(int $ownerId, int $id, ?string $accessKey = '', ?array $custom = [])
+    public function addVideo(): AddVideo
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['id'] = $id;
-        if ($accessKey !== '' && $accessKey != null) $sendParams['access_key'] = $accessKey;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.addVideo', $sendParams);
+        if (!$this->addVideo) {
+            $this->addVideo = new AddVideo($this->_provider);
+        }
+        return $this->addVideo;
     }
 
     /**
-     * fave.editTag
      * 
-     * @param int $id
-     * @param string $name
-     * @param array|null $custom
-     * @return Promise
      */
-    function editTag(int $id, string $name, ?array $custom = [])
+    public function editTag(): EditTag
     {
-        $sendParams = [];
-
-        $sendParams['id'] = $id;
-        $sendParams['name'] = $name;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.editTag', $sendParams);
+        if (!$this->editTag) {
+            $this->editTag = new EditTag($this->_provider);
+        }
+        return $this->editTag;
     }
 
     /**
-     * fave.get
      * 
-     * @param bool|null $extended '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
-     * @param string|null $itemType
-     * @param int|null $tagId Tag ID.
-     * @param int|null $offset Offset needed to return a specific subset of users.
-     * @param int|null $count Number of users to return.
-     * @param string|null $fields
-     * @param bool|null $isFromSnackbar
-     * @param array|null $custom
-     * @return Promise
      */
-    function get(?bool $extended = false, ?string $itemType = '', ?int $tagId = 0, ?int $offset = 0, ?int $count = 50, ?string $fields = '', ?bool $isFromSnackbar = false, ?array $custom = [])
+    public function get(): Get
     {
-        $sendParams = [];
-
-        if ($extended !== false && $extended != null) $sendParams['extended'] = intval($extended);
-        if ($itemType !== '' && $itemType != null) $sendParams['item_type'] = $itemType;
-        if ($tagId !== 0 && $tagId != null) $sendParams['tag_id'] = $tagId;
-        if ($offset !== 0 && $offset != null) $sendParams['offset'] = $offset;
-        if ($count !== 50 && $count != null) $sendParams['count'] = $count;
-        if ($fields !== '' && $fields != null) $sendParams['fields'] = $fields;
-        if ($isFromSnackbar !== false && $isFromSnackbar != null) $sendParams['is_from_snackbar'] = intval($isFromSnackbar);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.get', $sendParams);
+        if (!$this->get) {
+            $this->get = new Get($this->_provider);
+        }
+        return $this->get;
     }
 
     /**
-     * fave.getPages
      * 
-     * @param int|null $offset
-     * @param int|null $count
-     * @param string|null $type
-     * @param array|null $fields
-     * @param int|null $tagId
-     * @param array|null $custom
-     * @return Promise
      */
-    function getPages(?int $offset = 0, ?int $count = 50, ?string $type = '', ?array $fields = [], ?int $tagId = 0, ?array $custom = [])
+    public function getPages(): GetPages
     {
-        $sendParams = [];
-
-        if ($offset !== 0 && $offset != null) $sendParams['offset'] = $offset;
-        if ($count !== 50 && $count != null) $sendParams['count'] = $count;
-        if ($type !== '' && $type != null) $sendParams['type'] = $type;
-        if ($fields !== [] && $fields != null) $sendParams['fields'] = implode(',', $fields);
-        if ($tagId !== 0 && $tagId != null) $sendParams['tag_id'] = $tagId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.getPages', $sendParams);
+        if (!$this->getPages) {
+            $this->getPages = new GetPages($this->_provider);
+        }
+        return $this->getPages;
     }
 
     /**
-     * fave.getTags
      * 
-     * @param array|null $custom
-     * @return Promise
      */
-    function getTags(?array $custom = [])
+    public function getTags(): GetTags
     {
-        $sendParams = [];
-
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.getTags', $sendParams);
+        if (!$this->getTags) {
+            $this->getTags = new GetTags($this->_provider);
+        }
+        return $this->getTags;
     }
 
     /**
-     * fave.markSeen
      * 
-     * @param array|null $custom
-     * @return Promise
      */
-    function markSeen(?array $custom = [])
+    public function markSeen(): MarkSeen
     {
-        $sendParams = [];
-
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.markSeen', $sendParams);
+        if (!$this->markSeen) {
+            $this->markSeen = new MarkSeen($this->_provider);
+        }
+        return $this->markSeen;
     }
 
     /**
-     * fave.removeArticle
      * 
-     * @param int $ownerId
-     * @param int $articleId
-     * @param array|null $custom
-     * @return Promise
      */
-    function removeArticle(int $ownerId, int $articleId, ?array $custom = [])
+    public function removeArticle(): RemoveArticle
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['article_id'] = $articleId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removeArticle', $sendParams);
+        if (!$this->removeArticle) {
+            $this->removeArticle = new RemoveArticle($this->_provider);
+        }
+        return $this->removeArticle;
     }
 
     /**
      * Removes link from the user's faves.
-     * 
-     * @param string|null $linkId Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
-     * @param string|null $link Link URL
-     * @param array|null $custom
-     * @return Promise
      */
-    function removeLink(?string $linkId = '', ?string $link = '', ?array $custom = [])
+    public function removeLink(): RemoveLink
     {
-        $sendParams = [];
-
-        if ($linkId !== '' && $linkId != null) $sendParams['link_id'] = $linkId;
-        if ($link !== '' && $link != null) $sendParams['link'] = $link;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removeLink', $sendParams);
+        if (!$this->removeLink) {
+            $this->removeLink = new RemoveLink($this->_provider);
+        }
+        return $this->removeLink;
     }
 
     /**
-     * fave.removePage
      * 
-     * @param int|null $userId
-     * @param int|null $groupId
-     * @param array|null $custom
-     * @return Promise
      */
-    function removePage(?int $userId = 0, ?int $groupId = 0, ?array $custom = [])
+    public function removePage(): RemovePage
     {
-        $sendParams = [];
-
-        if ($userId !== 0 && $userId != null) $sendParams['user_id'] = $userId;
-        if ($groupId !== 0 && $groupId != null) $sendParams['group_id'] = $groupId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removePage', $sendParams);
+        if (!$this->removePage) {
+            $this->removePage = new RemovePage($this->_provider);
+        }
+        return $this->removePage;
     }
 
     /**
-     * fave.removePost
      * 
-     * @param int $ownerId
-     * @param int $id
-     * @param array|null $custom
-     * @return Promise
      */
-    function removePost(int $ownerId, int $id, ?array $custom = [])
+    public function removePost(): RemovePost
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['id'] = $id;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removePost', $sendParams);
+        if (!$this->removePost) {
+            $this->removePost = new RemovePost($this->_provider);
+        }
+        return $this->removePost;
     }
 
     /**
-     * fave.removeProduct
      * 
-     * @param int $ownerId
-     * @param int $id
-     * @param array|null $custom
-     * @return Promise
      */
-    function removeProduct(int $ownerId, int $id, ?array $custom = [])
+    public function removeProduct(): RemoveProduct
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['id'] = $id;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removeProduct', $sendParams);
+        if (!$this->removeProduct) {
+            $this->removeProduct = new RemoveProduct($this->_provider);
+        }
+        return $this->removeProduct;
     }
 
     /**
-     * fave.removeTag
      * 
-     * @param int $id
-     * @param array|null $custom
-     * @return Promise
      */
-    function removeTag(int $id, ?array $custom = [])
+    public function removeTag(): RemoveTag
     {
-        $sendParams = [];
-
-        $sendParams['id'] = $id;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.removeTag', $sendParams);
+        if (!$this->removeTag) {
+            $this->removeTag = new RemoveTag($this->_provider);
+        }
+        return $this->removeTag;
     }
 
     /**
-     * fave.reorderTags
      * 
-     * @param array $ids
-     * @param array|null $custom
-     * @return Promise
      */
-    function reorderTags(array $ids, ?array $custom = [])
+    public function reorderTags(): ReorderTags
     {
-        $sendParams = [];
-
-        $sendParams['ids'] = implode(',', $ids);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.reorderTags', $sendParams);
+        if (!$this->reorderTags) {
+            $this->reorderTags = new ReorderTags($this->_provider);
+        }
+        return $this->reorderTags;
     }
 
     /**
-     * fave.setPageTags
      * 
-     * @param int|null $userId
-     * @param int|null $groupId
-     * @param array|null $tagIds
-     * @param array|null $custom
-     * @return Promise
      */
-    function setPageTags(?int $userId = 0, ?int $groupId = 0, ?array $tagIds = [], ?array $custom = [])
+    public function setPageTags(): SetPageTags
     {
-        $sendParams = [];
-
-        if ($userId !== 0 && $userId != null) $sendParams['user_id'] = $userId;
-        if ($groupId !== 0 && $groupId != null) $sendParams['group_id'] = $groupId;
-        if ($tagIds !== [] && $tagIds != null) $sendParams['tag_ids'] = implode(',', $tagIds);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.setPageTags', $sendParams);
+        if (!$this->setPageTags) {
+            $this->setPageTags = new SetPageTags($this->_provider);
+        }
+        return $this->setPageTags;
     }
 
     /**
-     * fave.setTags
      * 
-     * @param string|null $itemType
-     * @param int|null $itemOwnerId
-     * @param int|null $itemId
-     * @param array|null $tagIds
-     * @param string|null $linkId
-     * @param string|null $linkUrl
-     * @param array|null $custom
-     * @return Promise
      */
-    function setTags(?string $itemType = '', ?int $itemOwnerId = 0, ?int $itemId = 0, ?array $tagIds = [], ?string $linkId = '', ?string $linkUrl = '', ?array $custom = [])
+    public function setTags(): SetTags
     {
-        $sendParams = [];
-
-        if ($itemType !== '' && $itemType != null) $sendParams['item_type'] = $itemType;
-        if ($itemOwnerId !== 0 && $itemOwnerId != null) $sendParams['item_owner_id'] = $itemOwnerId;
-        if ($itemId !== 0 && $itemId != null) $sendParams['item_id'] = $itemId;
-        if ($tagIds !== [] && $tagIds != null) $sendParams['tag_ids'] = implode(',', $tagIds);
-        if ($linkId !== '' && $linkId != null) $sendParams['link_id'] = $linkId;
-        if ($linkUrl !== '' && $linkUrl != null) $sendParams['link_url'] = $linkUrl;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.setTags', $sendParams);
+        if (!$this->setTags) {
+            $this->setTags = new SetTags($this->_provider);
+        }
+        return $this->setTags;
     }
 
     /**
-     * fave.trackPageInteraction
      * 
-     * @param int|null $userId
-     * @param int|null $groupId
-     * @param array|null $custom
-     * @return Promise
      */
-    function trackPageInteraction(?int $userId = 0, ?int $groupId = 0, ?array $custom = [])
+    public function trackPageInteraction(): TrackPageInteraction
     {
-        $sendParams = [];
-
-        if ($userId !== 0 && $userId != null) $sendParams['user_id'] = $userId;
-        if ($groupId !== 0 && $groupId != null) $sendParams['group_id'] = $groupId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('fave.trackPageInteraction', $sendParams);
+        if (!$this->trackPageInteraction) {
+            $this->trackPageInteraction = new TrackPageInteraction($this->_provider);
+        }
+        return $this->trackPageInteraction;
     }
+
 }

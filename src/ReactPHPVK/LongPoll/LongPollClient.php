@@ -4,6 +4,8 @@ namespace ReactPHPVK\LongPoll;
 
 use ReactPHPVK\Client\AVKClient;
 use Psr\Http\Message\ResponseInterface;
+use Throwable;
+use Closure;
 
 class LongPollClient
 {
@@ -22,13 +24,18 @@ class LongPollClient
     private int $wait;
     private int $mode;
 
+    public Closure $onFailHTTPRequest;
+
     public function __construct(AVKClient $AVKClient, int $groupId, int $wait = 25, $mode = 2)
     {
+        $this->onFailHTTPRequest = function (Throwable $throwable) {};
+
         $this->client = $AVKClient;
         $this->groupId = $groupId;
         $this->wait = $wait;
         $this->mode = $mode;
-        $this->client->provider->logger->info('[AVK] LP Init');
+
+        $this->client->_provider->logger->info('[AVK] LP Init');
     }
 
     public function handle(callable $callable)
@@ -39,7 +46,7 @@ class LongPollClient
             $this->getUpdates()
                 ->then(
                     function ($response) use ($callable) {
-                        $this->client->provider->logger->debug('[AVK] LP handle '.json_encode($response));
+                        $this->client->_provider->logger->debug('[AVK] LP handle ' . json_encode($response));
                         if (!empty($response['updates'])) {
                             foreach ($response['updates'] as $update) {
                                 $this->work = $callable($update) ?? 1;
@@ -66,9 +73,9 @@ class LongPollClient
             );
         }
 
-        $this->client->provider->logger->debug("[AVK] LP request TS:{$this->actualTs} KEY:{$this->actualKey} SERVER:{$this->actualServer}");
+        $this->client->_provider->logger->debug("[AVK] LP request TS:{$this->actualTs} KEY:{$this->actualKey} SERVER:{$this->actualServer}");
 
-        return $this->client->provider->browser->get("{$this->actualServer}?" . http_build_query([
+        return $this->client->_provider->browser->get("{$this->actualServer}?" . http_build_query([
                 'act' => 'a_check',
                 'key' => $this->actualKey,
                 'ts' => $this->actualTs,
@@ -77,16 +84,17 @@ class LongPollClient
             ])
         )->then(
             function (ResponseInterface $response) {
-                $this->client->provider->logger->debug("[AVK] LP response TS:{$this->actualTs} KEY:{$this->actualKey} SERVER:{$this->actualServer} HTTP_CODE:{$response->getStatusCode()} BODY:{$response->getBody()}");
+                $this->client->_provider->logger->debug("[AVK] LP response TS:{$this->actualTs} KEY:{$this->actualKey} SERVER:{$this->actualServer} HTTP_CODE:{$response->getStatusCode()} BODY:{$response->getBody()}");
 
                 $response = json_decode($response->getBody(), true);
                 if (isset($response['failed'])) {
                     if ($response['failed'] === 1) {
-                        $this->client->provider->logger->error("[AVK] LP error 1");
+                        $this->client->_provider->logger->error("[AVK] LP error 1");
                         return $this->getUpdates($response['ts']);
                     }
+
                     if ($response['failed'] === 2) {
-                        $this->client->provider->logger->error("[AVK] LP error 2");
+                        $this->client->_provider->logger->error("[AVK] LP error 2");
                         return $this->getLongPollInfo()->then(
                             function ($response) {
                                 $this->actualKey = $response['key'];
@@ -95,8 +103,9 @@ class LongPollClient
                             }
                         );
                     }
+
                     if ($response['failed'] === 3) {
-                        $this->client->provider->logger->error("[AVK] LP error 3");
+                        $this->client->_provider->logger->error("[AVK] LP error 3");
                         return $this->getLongPollInfo()->then(
                             function ($response) {
                                 $this->actualTs = $response['ts'];
@@ -111,12 +120,17 @@ class LongPollClient
                 $this->actualTs = $response['ts'];
 
                 return $response;
+            },
+            function (Throwable $throwable) {
+                $this->client->_provider->logger->error("[AVK] LP (a_check) Throwable: {$throwable->getMessage()}");
+                call_user_func($this->onFailHTTPRequest, $throwable);
+                return $this->getUpdates();
             }
         );
     }
 
     public function getLongPollInfo()
     {
-        return $this->client->groups()->getLongPollServer($this->groupId);
+        return $this->client->groups()->getLongPollServer()->setGroupId($this->groupId)->execute();
     }
 }

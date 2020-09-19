@@ -3,6 +3,9 @@
 namespace ReactPHPVK\Client;
 
 use Psr\Log\LoggerInterface;
+use ReactPHPVK\Throttling\QManager;
+use Clue\React\Buzz\Browser;
+use React\EventLoop\LoopInterface;
 use ReactPHPVK\Actions\Sections\Account;
 use ReactPHPVK\Actions\Sections\Ads;
 use ReactPHPVK\Actions\Sections\AppWidgets;
@@ -40,13 +43,10 @@ use ReactPHPVK\Actions\Sections\Utils;
 use ReactPHPVK\Actions\Sections\Video;
 use ReactPHPVK\Actions\Sections\Wall;
 use ReactPHPVK\Actions\Sections\Widgets;
-use ReactPHPVK\Throttling\QManager;
-use Clue\React\Buzz\Browser;
-use React\EventLoop\LoopInterface;
 
 class AVKClient
 {
-    public Provider $provider;
+    public Provider $_provider;
 
     private ?Account $account = null;
     private ?Ads $ads = null;
@@ -98,13 +98,13 @@ class AVKClient
      */
     public function __construct(LoopInterface $loop, string $accessToken, Browser $browser = null, float $limiter = 0, float $version = 5.122, $language = null, QManager $qManager = null, LoggerInterface $logger = null)
     {
-        $this->provider = new Provider($loop, $accessToken, $browser, $limiter, $version, $language, $qManager, $logger);
+        $this->_provider = new Provider($loop, $accessToken, $browser, $limiter, $version, $language, $qManager, $logger);
     }
 
     public function account(): Account
     {
         if (!$this->account) {
-            $this->account = new Account($this->provider);
+            $this->account = new Account($this->_provider);
         }
         return $this->account;
     }
@@ -112,7 +112,7 @@ class AVKClient
     public function ads(): Ads
     {
         if (!$this->ads) {
-            $this->ads = new Ads($this->provider);
+            $this->ads = new Ads($this->_provider);
         }
         return $this->ads;
     }
@@ -120,7 +120,7 @@ class AVKClient
     public function appWidgets(): AppWidgets
     {
         if (!$this->appWidgets) {
-            $this->appWidgets = new AppWidgets($this->provider);
+            $this->appWidgets = new AppWidgets($this->_provider);
         }
         return $this->appWidgets;
     }
@@ -128,7 +128,7 @@ class AVKClient
     public function apps(): Apps
     {
         if (!$this->apps) {
-            $this->apps = new Apps($this->provider);
+            $this->apps = new Apps($this->_provider);
         }
         return $this->apps;
     }
@@ -136,7 +136,7 @@ class AVKClient
     public function auth(): Auth
     {
         if (!$this->auth) {
-            $this->auth = new Auth($this->provider);
+            $this->auth = new Auth($this->_provider);
         }
         return $this->auth;
     }
@@ -144,7 +144,7 @@ class AVKClient
     public function board(): Board
     {
         if (!$this->board) {
-            $this->board = new Board($this->provider);
+            $this->board = new Board($this->_provider);
         }
         return $this->board;
     }
@@ -152,7 +152,7 @@ class AVKClient
     public function database(): Database
     {
         if (!$this->database) {
-            $this->database = new Database($this->provider);
+            $this->database = new Database($this->_provider);
         }
         return $this->database;
     }
@@ -160,7 +160,7 @@ class AVKClient
     public function docs(): Docs
     {
         if (!$this->docs) {
-            $this->docs = new Docs($this->provider);
+            $this->docs = new Docs($this->_provider);
         }
         return $this->docs;
     }
@@ -168,7 +168,7 @@ class AVKClient
     public function downloadedGames(): DownloadedGames
     {
         if (!$this->downloadedGames) {
-            $this->downloadedGames = new DownloadedGames($this->provider);
+            $this->downloadedGames = new DownloadedGames($this->_provider);
         }
         return $this->downloadedGames;
     }
@@ -176,7 +176,7 @@ class AVKClient
     public function fave(): Fave
     {
         if (!$this->fave) {
-            $this->fave = new Fave($this->provider);
+            $this->fave = new Fave($this->_provider);
         }
         return $this->fave;
     }
@@ -184,7 +184,7 @@ class AVKClient
     public function friends(): Friends
     {
         if (!$this->friends) {
-            $this->friends = new Friends($this->provider);
+            $this->friends = new Friends($this->_provider);
         }
         return $this->friends;
     }
@@ -192,7 +192,7 @@ class AVKClient
     public function gifts(): Gifts
     {
         if (!$this->gifts) {
-            $this->gifts = new Gifts($this->provider);
+            $this->gifts = new Gifts($this->_provider);
         }
         return $this->gifts;
     }
@@ -200,7 +200,7 @@ class AVKClient
     public function groups(): Groups
     {
         if (!$this->groups) {
-            $this->groups = new Groups($this->provider);
+            $this->groups = new Groups($this->_provider);
         }
         return $this->groups;
     }
@@ -208,7 +208,7 @@ class AVKClient
     public function leads(): Leads
     {
         if (!$this->leads) {
-            $this->leads = new Leads($this->provider);
+            $this->leads = new Leads($this->_provider);
         }
         return $this->leads;
     }
@@ -216,7 +216,7 @@ class AVKClient
     public function likes(): Likes
     {
         if (!$this->likes) {
-            $this->likes = new Likes($this->provider);
+            $this->likes = new Likes($this->_provider);
         }
         return $this->likes;
     }
@@ -224,7 +224,7 @@ class AVKClient
     public function market(): Market
     {
         if (!$this->market) {
-            $this->market = new Market($this->provider);
+            $this->market = new Market($this->_provider);
         }
         return $this->market;
     }
@@ -232,7 +232,7 @@ class AVKClient
     public function messages(): Messages
     {
         if (!$this->messages) {
-            $this->messages = new Messages($this->provider);
+            $this->messages = new Messages($this->_provider);
         }
         return $this->messages;
     }
@@ -240,7 +240,7 @@ class AVKClient
     public function newsfeed(): Newsfeed
     {
         if (!$this->newsfeed) {
-            $this->newsfeed = new Newsfeed($this->provider);
+            $this->newsfeed = new Newsfeed($this->_provider);
         }
         return $this->newsfeed;
     }
@@ -248,7 +248,7 @@ class AVKClient
     public function notes(): Notes
     {
         if (!$this->notes) {
-            $this->notes = new Notes($this->provider);
+            $this->notes = new Notes($this->_provider);
         }
         return $this->notes;
     }
@@ -256,7 +256,7 @@ class AVKClient
     public function notifications(): Notifications
     {
         if (!$this->notifications) {
-            $this->notifications = new Notifications($this->provider);
+            $this->notifications = new Notifications($this->_provider);
         }
         return $this->notifications;
     }
@@ -264,7 +264,7 @@ class AVKClient
     public function orders(): Orders
     {
         if (!$this->orders) {
-            $this->orders = new Orders($this->provider);
+            $this->orders = new Orders($this->_provider);
         }
         return $this->orders;
     }
@@ -272,7 +272,7 @@ class AVKClient
     public function pages(): Pages
     {
         if (!$this->pages) {
-            $this->pages = new Pages($this->provider);
+            $this->pages = new Pages($this->_provider);
         }
         return $this->pages;
     }
@@ -280,7 +280,7 @@ class AVKClient
     public function photos(): Photos
     {
         if (!$this->photos) {
-            $this->photos = new Photos($this->provider);
+            $this->photos = new Photos($this->_provider);
         }
         return $this->photos;
     }
@@ -288,7 +288,7 @@ class AVKClient
     public function polls(): Polls
     {
         if (!$this->polls) {
-            $this->polls = new Polls($this->provider);
+            $this->polls = new Polls($this->_provider);
         }
         return $this->polls;
     }
@@ -296,7 +296,7 @@ class AVKClient
     public function prettyCards(): PrettyCards
     {
         if (!$this->prettyCards) {
-            $this->prettyCards = new PrettyCards($this->provider);
+            $this->prettyCards = new PrettyCards($this->_provider);
         }
         return $this->prettyCards;
     }
@@ -304,7 +304,7 @@ class AVKClient
     public function search(): Search
     {
         if (!$this->search) {
-            $this->search = new Search($this->provider);
+            $this->search = new Search($this->_provider);
         }
         return $this->search;
     }
@@ -312,7 +312,7 @@ class AVKClient
     public function secure(): Secure
     {
         if (!$this->secure) {
-            $this->secure = new Secure($this->provider);
+            $this->secure = new Secure($this->_provider);
         }
         return $this->secure;
     }
@@ -320,7 +320,7 @@ class AVKClient
     public function stats(): Stats
     {
         if (!$this->stats) {
-            $this->stats = new Stats($this->provider);
+            $this->stats = new Stats($this->_provider);
         }
         return $this->stats;
     }
@@ -328,7 +328,7 @@ class AVKClient
     public function status(): Status
     {
         if (!$this->status) {
-            $this->status = new Status($this->provider);
+            $this->status = new Status($this->_provider);
         }
         return $this->status;
     }
@@ -336,7 +336,7 @@ class AVKClient
     public function storage(): Storage
     {
         if (!$this->storage) {
-            $this->storage = new Storage($this->provider);
+            $this->storage = new Storage($this->_provider);
         }
         return $this->storage;
     }
@@ -344,7 +344,7 @@ class AVKClient
     public function stories(): Stories
     {
         if (!$this->stories) {
-            $this->stories = new Stories($this->provider);
+            $this->stories = new Stories($this->_provider);
         }
         return $this->stories;
     }
@@ -352,7 +352,7 @@ class AVKClient
     public function streaming(): Streaming
     {
         if (!$this->streaming) {
-            $this->streaming = new Streaming($this->provider);
+            $this->streaming = new Streaming($this->_provider);
         }
         return $this->streaming;
     }
@@ -360,7 +360,7 @@ class AVKClient
     public function users(): Users
     {
         if (!$this->users) {
-            $this->users = new Users($this->provider);
+            $this->users = new Users($this->_provider);
         }
         return $this->users;
     }
@@ -368,7 +368,7 @@ class AVKClient
     public function utils(): Utils
     {
         if (!$this->utils) {
-            $this->utils = new Utils($this->provider);
+            $this->utils = new Utils($this->_provider);
         }
         return $this->utils;
     }
@@ -376,7 +376,7 @@ class AVKClient
     public function video(): Video
     {
         if (!$this->video) {
-            $this->video = new Video($this->provider);
+            $this->video = new Video($this->_provider);
         }
         return $this->video;
     }
@@ -384,7 +384,7 @@ class AVKClient
     public function wall(): Wall
     {
         if (!$this->wall) {
-            $this->wall = new Wall($this->provider);
+            $this->wall = new Wall($this->_provider);
         }
         return $this->wall;
     }
@@ -392,8 +392,9 @@ class AVKClient
     public function widgets(): Widgets
     {
         if (!$this->widgets) {
-            $this->widgets = new Widgets($this->provider);
+            $this->widgets = new Widgets($this->_provider);
         }
         return $this->widgets;
     }
+
 }

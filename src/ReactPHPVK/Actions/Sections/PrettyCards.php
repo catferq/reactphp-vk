@@ -3,154 +3,94 @@
 namespace ReactPHPVK\Actions\Sections;
 
 use ReactPHPVK\Client\Provider;
-use React\Promise\Promise;
+
+use ReactPHPVK\Actions\Sections\PrettyCards\Create;
+use ReactPHPVK\Actions\Sections\PrettyCards\Delete;
+use ReactPHPVK\Actions\Sections\PrettyCards\Edit;
+use ReactPHPVK\Actions\Sections\PrettyCards\Get;
+use ReactPHPVK\Actions\Sections\PrettyCards\GetById;
+use ReactPHPVK\Actions\Sections\PrettyCards\GetUploadURL;
 
 class PrettyCards
 {
-    private Provider $provider;
+    private Provider $_provider;
+
+    private ?PrettyCards\Create $create = null;
+    private ?PrettyCards\Delete $delete = null;
+    private ?PrettyCards\Edit $edit = null;
+    private ?PrettyCards\Get $get = null;
+    private ?PrettyCards\GetById $getById = null;
+    private ?PrettyCards\GetUploadURL $getUploadURL = null;
 
     public function __construct(Provider $provider)
     {
-        $this->provider = $provider;
+        $this->_provider = $provider;
     }
 
     /**
-     * prettyCards.create
      * 
-     * @param int $ownerId
-     * @param string $photo
-     * @param string $title
-     * @param string $link
-     * @param string|null $price
-     * @param string|null $priceOld
-     * @param string|null $button
-     * @param array|null $custom
-     * @return Promise
      */
-    function create(int $ownerId, string $photo, string $title, string $link, ?string $price = '', ?string $priceOld = '', ?string $button = '', ?array $custom = [])
+    public function create(): Create
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['photo'] = $photo;
-        $sendParams['title'] = $title;
-        $sendParams['link'] = $link;
-        if ($price !== '' && $price != null) $sendParams['price'] = $price;
-        if ($priceOld !== '' && $priceOld != null) $sendParams['price_old'] = $priceOld;
-        if ($button !== '' && $button != null) $sendParams['button'] = $button;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.create', $sendParams);
+        if (!$this->create) {
+            $this->create = new Create($this->_provider);
+        }
+        return $this->create;
     }
 
     /**
-     * prettyCards.delete
      * 
-     * @param int $ownerId
-     * @param int $cardId
-     * @param array|null $custom
-     * @return Promise
      */
-    function delete(int $ownerId, int $cardId, ?array $custom = [])
+    public function delete(): Delete
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['card_id'] = $cardId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.delete', $sendParams);
+        if (!$this->delete) {
+            $this->delete = new Delete($this->_provider);
+        }
+        return $this->delete;
     }
 
     /**
-     * prettyCards.edit
      * 
-     * @param int $ownerId
-     * @param int $cardId
-     * @param string|null $photo
-     * @param string|null $title
-     * @param string|null $link
-     * @param string|null $price
-     * @param string|null $priceOld
-     * @param string|null $button
-     * @param array|null $custom
-     * @return Promise
      */
-    function edit(int $ownerId, int $cardId, ?string $photo = '', ?string $title = '', ?string $link = '', ?string $price = '', ?string $priceOld = '', ?string $button = '', ?array $custom = [])
+    public function edit(): Edit
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['card_id'] = $cardId;
-        if ($photo !== '' && $photo != null) $sendParams['photo'] = $photo;
-        if ($title !== '' && $title != null) $sendParams['title'] = $title;
-        if ($link !== '' && $link != null) $sendParams['link'] = $link;
-        if ($price !== '' && $price != null) $sendParams['price'] = $price;
-        if ($priceOld !== '' && $priceOld != null) $sendParams['price_old'] = $priceOld;
-        if ($button !== '' && $button != null) $sendParams['button'] = $button;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.edit', $sendParams);
+        if (!$this->edit) {
+            $this->edit = new Edit($this->_provider);
+        }
+        return $this->edit;
     }
 
     /**
-     * prettyCards.get
      * 
-     * @param int $ownerId
-     * @param int|null $offset
-     * @param int|null $count
-     * @param array|null $custom
-     * @return Promise
      */
-    function get(int $ownerId, ?int $offset = 0, ?int $count = 10, ?array $custom = [])
+    public function get(): Get
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        if ($offset !== 0 && $offset != null) $sendParams['offset'] = $offset;
-        if ($count !== 10 && $count != null) $sendParams['count'] = $count;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.get', $sendParams);
+        if (!$this->get) {
+            $this->get = new Get($this->_provider);
+        }
+        return $this->get;
     }
 
     /**
-     * prettyCards.getById
      * 
-     * @param int $ownerId
-     * @param array $cardIds
-     * @param array|null $custom
-     * @return Promise
      */
-    function getById(int $ownerId, array $cardIds, ?array $custom = [])
+    public function getById(): GetById
     {
-        $sendParams = [];
-
-        $sendParams['owner_id'] = $ownerId;
-        $sendParams['card_ids'] = implode(',', $cardIds);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.getById', $sendParams);
+        if (!$this->getById) {
+            $this->getById = new GetById($this->_provider);
+        }
+        return $this->getById;
     }
 
     /**
-     * prettyCards.getUploadURL
      * 
-     * @param array|null $custom
-     * @return Promise
      */
-    function getUploadURL(?array $custom = [])
+    public function getUploadURL(): GetUploadURL
     {
-        $sendParams = [];
-
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('prettyCards.getUploadURL', $sendParams);
+        if (!$this->getUploadURL) {
+            $this->getUploadURL = new GetUploadURL($this->_provider);
+        }
+        return $this->getUploadURL;
     }
+
 }

@@ -3,244 +3,146 @@
 namespace ReactPHPVK\Actions\Sections;
 
 use ReactPHPVK\Client\Provider;
-use React\Promise\Promise;
+
+use ReactPHPVK\Actions\Sections\Notes\Add;
+use ReactPHPVK\Actions\Sections\Notes\CreateComment;
+use ReactPHPVK\Actions\Sections\Notes\Delete;
+use ReactPHPVK\Actions\Sections\Notes\DeleteComment;
+use ReactPHPVK\Actions\Sections\Notes\Edit;
+use ReactPHPVK\Actions\Sections\Notes\EditComment;
+use ReactPHPVK\Actions\Sections\Notes\Get;
+use ReactPHPVK\Actions\Sections\Notes\GetById;
+use ReactPHPVK\Actions\Sections\Notes\GetComments;
+use ReactPHPVK\Actions\Sections\Notes\RestoreComment;
 
 class Notes
 {
-    private Provider $provider;
+    private Provider $_provider;
+
+    private ?Notes\Add $add = null;
+    private ?Notes\CreateComment $createComment = null;
+    private ?Notes\Delete $delete = null;
+    private ?Notes\DeleteComment $deleteComment = null;
+    private ?Notes\Edit $edit = null;
+    private ?Notes\EditComment $editComment = null;
+    private ?Notes\Get $get = null;
+    private ?Notes\GetById $getById = null;
+    private ?Notes\GetComments $getComments = null;
+    private ?Notes\RestoreComment $restoreComment = null;
 
     public function __construct(Provider $provider)
     {
-        $this->provider = $provider;
+        $this->_provider = $provider;
     }
 
     /**
      * Creates a new note for the current user.
-     * 
-     * @param string $title Note title.
-     * @param string $text Note text.
-     * @param array|null $privacyView
-     * @param array|null $privacyComment
-     * @param array|null $custom
-     * @return Promise
      */
-    function add(string $title, string $text, ?array $privacyView = [], ?array $privacyComment = [], ?array $custom = [])
+    public function add(): Add
     {
-        $sendParams = [];
-
-        $sendParams['title'] = $title;
-        $sendParams['text'] = $text;
-        if ($privacyView !== [] && $privacyView != null) $sendParams['privacy_view'] = implode(',', $privacyView);
-        if ($privacyComment !== [] && $privacyComment != null) $sendParams['privacy_comment'] = implode(',', $privacyComment);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.add', $sendParams);
+        if (!$this->add) {
+            $this->add = new Add($this->_provider);
+        }
+        return $this->add;
     }
 
     /**
      * Adds a new comment on a note.
-     * 
-     * @param int $noteId Note ID.
-     * @param string $message Comment text.
-     * @param int|null $ownerId Note owner ID.
-     * @param int|null $replyTo ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
-     * @param string|null $guid
-     * @param array|null $custom
-     * @return Promise
      */
-    function createComment(int $noteId, string $message, ?int $ownerId = 0, ?int $replyTo = 0, ?string $guid = '', ?array $custom = [])
+    public function createComment(): CreateComment
     {
-        $sendParams = [];
-
-        $sendParams['note_id'] = $noteId;
-        $sendParams['message'] = $message;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-        if ($replyTo !== 0 && $replyTo != null) $sendParams['reply_to'] = $replyTo;
-        if ($guid !== '' && $guid != null) $sendParams['guid'] = $guid;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.createComment', $sendParams);
+        if (!$this->createComment) {
+            $this->createComment = new CreateComment($this->_provider);
+        }
+        return $this->createComment;
     }
 
     /**
      * Deletes a note of the current user.
-     * 
-     * @param int $noteId Note ID.
-     * @param array|null $custom
-     * @return Promise
      */
-    function delete(int $noteId, ?array $custom = [])
+    public function delete(): Delete
     {
-        $sendParams = [];
-
-        $sendParams['note_id'] = $noteId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.delete', $sendParams);
+        if (!$this->delete) {
+            $this->delete = new Delete($this->_provider);
+        }
+        return $this->delete;
     }
 
     /**
      * Deletes a comment on a note.
-     * 
-     * @param int $commentId Comment ID.
-     * @param int|null $ownerId Note owner ID.
-     * @param array|null $custom
-     * @return Promise
      */
-    function deleteComment(int $commentId, ?int $ownerId = 0, ?array $custom = [])
+    public function deleteComment(): DeleteComment
     {
-        $sendParams = [];
-
-        $sendParams['comment_id'] = $commentId;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.deleteComment', $sendParams);
+        if (!$this->deleteComment) {
+            $this->deleteComment = new DeleteComment($this->_provider);
+        }
+        return $this->deleteComment;
     }
 
     /**
      * Edits a note of the current user.
-     * 
-     * @param int $noteId Note ID.
-     * @param string $title Note title.
-     * @param string $text Note text.
-     * @param array|null $privacyView
-     * @param array|null $privacyComment
-     * @param array|null $custom
-     * @return Promise
      */
-    function edit(int $noteId, string $title, string $text, ?array $privacyView = [], ?array $privacyComment = [], ?array $custom = [])
+    public function edit(): Edit
     {
-        $sendParams = [];
-
-        $sendParams['note_id'] = $noteId;
-        $sendParams['title'] = $title;
-        $sendParams['text'] = $text;
-        if ($privacyView !== [] && $privacyView != null) $sendParams['privacy_view'] = implode(',', $privacyView);
-        if ($privacyComment !== [] && $privacyComment != null) $sendParams['privacy_comment'] = implode(',', $privacyComment);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.edit', $sendParams);
+        if (!$this->edit) {
+            $this->edit = new Edit($this->_provider);
+        }
+        return $this->edit;
     }
 
     /**
      * Edits a comment on a note.
-     * 
-     * @param int $commentId Comment ID.
-     * @param string $message New comment text.
-     * @param int|null $ownerId Note owner ID.
-     * @param array|null $custom
-     * @return Promise
      */
-    function editComment(int $commentId, string $message, ?int $ownerId = 0, ?array $custom = [])
+    public function editComment(): EditComment
     {
-        $sendParams = [];
-
-        $sendParams['comment_id'] = $commentId;
-        $sendParams['message'] = $message;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.editComment', $sendParams);
+        if (!$this->editComment) {
+            $this->editComment = new EditComment($this->_provider);
+        }
+        return $this->editComment;
     }
 
     /**
      * Returns a list of notes created by a user.
-     * 
-     * @param array|null $noteIds Note IDs.
-     * @param int|null $userId Note owner ID.
-     * @param int|null $offset
-     * @param int|null $count Number of notes to return.
-     * @param int|null $sort
-     * @param array|null $custom
-     * @return Promise
      */
-    function get(?array $noteIds = [], ?int $userId = 0, ?int $offset = 0, ?int $count = 20, ?int $sort = 0, ?array $custom = [])
+    public function get(): Get
     {
-        $sendParams = [];
-
-        if ($noteIds !== [] && $noteIds != null) $sendParams['note_ids'] = implode(',', $noteIds);
-        if ($userId !== 0 && $userId != null) $sendParams['user_id'] = $userId;
-        if ($offset !== 0 && $offset != null) $sendParams['offset'] = $offset;
-        if ($count !== 20 && $count != null) $sendParams['count'] = $count;
-        if ($sort !== 0 && $sort != null) $sendParams['sort'] = $sort;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.get', $sendParams);
+        if (!$this->get) {
+            $this->get = new Get($this->_provider);
+        }
+        return $this->get;
     }
 
     /**
      * Returns a note by its ID.
-     * 
-     * @param int $noteId Note ID.
-     * @param int|null $ownerId Note owner ID.
-     * @param bool|null $needWiki
-     * @param array|null $custom
-     * @return Promise
      */
-    function getById(int $noteId, ?int $ownerId = 0, ?bool $needWiki = false, ?array $custom = [])
+    public function getById(): GetById
     {
-        $sendParams = [];
-
-        $sendParams['note_id'] = $noteId;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-        if ($needWiki !== false && $needWiki != null) $sendParams['need_wiki'] = intval($needWiki);
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.getById', $sendParams);
+        if (!$this->getById) {
+            $this->getById = new GetById($this->_provider);
+        }
+        return $this->getById;
     }
 
     /**
      * Returns a list of comments on a note.
-     * 
-     * @param int $noteId Note ID.
-     * @param int|null $ownerId Note owner ID.
-     * @param int|null $sort
-     * @param int|null $offset
-     * @param int|null $count Number of comments to return.
-     * @param array|null $custom
-     * @return Promise
      */
-    function getComments(int $noteId, ?int $ownerId = 0, ?int $sort = 0, ?int $offset = 0, ?int $count = 20, ?array $custom = [])
+    public function getComments(): GetComments
     {
-        $sendParams = [];
-
-        $sendParams['note_id'] = $noteId;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-        if ($sort !== 0 && $sort != null) $sendParams['sort'] = $sort;
-        if ($offset !== 0 && $offset != null) $sendParams['offset'] = $offset;
-        if ($count !== 20 && $count != null) $sendParams['count'] = $count;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.getComments', $sendParams);
+        if (!$this->getComments) {
+            $this->getComments = new GetComments($this->_provider);
+        }
+        return $this->getComments;
     }
 
     /**
      * Restores a deleted comment on a note.
-     * 
-     * @param int $commentId Comment ID.
-     * @param int|null $ownerId Note owner ID.
-     * @param array|null $custom
-     * @return Promise
      */
-    function restoreComment(int $commentId, ?int $ownerId = 0, ?array $custom = [])
+    public function restoreComment(): RestoreComment
     {
-        $sendParams = [];
-
-        $sendParams['comment_id'] = $commentId;
-        if ($ownerId !== 0 && $ownerId != null) $sendParams['owner_id'] = $ownerId;
-
-        if ($custom !== [] && $custom != null) $sendParams = array_merge($sendParams, $custom);
-
-        return $this->provider->request('notes.restoreComment', $sendParams);
+        if (!$this->restoreComment) {
+            $this->restoreComment = new RestoreComment($this->_provider);
+        }
+        return $this->restoreComment;
     }
+
 }

@@ -1,0 +1,89 @@
+<?php
+
+namespace ReactPHPVK\Actions\Sections\Fave;
+
+use React\Promise\Promise;
+use ReactPHPVK\Client\Provider;
+
+/**
+ * 
+ */
+class AddProduct
+{
+    private Provider $_provider;
+    
+    private int $ownerId = 0;
+    private int $id = 0;
+    private string $accessKey = '';
+    
+    private array $_custom = [];
+
+    public function __construct(Provider $provider)
+    {
+        $this->_provider = $provider;
+    }
+
+    /**
+     * ...
+     * @param array $value
+     * @return AddProduct
+     */
+    public function _setCustom(array $value): AddProduct
+    {
+        $this->_custom = $value;
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return AddProduct
+     */
+    public function setOwnerId(int $value): AddProduct
+    {
+        $this->ownerId = $value;
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return AddProduct
+     */
+    public function setId(int $value): AddProduct
+    {
+        $this->id = $value;
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     * @return AddProduct
+     */
+    public function setAccessKey(string $value): AddProduct
+    {
+        $this->accessKey = $value;
+        return $this;
+    }
+
+    /**
+     * @param bool $withClear
+     * @return Promise
+     */
+    public function execute(bool $withClear = true): Promise
+    {
+        $params = [];
+
+        $params['owner_id'] = $this->ownerId;
+        $params['id'] = $this->id;
+        if ($this->accessKey !== '') $params['access_key'] = $this->accessKey;
+        if ($this->_custom !== []) $params = array_merge($params, $this->_custom);
+
+        if ($withClear) {
+            $this->ownerId = 0;
+            $this->id = 0;
+            $this->accessKey = '';
+            $this->_custom = [];
+        }
+
+        return $this->_provider->request('fave.addProduct', $params);
+    }
+}
