@@ -19,17 +19,6 @@ class Secure
 {
     private Provider $_provider;
 
-    private ?Secure\AddAppEvent $addAppEvent = null;
-    private ?Secure\CheckToken $checkToken = null;
-    private ?Secure\GetAppBalance $getAppBalance = null;
-    private ?Secure\GetSMSHistory $getSMSHistory = null;
-    private ?Secure\GetTransactionsHistory $getTransactionsHistory = null;
-    private ?Secure\GetUserLevel $getUserLevel = null;
-    private ?Secure\GiveEventSticker $giveEventSticker = null;
-    private ?Secure\SendNotification $sendNotification = null;
-    private ?Secure\SendSMSNotification $sendSMSNotification = null;
-    private ?Secure\SetCounter $setCounter = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -40,10 +29,7 @@ class Secure
      */
     public function addAppEvent(): AddAppEvent
     {
-        if (!$this->addAppEvent) {
-            $this->addAppEvent = new AddAppEvent($this->_provider);
-        }
-        return $this->addAppEvent;
+        return new AddAppEvent($this->_provider);
     }
 
     /**
@@ -51,10 +37,7 @@ class Secure
      */
     public function checkToken(): CheckToken
     {
-        if (!$this->checkToken) {
-            $this->checkToken = new CheckToken($this->_provider);
-        }
-        return $this->checkToken;
+        return new CheckToken($this->_provider);
     }
 
     /**
@@ -62,10 +45,7 @@ class Secure
      */
     public function getAppBalance(): GetAppBalance
     {
-        if (!$this->getAppBalance) {
-            $this->getAppBalance = new GetAppBalance($this->_provider);
-        }
-        return $this->getAppBalance;
+        return new GetAppBalance($this->_provider);
     }
 
     /**
@@ -73,10 +53,7 @@ class Secure
      */
     public function getSMSHistory(): GetSMSHistory
     {
-        if (!$this->getSMSHistory) {
-            $this->getSMSHistory = new GetSMSHistory($this->_provider);
-        }
-        return $this->getSMSHistory;
+        return new GetSMSHistory($this->_provider);
     }
 
     /**
@@ -84,10 +61,7 @@ class Secure
      */
     public function getTransactionsHistory(): GetTransactionsHistory
     {
-        if (!$this->getTransactionsHistory) {
-            $this->getTransactionsHistory = new GetTransactionsHistory($this->_provider);
-        }
-        return $this->getTransactionsHistory;
+        return new GetTransactionsHistory($this->_provider);
     }
 
     /**
@@ -95,10 +69,7 @@ class Secure
      */
     public function getUserLevel(): GetUserLevel
     {
-        if (!$this->getUserLevel) {
-            $this->getUserLevel = new GetUserLevel($this->_provider);
-        }
-        return $this->getUserLevel;
+        return new GetUserLevel($this->_provider);
     }
 
     /**
@@ -106,10 +77,7 @@ class Secure
      */
     public function giveEventSticker(): GiveEventSticker
     {
-        if (!$this->giveEventSticker) {
-            $this->giveEventSticker = new GiveEventSticker($this->_provider);
-        }
-        return $this->giveEventSticker;
+        return new GiveEventSticker($this->_provider);
     }
 
     /**
@@ -117,10 +85,7 @@ class Secure
      */
     public function sendNotification(): SendNotification
     {
-        if (!$this->sendNotification) {
-            $this->sendNotification = new SendNotification($this->_provider);
-        }
-        return $this->sendNotification;
+        return new SendNotification($this->_provider);
     }
 
     /**
@@ -128,10 +93,7 @@ class Secure
      */
     public function sendSMSNotification(): SendSMSNotification
     {
-        if (!$this->sendSMSNotification) {
-            $this->sendSMSNotification = new SendSMSNotification($this->_provider);
-        }
-        return $this->sendSMSNotification;
+        return new SendSMSNotification($this->_provider);
     }
 
     /**
@@ -139,10 +101,7 @@ class Secure
      */
     public function setCounter(): SetCounter
     {
-        if (!$this->setCounter) {
-            $this->setCounter = new SetCounter($this->_provider);
-        }
-        return $this->setCounter;
+        return new SetCounter($this->_provider);
     }
 
 }

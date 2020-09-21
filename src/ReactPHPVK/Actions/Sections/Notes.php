@@ -19,17 +19,6 @@ class Notes
 {
     private Provider $_provider;
 
-    private ?Notes\Add $add = null;
-    private ?Notes\CreateComment $createComment = null;
-    private ?Notes\Delete $delete = null;
-    private ?Notes\DeleteComment $deleteComment = null;
-    private ?Notes\Edit $edit = null;
-    private ?Notes\EditComment $editComment = null;
-    private ?Notes\Get $get = null;
-    private ?Notes\GetById $getById = null;
-    private ?Notes\GetComments $getComments = null;
-    private ?Notes\RestoreComment $restoreComment = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -40,10 +29,7 @@ class Notes
      */
     public function add(): Add
     {
-        if (!$this->add) {
-            $this->add = new Add($this->_provider);
-        }
-        return $this->add;
+        return new Add($this->_provider);
     }
 
     /**
@@ -51,10 +37,7 @@ class Notes
      */
     public function createComment(): CreateComment
     {
-        if (!$this->createComment) {
-            $this->createComment = new CreateComment($this->_provider);
-        }
-        return $this->createComment;
+        return new CreateComment($this->_provider);
     }
 
     /**
@@ -62,10 +45,7 @@ class Notes
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -73,10 +53,7 @@ class Notes
      */
     public function deleteComment(): DeleteComment
     {
-        if (!$this->deleteComment) {
-            $this->deleteComment = new DeleteComment($this->_provider);
-        }
-        return $this->deleteComment;
+        return new DeleteComment($this->_provider);
     }
 
     /**
@@ -84,10 +61,7 @@ class Notes
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -95,10 +69,7 @@ class Notes
      */
     public function editComment(): EditComment
     {
-        if (!$this->editComment) {
-            $this->editComment = new EditComment($this->_provider);
-        }
-        return $this->editComment;
+        return new EditComment($this->_provider);
     }
 
     /**
@@ -106,10 +77,7 @@ class Notes
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -117,10 +85,7 @@ class Notes
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -128,10 +93,7 @@ class Notes
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -139,10 +101,7 @@ class Notes
      */
     public function restoreComment(): RestoreComment
     {
-        if (!$this->restoreComment) {
-            $this->restoreComment = new RestoreComment($this->_provider);
-        }
-        return $this->restoreComment;
+        return new RestoreComment($this->_provider);
     }
 
 }

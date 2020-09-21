@@ -13,11 +13,6 @@ class Likes
 {
     private Provider $_provider;
 
-    private ?Likes\Add $add = null;
-    private ?Likes\Delete $delete = null;
-    private ?Likes\GetList $getList = null;
-    private ?Likes\IsLiked $isLiked = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -28,10 +23,7 @@ class Likes
      */
     public function add(): Add
     {
-        if (!$this->add) {
-            $this->add = new Add($this->_provider);
-        }
-        return $this->add;
+        return new Add($this->_provider);
     }
 
     /**
@@ -39,10 +31,7 @@ class Likes
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -50,10 +39,7 @@ class Likes
      */
     public function getList(): GetList
     {
-        if (!$this->getList) {
-            $this->getList = new GetList($this->_provider);
-        }
-        return $this->getList;
+        return new GetList($this->_provider);
     }
 
     /**
@@ -61,10 +47,7 @@ class Likes
      */
     public function isLiked(): IsLiked
     {
-        if (!$this->isLiked) {
-            $this->isLiked = new IsLiked($this->_provider);
-        }
-        return $this->isLiked;
+        return new IsLiked($this->_provider);
     }
 
 }

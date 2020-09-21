@@ -28,26 +28,6 @@ class Account
 {
     private Provider $_provider;
 
-    private ?Account\Ban $ban = null;
-    private ?Account\ChangePassword $changePassword = null;
-    private ?Account\GetActiveOffers $getActiveOffers = null;
-    private ?Account\GetAppPermissions $getAppPermissions = null;
-    private ?Account\GetBanned $getBanned = null;
-    private ?Account\GetCounters $getCounters = null;
-    private ?Account\GetInfo $getInfo = null;
-    private ?Account\GetProfileInfo $getProfileInfo = null;
-    private ?Account\GetPushSettings $getPushSettings = null;
-    private ?Account\RegisterDevice $registerDevice = null;
-    private ?Account\SaveProfileInfo $saveProfileInfo = null;
-    private ?Account\SetInfo $setInfo = null;
-    private ?Account\SetNameInMenu $setNameInMenu = null;
-    private ?Account\SetOffline $setOffline = null;
-    private ?Account\SetOnline $setOnline = null;
-    private ?Account\SetPushSettings $setPushSettings = null;
-    private ?Account\SetSilenceMode $setSilenceMode = null;
-    private ?Account\Unban $unban = null;
-    private ?Account\UnregisterDevice $unregisterDevice = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -58,10 +38,7 @@ class Account
      */
     public function ban(): Ban
     {
-        if (!$this->ban) {
-            $this->ban = new Ban($this->_provider);
-        }
-        return $this->ban;
+        return new Ban($this->_provider);
     }
 
     /**
@@ -69,10 +46,7 @@ class Account
      */
     public function changePassword(): ChangePassword
     {
-        if (!$this->changePassword) {
-            $this->changePassword = new ChangePassword($this->_provider);
-        }
-        return $this->changePassword;
+        return new ChangePassword($this->_provider);
     }
 
     /**
@@ -80,10 +54,7 @@ class Account
      */
     public function getActiveOffers(): GetActiveOffers
     {
-        if (!$this->getActiveOffers) {
-            $this->getActiveOffers = new GetActiveOffers($this->_provider);
-        }
-        return $this->getActiveOffers;
+        return new GetActiveOffers($this->_provider);
     }
 
     /**
@@ -91,10 +62,7 @@ class Account
      */
     public function getAppPermissions(): GetAppPermissions
     {
-        if (!$this->getAppPermissions) {
-            $this->getAppPermissions = new GetAppPermissions($this->_provider);
-        }
-        return $this->getAppPermissions;
+        return new GetAppPermissions($this->_provider);
     }
 
     /**
@@ -102,10 +70,7 @@ class Account
      */
     public function getBanned(): GetBanned
     {
-        if (!$this->getBanned) {
-            $this->getBanned = new GetBanned($this->_provider);
-        }
-        return $this->getBanned;
+        return new GetBanned($this->_provider);
     }
 
     /**
@@ -113,10 +78,7 @@ class Account
      */
     public function getCounters(): GetCounters
     {
-        if (!$this->getCounters) {
-            $this->getCounters = new GetCounters($this->_provider);
-        }
-        return $this->getCounters;
+        return new GetCounters($this->_provider);
     }
 
     /**
@@ -124,10 +86,7 @@ class Account
      */
     public function getInfo(): GetInfo
     {
-        if (!$this->getInfo) {
-            $this->getInfo = new GetInfo($this->_provider);
-        }
-        return $this->getInfo;
+        return new GetInfo($this->_provider);
     }
 
     /**
@@ -135,10 +94,7 @@ class Account
      */
     public function getProfileInfo(): GetProfileInfo
     {
-        if (!$this->getProfileInfo) {
-            $this->getProfileInfo = new GetProfileInfo($this->_provider);
-        }
-        return $this->getProfileInfo;
+        return new GetProfileInfo($this->_provider);
     }
 
     /**
@@ -146,10 +102,7 @@ class Account
      */
     public function getPushSettings(): GetPushSettings
     {
-        if (!$this->getPushSettings) {
-            $this->getPushSettings = new GetPushSettings($this->_provider);
-        }
-        return $this->getPushSettings;
+        return new GetPushSettings($this->_provider);
     }
 
     /**
@@ -157,10 +110,7 @@ class Account
      */
     public function registerDevice(): RegisterDevice
     {
-        if (!$this->registerDevice) {
-            $this->registerDevice = new RegisterDevice($this->_provider);
-        }
-        return $this->registerDevice;
+        return new RegisterDevice($this->_provider);
     }
 
     /**
@@ -168,10 +118,7 @@ class Account
      */
     public function saveProfileInfo(): SaveProfileInfo
     {
-        if (!$this->saveProfileInfo) {
-            $this->saveProfileInfo = new SaveProfileInfo($this->_provider);
-        }
-        return $this->saveProfileInfo;
+        return new SaveProfileInfo($this->_provider);
     }
 
     /**
@@ -179,10 +126,7 @@ class Account
      */
     public function setInfo(): SetInfo
     {
-        if (!$this->setInfo) {
-            $this->setInfo = new SetInfo($this->_provider);
-        }
-        return $this->setInfo;
+        return new SetInfo($this->_provider);
     }
 
     /**
@@ -190,10 +134,7 @@ class Account
      */
     public function setNameInMenu(): SetNameInMenu
     {
-        if (!$this->setNameInMenu) {
-            $this->setNameInMenu = new SetNameInMenu($this->_provider);
-        }
-        return $this->setNameInMenu;
+        return new SetNameInMenu($this->_provider);
     }
 
     /**
@@ -201,10 +142,7 @@ class Account
      */
     public function setOffline(): SetOffline
     {
-        if (!$this->setOffline) {
-            $this->setOffline = new SetOffline($this->_provider);
-        }
-        return $this->setOffline;
+        return new SetOffline($this->_provider);
     }
 
     /**
@@ -212,10 +150,7 @@ class Account
      */
     public function setOnline(): SetOnline
     {
-        if (!$this->setOnline) {
-            $this->setOnline = new SetOnline($this->_provider);
-        }
-        return $this->setOnline;
+        return new SetOnline($this->_provider);
     }
 
     /**
@@ -223,10 +158,7 @@ class Account
      */
     public function setPushSettings(): SetPushSettings
     {
-        if (!$this->setPushSettings) {
-            $this->setPushSettings = new SetPushSettings($this->_provider);
-        }
-        return $this->setPushSettings;
+        return new SetPushSettings($this->_provider);
     }
 
     /**
@@ -234,10 +166,7 @@ class Account
      */
     public function setSilenceMode(): SetSilenceMode
     {
-        if (!$this->setSilenceMode) {
-            $this->setSilenceMode = new SetSilenceMode($this->_provider);
-        }
-        return $this->setSilenceMode;
+        return new SetSilenceMode($this->_provider);
     }
 
     /**
@@ -245,10 +174,7 @@ class Account
      */
     public function unban(): Unban
     {
-        if (!$this->unban) {
-            $this->unban = new Unban($this->_provider);
-        }
-        return $this->unban;
+        return new Unban($this->_provider);
     }
 
     /**
@@ -256,10 +182,7 @@ class Account
      */
     public function unregisterDevice(): UnregisterDevice
     {
-        if (!$this->unregisterDevice) {
-            $this->unregisterDevice = new UnregisterDevice($this->_provider);
-        }
-        return $this->unregisterDevice;
+        return new UnregisterDevice($this->_provider);
     }
 
 }

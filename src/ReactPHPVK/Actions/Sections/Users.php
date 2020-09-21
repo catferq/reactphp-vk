@@ -14,12 +14,6 @@ class Users
 {
     private Provider $_provider;
 
-    private ?Users\Get $get = null;
-    private ?Users\GetFollowers $getFollowers = null;
-    private ?Users\GetSubscriptions $getSubscriptions = null;
-    private ?Users\Report $report = null;
-    private ?Users\Search $search = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -30,10 +24,7 @@ class Users
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -41,10 +32,7 @@ class Users
      */
     public function getFollowers(): GetFollowers
     {
-        if (!$this->getFollowers) {
-            $this->getFollowers = new GetFollowers($this->_provider);
-        }
-        return $this->getFollowers;
+        return new GetFollowers($this->_provider);
     }
 
     /**
@@ -52,10 +40,7 @@ class Users
      */
     public function getSubscriptions(): GetSubscriptions
     {
-        if (!$this->getSubscriptions) {
-            $this->getSubscriptions = new GetSubscriptions($this->_provider);
-        }
-        return $this->getSubscriptions;
+        return new GetSubscriptions($this->_provider);
     }
 
     /**
@@ -63,10 +48,7 @@ class Users
      */
     public function report(): Report
     {
-        if (!$this->report) {
-            $this->report = new Report($this->_provider);
-        }
-        return $this->report;
+        return new Report($this->_provider);
     }
 
     /**
@@ -74,10 +56,7 @@ class Users
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
 }

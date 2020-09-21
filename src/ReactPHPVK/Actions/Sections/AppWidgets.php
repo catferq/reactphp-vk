@@ -10,8 +10,6 @@ class AppWidgets
 {
     private Provider $_provider;
 
-    private ?AppWidgets\Update $update = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -22,10 +20,7 @@ class AppWidgets
      */
     public function update(): Update
     {
-        if (!$this->update) {
-            $this->update = new Update($this->_provider);
-        }
-        return $this->update;
+        return new Update($this->_provider);
     }
 
 }

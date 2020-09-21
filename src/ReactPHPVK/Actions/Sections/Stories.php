@@ -23,21 +23,6 @@ class Stories
 {
     private Provider $_provider;
 
-    private ?Stories\BanOwner $banOwner = null;
-    private ?Stories\Delete $delete = null;
-    private ?Stories\Get $get = null;
-    private ?Stories\GetBanned $getBanned = null;
-    private ?Stories\GetById $getById = null;
-    private ?Stories\GetPhotoUploadServer $getPhotoUploadServer = null;
-    private ?Stories\GetReplies $getReplies = null;
-    private ?Stories\GetStats $getStats = null;
-    private ?Stories\GetVideoUploadServer $getVideoUploadServer = null;
-    private ?Stories\GetViewers $getViewers = null;
-    private ?Stories\HideAllReplies $hideAllReplies = null;
-    private ?Stories\HideReply $hideReply = null;
-    private ?Stories\Search $search = null;
-    private ?Stories\UnbanOwner $unbanOwner = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -48,10 +33,7 @@ class Stories
      */
     public function banOwner(): BanOwner
     {
-        if (!$this->banOwner) {
-            $this->banOwner = new BanOwner($this->_provider);
-        }
-        return $this->banOwner;
+        return new BanOwner($this->_provider);
     }
 
     /**
@@ -59,10 +41,7 @@ class Stories
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -70,10 +49,7 @@ class Stories
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -81,10 +57,7 @@ class Stories
      */
     public function getBanned(): GetBanned
     {
-        if (!$this->getBanned) {
-            $this->getBanned = new GetBanned($this->_provider);
-        }
-        return $this->getBanned;
+        return new GetBanned($this->_provider);
     }
 
     /**
@@ -92,10 +65,7 @@ class Stories
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -103,10 +73,7 @@ class Stories
      */
     public function getPhotoUploadServer(): GetPhotoUploadServer
     {
-        if (!$this->getPhotoUploadServer) {
-            $this->getPhotoUploadServer = new GetPhotoUploadServer($this->_provider);
-        }
-        return $this->getPhotoUploadServer;
+        return new GetPhotoUploadServer($this->_provider);
     }
 
     /**
@@ -114,10 +81,7 @@ class Stories
      */
     public function getReplies(): GetReplies
     {
-        if (!$this->getReplies) {
-            $this->getReplies = new GetReplies($this->_provider);
-        }
-        return $this->getReplies;
+        return new GetReplies($this->_provider);
     }
 
     /**
@@ -125,10 +89,7 @@ class Stories
      */
     public function getStats(): GetStats
     {
-        if (!$this->getStats) {
-            $this->getStats = new GetStats($this->_provider);
-        }
-        return $this->getStats;
+        return new GetStats($this->_provider);
     }
 
     /**
@@ -136,10 +97,7 @@ class Stories
      */
     public function getVideoUploadServer(): GetVideoUploadServer
     {
-        if (!$this->getVideoUploadServer) {
-            $this->getVideoUploadServer = new GetVideoUploadServer($this->_provider);
-        }
-        return $this->getVideoUploadServer;
+        return new GetVideoUploadServer($this->_provider);
     }
 
     /**
@@ -147,10 +105,7 @@ class Stories
      */
     public function getViewers(): GetViewers
     {
-        if (!$this->getViewers) {
-            $this->getViewers = new GetViewers($this->_provider);
-        }
-        return $this->getViewers;
+        return new GetViewers($this->_provider);
     }
 
     /**
@@ -158,10 +113,7 @@ class Stories
      */
     public function hideAllReplies(): HideAllReplies
     {
-        if (!$this->hideAllReplies) {
-            $this->hideAllReplies = new HideAllReplies($this->_provider);
-        }
-        return $this->hideAllReplies;
+        return new HideAllReplies($this->_provider);
     }
 
     /**
@@ -169,10 +121,7 @@ class Stories
      */
     public function hideReply(): HideReply
     {
-        if (!$this->hideReply) {
-            $this->hideReply = new HideReply($this->_provider);
-        }
-        return $this->hideReply;
+        return new HideReply($this->_provider);
     }
 
     /**
@@ -180,10 +129,7 @@ class Stories
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
     /**
@@ -191,10 +137,7 @@ class Stories
      */
     public function unbanOwner(): UnbanOwner
     {
-        if (!$this->unbanOwner) {
-            $this->unbanOwner = new UnbanOwner($this->_provider);
-        }
-        return $this->unbanOwner;
+        return new UnbanOwner($this->_provider);
     }
 
 }

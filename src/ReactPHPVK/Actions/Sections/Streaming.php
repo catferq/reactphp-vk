@@ -11,9 +11,6 @@ class Streaming
 {
     private Provider $_provider;
 
-    private ?Streaming\GetServerUrl $getServerUrl = null;
-    private ?Streaming\SetSettings $setSettings = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -24,10 +21,7 @@ class Streaming
      */
     public function getServerUrl(): GetServerUrl
     {
-        if (!$this->getServerUrl) {
-            $this->getServerUrl = new GetServerUrl($this->_provider);
-        }
-        return $this->getServerUrl;
+        return new GetServerUrl($this->_provider);
     }
 
     /**
@@ -35,10 +29,7 @@ class Streaming
      */
     public function setSettings(): SetSettings
     {
-        if (!$this->setSettings) {
-            $this->setSettings = new SetSettings($this->_provider);
-        }
-        return $this->setSettings;
+        return new SetSettings($this->_provider);
     }
 
 }

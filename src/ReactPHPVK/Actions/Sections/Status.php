@@ -11,9 +11,6 @@ class Status
 {
     private Provider $_provider;
 
-    private ?Status\Get $get = null;
-    private ?Status\Set $set = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -24,10 +21,7 @@ class Status
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -35,10 +29,7 @@ class Status
      */
     public function set(): Set
     {
-        if (!$this->set) {
-            $this->set = new Set($this->_provider);
-        }
-        return $this->set;
+        return new Set($this->_provider);
     }
 
 }

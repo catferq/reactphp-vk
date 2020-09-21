@@ -10,8 +10,6 @@ class Gifts
 {
     private Provider $_provider;
 
-    private ?Gifts\Get $get = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -22,10 +20,7 @@ class Gifts
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
 }

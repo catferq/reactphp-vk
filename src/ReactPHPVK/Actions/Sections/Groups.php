@@ -51,49 +51,6 @@ class Groups
 {
     private Provider $_provider;
 
-    private ?Groups\AddAddress $addAddress = null;
-    private ?Groups\AddCallbackServer $addCallbackServer = null;
-    private ?Groups\AddLink $addLink = null;
-    private ?Groups\ApproveRequest $approveRequest = null;
-    private ?Groups\Ban $ban = null;
-    private ?Groups\Create $create = null;
-    private ?Groups\DeleteCallbackServer $deleteCallbackServer = null;
-    private ?Groups\DeleteLink $deleteLink = null;
-    private ?Groups\DisableOnline $disableOnline = null;
-    private ?Groups\Edit $edit = null;
-    private ?Groups\EditAddress $editAddress = null;
-    private ?Groups\EditCallbackServer $editCallbackServer = null;
-    private ?Groups\EditLink $editLink = null;
-    private ?Groups\EditManager $editManager = null;
-    private ?Groups\EnableOnline $enableOnline = null;
-    private ?Groups\Get $get = null;
-    private ?Groups\GetAddresses $getAddresses = null;
-    private ?Groups\GetBanned $getBanned = null;
-    private ?Groups\GetById $getById = null;
-    private ?Groups\GetCallbackConfirmationCode $getCallbackConfirmationCode = null;
-    private ?Groups\GetCallbackServers $getCallbackServers = null;
-    private ?Groups\GetCallbackSettings $getCallbackSettings = null;
-    private ?Groups\GetCatalog $getCatalog = null;
-    private ?Groups\GetCatalogInfo $getCatalogInfo = null;
-    private ?Groups\GetInvitedUsers $getInvitedUsers = null;
-    private ?Groups\GetInvites $getInvites = null;
-    private ?Groups\GetLongPollServer $getLongPollServer = null;
-    private ?Groups\GetLongPollSettings $getLongPollSettings = null;
-    private ?Groups\GetMembers $getMembers = null;
-    private ?Groups\GetRequests $getRequests = null;
-    private ?Groups\GetSettings $getSettings = null;
-    private ?Groups\GetTokenPermissions $getTokenPermissions = null;
-    private ?Groups\Invite $invite = null;
-    private ?Groups\IsMember $isMember = null;
-    private ?Groups\Join $join = null;
-    private ?Groups\Leave $leave = null;
-    private ?Groups\RemoveUser $removeUser = null;
-    private ?Groups\ReorderLink $reorderLink = null;
-    private ?Groups\Search $search = null;
-    private ?Groups\SetCallbackSettings $setCallbackSettings = null;
-    private ?Groups\SetLongPollSettings $setLongPollSettings = null;
-    private ?Groups\Unban $unban = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -104,10 +61,7 @@ class Groups
      */
     public function addAddress(): AddAddress
     {
-        if (!$this->addAddress) {
-            $this->addAddress = new AddAddress($this->_provider);
-        }
-        return $this->addAddress;
+        return new AddAddress($this->_provider);
     }
 
     /**
@@ -115,10 +69,7 @@ class Groups
      */
     public function addCallbackServer(): AddCallbackServer
     {
-        if (!$this->addCallbackServer) {
-            $this->addCallbackServer = new AddCallbackServer($this->_provider);
-        }
-        return $this->addCallbackServer;
+        return new AddCallbackServer($this->_provider);
     }
 
     /**
@@ -126,10 +77,7 @@ class Groups
      */
     public function addLink(): AddLink
     {
-        if (!$this->addLink) {
-            $this->addLink = new AddLink($this->_provider);
-        }
-        return $this->addLink;
+        return new AddLink($this->_provider);
     }
 
     /**
@@ -137,10 +85,7 @@ class Groups
      */
     public function approveRequest(): ApproveRequest
     {
-        if (!$this->approveRequest) {
-            $this->approveRequest = new ApproveRequest($this->_provider);
-        }
-        return $this->approveRequest;
+        return new ApproveRequest($this->_provider);
     }
 
     /**
@@ -148,10 +93,7 @@ class Groups
      */
     public function ban(): Ban
     {
-        if (!$this->ban) {
-            $this->ban = new Ban($this->_provider);
-        }
-        return $this->ban;
+        return new Ban($this->_provider);
     }
 
     /**
@@ -159,10 +101,7 @@ class Groups
      */
     public function create(): Create
     {
-        if (!$this->create) {
-            $this->create = new Create($this->_provider);
-        }
-        return $this->create;
+        return new Create($this->_provider);
     }
 
     /**
@@ -170,10 +109,7 @@ class Groups
      */
     public function deleteCallbackServer(): DeleteCallbackServer
     {
-        if (!$this->deleteCallbackServer) {
-            $this->deleteCallbackServer = new DeleteCallbackServer($this->_provider);
-        }
-        return $this->deleteCallbackServer;
+        return new DeleteCallbackServer($this->_provider);
     }
 
     /**
@@ -181,10 +117,7 @@ class Groups
      */
     public function deleteLink(): DeleteLink
     {
-        if (!$this->deleteLink) {
-            $this->deleteLink = new DeleteLink($this->_provider);
-        }
-        return $this->deleteLink;
+        return new DeleteLink($this->_provider);
     }
 
     /**
@@ -192,10 +125,7 @@ class Groups
      */
     public function disableOnline(): DisableOnline
     {
-        if (!$this->disableOnline) {
-            $this->disableOnline = new DisableOnline($this->_provider);
-        }
-        return $this->disableOnline;
+        return new DisableOnline($this->_provider);
     }
 
     /**
@@ -203,10 +133,7 @@ class Groups
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -214,10 +141,7 @@ class Groups
      */
     public function editAddress(): EditAddress
     {
-        if (!$this->editAddress) {
-            $this->editAddress = new EditAddress($this->_provider);
-        }
-        return $this->editAddress;
+        return new EditAddress($this->_provider);
     }
 
     /**
@@ -225,10 +149,7 @@ class Groups
      */
     public function editCallbackServer(): EditCallbackServer
     {
-        if (!$this->editCallbackServer) {
-            $this->editCallbackServer = new EditCallbackServer($this->_provider);
-        }
-        return $this->editCallbackServer;
+        return new EditCallbackServer($this->_provider);
     }
 
     /**
@@ -236,10 +157,7 @@ class Groups
      */
     public function editLink(): EditLink
     {
-        if (!$this->editLink) {
-            $this->editLink = new EditLink($this->_provider);
-        }
-        return $this->editLink;
+        return new EditLink($this->_provider);
     }
 
     /**
@@ -247,10 +165,7 @@ class Groups
      */
     public function editManager(): EditManager
     {
-        if (!$this->editManager) {
-            $this->editManager = new EditManager($this->_provider);
-        }
-        return $this->editManager;
+        return new EditManager($this->_provider);
     }
 
     /**
@@ -258,10 +173,7 @@ class Groups
      */
     public function enableOnline(): EnableOnline
     {
-        if (!$this->enableOnline) {
-            $this->enableOnline = new EnableOnline($this->_provider);
-        }
-        return $this->enableOnline;
+        return new EnableOnline($this->_provider);
     }
 
     /**
@@ -269,10 +181,7 @@ class Groups
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -280,10 +189,7 @@ class Groups
      */
     public function getAddresses(): GetAddresses
     {
-        if (!$this->getAddresses) {
-            $this->getAddresses = new GetAddresses($this->_provider);
-        }
-        return $this->getAddresses;
+        return new GetAddresses($this->_provider);
     }
 
     /**
@@ -291,10 +197,7 @@ class Groups
      */
     public function getBanned(): GetBanned
     {
-        if (!$this->getBanned) {
-            $this->getBanned = new GetBanned($this->_provider);
-        }
-        return $this->getBanned;
+        return new GetBanned($this->_provider);
     }
 
     /**
@@ -302,10 +205,7 @@ class Groups
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -313,10 +213,7 @@ class Groups
      */
     public function getCallbackConfirmationCode(): GetCallbackConfirmationCode
     {
-        if (!$this->getCallbackConfirmationCode) {
-            $this->getCallbackConfirmationCode = new GetCallbackConfirmationCode($this->_provider);
-        }
-        return $this->getCallbackConfirmationCode;
+        return new GetCallbackConfirmationCode($this->_provider);
     }
 
     /**
@@ -324,10 +221,7 @@ class Groups
      */
     public function getCallbackServers(): GetCallbackServers
     {
-        if (!$this->getCallbackServers) {
-            $this->getCallbackServers = new GetCallbackServers($this->_provider);
-        }
-        return $this->getCallbackServers;
+        return new GetCallbackServers($this->_provider);
     }
 
     /**
@@ -335,10 +229,7 @@ class Groups
      */
     public function getCallbackSettings(): GetCallbackSettings
     {
-        if (!$this->getCallbackSettings) {
-            $this->getCallbackSettings = new GetCallbackSettings($this->_provider);
-        }
-        return $this->getCallbackSettings;
+        return new GetCallbackSettings($this->_provider);
     }
 
     /**
@@ -346,10 +237,7 @@ class Groups
      */
     public function getCatalog(): GetCatalog
     {
-        if (!$this->getCatalog) {
-            $this->getCatalog = new GetCatalog($this->_provider);
-        }
-        return $this->getCatalog;
+        return new GetCatalog($this->_provider);
     }
 
     /**
@@ -357,10 +245,7 @@ class Groups
      */
     public function getCatalogInfo(): GetCatalogInfo
     {
-        if (!$this->getCatalogInfo) {
-            $this->getCatalogInfo = new GetCatalogInfo($this->_provider);
-        }
-        return $this->getCatalogInfo;
+        return new GetCatalogInfo($this->_provider);
     }
 
     /**
@@ -368,10 +253,7 @@ class Groups
      */
     public function getInvitedUsers(): GetInvitedUsers
     {
-        if (!$this->getInvitedUsers) {
-            $this->getInvitedUsers = new GetInvitedUsers($this->_provider);
-        }
-        return $this->getInvitedUsers;
+        return new GetInvitedUsers($this->_provider);
     }
 
     /**
@@ -379,10 +261,7 @@ class Groups
      */
     public function getInvites(): GetInvites
     {
-        if (!$this->getInvites) {
-            $this->getInvites = new GetInvites($this->_provider);
-        }
-        return $this->getInvites;
+        return new GetInvites($this->_provider);
     }
 
     /**
@@ -390,10 +269,7 @@ class Groups
      */
     public function getLongPollServer(): GetLongPollServer
     {
-        if (!$this->getLongPollServer) {
-            $this->getLongPollServer = new GetLongPollServer($this->_provider);
-        }
-        return $this->getLongPollServer;
+        return new GetLongPollServer($this->_provider);
     }
 
     /**
@@ -401,10 +277,7 @@ class Groups
      */
     public function getLongPollSettings(): GetLongPollSettings
     {
-        if (!$this->getLongPollSettings) {
-            $this->getLongPollSettings = new GetLongPollSettings($this->_provider);
-        }
-        return $this->getLongPollSettings;
+        return new GetLongPollSettings($this->_provider);
     }
 
     /**
@@ -412,10 +285,7 @@ class Groups
      */
     public function getMembers(): GetMembers
     {
-        if (!$this->getMembers) {
-            $this->getMembers = new GetMembers($this->_provider);
-        }
-        return $this->getMembers;
+        return new GetMembers($this->_provider);
     }
 
     /**
@@ -423,10 +293,7 @@ class Groups
      */
     public function getRequests(): GetRequests
     {
-        if (!$this->getRequests) {
-            $this->getRequests = new GetRequests($this->_provider);
-        }
-        return $this->getRequests;
+        return new GetRequests($this->_provider);
     }
 
     /**
@@ -434,10 +301,7 @@ class Groups
      */
     public function getSettings(): GetSettings
     {
-        if (!$this->getSettings) {
-            $this->getSettings = new GetSettings($this->_provider);
-        }
-        return $this->getSettings;
+        return new GetSettings($this->_provider);
     }
 
     /**
@@ -445,10 +309,7 @@ class Groups
      */
     public function getTokenPermissions(): GetTokenPermissions
     {
-        if (!$this->getTokenPermissions) {
-            $this->getTokenPermissions = new GetTokenPermissions($this->_provider);
-        }
-        return $this->getTokenPermissions;
+        return new GetTokenPermissions($this->_provider);
     }
 
     /**
@@ -456,10 +317,7 @@ class Groups
      */
     public function invite(): Invite
     {
-        if (!$this->invite) {
-            $this->invite = new Invite($this->_provider);
-        }
-        return $this->invite;
+        return new Invite($this->_provider);
     }
 
     /**
@@ -467,10 +325,7 @@ class Groups
      */
     public function isMember(): IsMember
     {
-        if (!$this->isMember) {
-            $this->isMember = new IsMember($this->_provider);
-        }
-        return $this->isMember;
+        return new IsMember($this->_provider);
     }
 
     /**
@@ -478,10 +333,7 @@ class Groups
      */
     public function join(): Join
     {
-        if (!$this->join) {
-            $this->join = new Join($this->_provider);
-        }
-        return $this->join;
+        return new Join($this->_provider);
     }
 
     /**
@@ -489,10 +341,7 @@ class Groups
      */
     public function leave(): Leave
     {
-        if (!$this->leave) {
-            $this->leave = new Leave($this->_provider);
-        }
-        return $this->leave;
+        return new Leave($this->_provider);
     }
 
     /**
@@ -500,10 +349,7 @@ class Groups
      */
     public function removeUser(): RemoveUser
     {
-        if (!$this->removeUser) {
-            $this->removeUser = new RemoveUser($this->_provider);
-        }
-        return $this->removeUser;
+        return new RemoveUser($this->_provider);
     }
 
     /**
@@ -511,10 +357,7 @@ class Groups
      */
     public function reorderLink(): ReorderLink
     {
-        if (!$this->reorderLink) {
-            $this->reorderLink = new ReorderLink($this->_provider);
-        }
-        return $this->reorderLink;
+        return new ReorderLink($this->_provider);
     }
 
     /**
@@ -522,10 +365,7 @@ class Groups
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
     /**
@@ -533,10 +373,7 @@ class Groups
      */
     public function setCallbackSettings(): SetCallbackSettings
     {
-        if (!$this->setCallbackSettings) {
-            $this->setCallbackSettings = new SetCallbackSettings($this->_provider);
-        }
-        return $this->setCallbackSettings;
+        return new SetCallbackSettings($this->_provider);
     }
 
     /**
@@ -544,10 +381,7 @@ class Groups
      */
     public function setLongPollSettings(): SetLongPollSettings
     {
-        if (!$this->setLongPollSettings) {
-            $this->setLongPollSettings = new SetLongPollSettings($this->_provider);
-        }
-        return $this->setLongPollSettings;
+        return new SetLongPollSettings($this->_provider);
     }
 
     /**
@@ -555,10 +389,7 @@ class Groups
      */
     public function unban(): Unban
     {
-        if (!$this->unban) {
-            $this->unban = new Unban($this->_provider);
-        }
-        return $this->unban;
+        return new Unban($this->_provider);
     }
 
 }

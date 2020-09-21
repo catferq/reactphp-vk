@@ -55,53 +55,6 @@ class Photos
 {
     private Provider $_provider;
 
-    private ?Photos\ConfirmTag $confirmTag = null;
-    private ?Photos\Copy $copy = null;
-    private ?Photos\CreateAlbum $createAlbum = null;
-    private ?Photos\CreateComment $createComment = null;
-    private ?Photos\Delete $delete = null;
-    private ?Photos\DeleteAlbum $deleteAlbum = null;
-    private ?Photos\DeleteComment $deleteComment = null;
-    private ?Photos\Edit $edit = null;
-    private ?Photos\EditAlbum $editAlbum = null;
-    private ?Photos\EditComment $editComment = null;
-    private ?Photos\Get $get = null;
-    private ?Photos\GetAlbums $getAlbums = null;
-    private ?Photos\GetAlbumsCount $getAlbumsCount = null;
-    private ?Photos\GetAll $getAll = null;
-    private ?Photos\GetAllComments $getAllComments = null;
-    private ?Photos\GetById $getById = null;
-    private ?Photos\GetChatUploadServer $getChatUploadServer = null;
-    private ?Photos\GetComments $getComments = null;
-    private ?Photos\GetMarketAlbumUploadServer $getMarketAlbumUploadServer = null;
-    private ?Photos\GetMarketUploadServer $getMarketUploadServer = null;
-    private ?Photos\GetMessagesUploadServer $getMessagesUploadServer = null;
-    private ?Photos\GetNewTags $getNewTags = null;
-    private ?Photos\GetOwnerCoverPhotoUploadServer $getOwnerCoverPhotoUploadServer = null;
-    private ?Photos\GetOwnerPhotoUploadServer $getOwnerPhotoUploadServer = null;
-    private ?Photos\GetTags $getTags = null;
-    private ?Photos\GetUploadServer $getUploadServer = null;
-    private ?Photos\GetUserPhotos $getUserPhotos = null;
-    private ?Photos\GetWallUploadServer $getWallUploadServer = null;
-    private ?Photos\MakeCover $makeCover = null;
-    private ?Photos\Move $move = null;
-    private ?Photos\PutTag $putTag = null;
-    private ?Photos\RemoveTag $removeTag = null;
-    private ?Photos\ReorderAlbums $reorderAlbums = null;
-    private ?Photos\ReorderPhotos $reorderPhotos = null;
-    private ?Photos\Report $report = null;
-    private ?Photos\ReportComment $reportComment = null;
-    private ?Photos\Restore $restore = null;
-    private ?Photos\RestoreComment $restoreComment = null;
-    private ?Photos\Save $save = null;
-    private ?Photos\SaveMarketAlbumPhoto $saveMarketAlbumPhoto = null;
-    private ?Photos\SaveMarketPhoto $saveMarketPhoto = null;
-    private ?Photos\SaveMessagesPhoto $saveMessagesPhoto = null;
-    private ?Photos\SaveOwnerCoverPhoto $saveOwnerCoverPhoto = null;
-    private ?Photos\SaveOwnerPhoto $saveOwnerPhoto = null;
-    private ?Photos\SaveWallPhoto $saveWallPhoto = null;
-    private ?Photos\Search $search = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -112,10 +65,7 @@ class Photos
      */
     public function confirmTag(): ConfirmTag
     {
-        if (!$this->confirmTag) {
-            $this->confirmTag = new ConfirmTag($this->_provider);
-        }
-        return $this->confirmTag;
+        return new ConfirmTag($this->_provider);
     }
 
     /**
@@ -123,10 +73,7 @@ class Photos
      */
     public function copy(): Copy
     {
-        if (!$this->copy) {
-            $this->copy = new Copy($this->_provider);
-        }
-        return $this->copy;
+        return new Copy($this->_provider);
     }
 
     /**
@@ -134,10 +81,7 @@ class Photos
      */
     public function createAlbum(): CreateAlbum
     {
-        if (!$this->createAlbum) {
-            $this->createAlbum = new CreateAlbum($this->_provider);
-        }
-        return $this->createAlbum;
+        return new CreateAlbum($this->_provider);
     }
 
     /**
@@ -145,10 +89,7 @@ class Photos
      */
     public function createComment(): CreateComment
     {
-        if (!$this->createComment) {
-            $this->createComment = new CreateComment($this->_provider);
-        }
-        return $this->createComment;
+        return new CreateComment($this->_provider);
     }
 
     /**
@@ -156,10 +97,7 @@ class Photos
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -167,10 +105,7 @@ class Photos
      */
     public function deleteAlbum(): DeleteAlbum
     {
-        if (!$this->deleteAlbum) {
-            $this->deleteAlbum = new DeleteAlbum($this->_provider);
-        }
-        return $this->deleteAlbum;
+        return new DeleteAlbum($this->_provider);
     }
 
     /**
@@ -178,10 +113,7 @@ class Photos
      */
     public function deleteComment(): DeleteComment
     {
-        if (!$this->deleteComment) {
-            $this->deleteComment = new DeleteComment($this->_provider);
-        }
-        return $this->deleteComment;
+        return new DeleteComment($this->_provider);
     }
 
     /**
@@ -189,10 +121,7 @@ class Photos
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -200,10 +129,7 @@ class Photos
      */
     public function editAlbum(): EditAlbum
     {
-        if (!$this->editAlbum) {
-            $this->editAlbum = new EditAlbum($this->_provider);
-        }
-        return $this->editAlbum;
+        return new EditAlbum($this->_provider);
     }
 
     /**
@@ -211,10 +137,7 @@ class Photos
      */
     public function editComment(): EditComment
     {
-        if (!$this->editComment) {
-            $this->editComment = new EditComment($this->_provider);
-        }
-        return $this->editComment;
+        return new EditComment($this->_provider);
     }
 
     /**
@@ -222,10 +145,7 @@ class Photos
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -233,10 +153,7 @@ class Photos
      */
     public function getAlbums(): GetAlbums
     {
-        if (!$this->getAlbums) {
-            $this->getAlbums = new GetAlbums($this->_provider);
-        }
-        return $this->getAlbums;
+        return new GetAlbums($this->_provider);
     }
 
     /**
@@ -244,10 +161,7 @@ class Photos
      */
     public function getAlbumsCount(): GetAlbumsCount
     {
-        if (!$this->getAlbumsCount) {
-            $this->getAlbumsCount = new GetAlbumsCount($this->_provider);
-        }
-        return $this->getAlbumsCount;
+        return new GetAlbumsCount($this->_provider);
     }
 
     /**
@@ -255,10 +169,7 @@ class Photos
      */
     public function getAll(): GetAll
     {
-        if (!$this->getAll) {
-            $this->getAll = new GetAll($this->_provider);
-        }
-        return $this->getAll;
+        return new GetAll($this->_provider);
     }
 
     /**
@@ -266,10 +177,7 @@ class Photos
      */
     public function getAllComments(): GetAllComments
     {
-        if (!$this->getAllComments) {
-            $this->getAllComments = new GetAllComments($this->_provider);
-        }
-        return $this->getAllComments;
+        return new GetAllComments($this->_provider);
     }
 
     /**
@@ -277,10 +185,7 @@ class Photos
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -288,10 +193,7 @@ class Photos
      */
     public function getChatUploadServer(): GetChatUploadServer
     {
-        if (!$this->getChatUploadServer) {
-            $this->getChatUploadServer = new GetChatUploadServer($this->_provider);
-        }
-        return $this->getChatUploadServer;
+        return new GetChatUploadServer($this->_provider);
     }
 
     /**
@@ -299,10 +201,7 @@ class Photos
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -310,10 +209,7 @@ class Photos
      */
     public function getMarketAlbumUploadServer(): GetMarketAlbumUploadServer
     {
-        if (!$this->getMarketAlbumUploadServer) {
-            $this->getMarketAlbumUploadServer = new GetMarketAlbumUploadServer($this->_provider);
-        }
-        return $this->getMarketAlbumUploadServer;
+        return new GetMarketAlbumUploadServer($this->_provider);
     }
 
     /**
@@ -321,10 +217,7 @@ class Photos
      */
     public function getMarketUploadServer(): GetMarketUploadServer
     {
-        if (!$this->getMarketUploadServer) {
-            $this->getMarketUploadServer = new GetMarketUploadServer($this->_provider);
-        }
-        return $this->getMarketUploadServer;
+        return new GetMarketUploadServer($this->_provider);
     }
 
     /**
@@ -332,10 +225,7 @@ class Photos
      */
     public function getMessagesUploadServer(): GetMessagesUploadServer
     {
-        if (!$this->getMessagesUploadServer) {
-            $this->getMessagesUploadServer = new GetMessagesUploadServer($this->_provider);
-        }
-        return $this->getMessagesUploadServer;
+        return new GetMessagesUploadServer($this->_provider);
     }
 
     /**
@@ -343,10 +233,7 @@ class Photos
      */
     public function getNewTags(): GetNewTags
     {
-        if (!$this->getNewTags) {
-            $this->getNewTags = new GetNewTags($this->_provider);
-        }
-        return $this->getNewTags;
+        return new GetNewTags($this->_provider);
     }
 
     /**
@@ -354,10 +241,7 @@ class Photos
      */
     public function getOwnerCoverPhotoUploadServer(): GetOwnerCoverPhotoUploadServer
     {
-        if (!$this->getOwnerCoverPhotoUploadServer) {
-            $this->getOwnerCoverPhotoUploadServer = new GetOwnerCoverPhotoUploadServer($this->_provider);
-        }
-        return $this->getOwnerCoverPhotoUploadServer;
+        return new GetOwnerCoverPhotoUploadServer($this->_provider);
     }
 
     /**
@@ -365,10 +249,7 @@ class Photos
      */
     public function getOwnerPhotoUploadServer(): GetOwnerPhotoUploadServer
     {
-        if (!$this->getOwnerPhotoUploadServer) {
-            $this->getOwnerPhotoUploadServer = new GetOwnerPhotoUploadServer($this->_provider);
-        }
-        return $this->getOwnerPhotoUploadServer;
+        return new GetOwnerPhotoUploadServer($this->_provider);
     }
 
     /**
@@ -376,10 +257,7 @@ class Photos
      */
     public function getTags(): GetTags
     {
-        if (!$this->getTags) {
-            $this->getTags = new GetTags($this->_provider);
-        }
-        return $this->getTags;
+        return new GetTags($this->_provider);
     }
 
     /**
@@ -387,10 +265,7 @@ class Photos
      */
     public function getUploadServer(): GetUploadServer
     {
-        if (!$this->getUploadServer) {
-            $this->getUploadServer = new GetUploadServer($this->_provider);
-        }
-        return $this->getUploadServer;
+        return new GetUploadServer($this->_provider);
     }
 
     /**
@@ -398,10 +273,7 @@ class Photos
      */
     public function getUserPhotos(): GetUserPhotos
     {
-        if (!$this->getUserPhotos) {
-            $this->getUserPhotos = new GetUserPhotos($this->_provider);
-        }
-        return $this->getUserPhotos;
+        return new GetUserPhotos($this->_provider);
     }
 
     /**
@@ -409,10 +281,7 @@ class Photos
      */
     public function getWallUploadServer(): GetWallUploadServer
     {
-        if (!$this->getWallUploadServer) {
-            $this->getWallUploadServer = new GetWallUploadServer($this->_provider);
-        }
-        return $this->getWallUploadServer;
+        return new GetWallUploadServer($this->_provider);
     }
 
     /**
@@ -420,10 +289,7 @@ class Photos
      */
     public function makeCover(): MakeCover
     {
-        if (!$this->makeCover) {
-            $this->makeCover = new MakeCover($this->_provider);
-        }
-        return $this->makeCover;
+        return new MakeCover($this->_provider);
     }
 
     /**
@@ -431,10 +297,7 @@ class Photos
      */
     public function move(): Move
     {
-        if (!$this->move) {
-            $this->move = new Move($this->_provider);
-        }
-        return $this->move;
+        return new Move($this->_provider);
     }
 
     /**
@@ -442,10 +305,7 @@ class Photos
      */
     public function putTag(): PutTag
     {
-        if (!$this->putTag) {
-            $this->putTag = new PutTag($this->_provider);
-        }
-        return $this->putTag;
+        return new PutTag($this->_provider);
     }
 
     /**
@@ -453,10 +313,7 @@ class Photos
      */
     public function removeTag(): RemoveTag
     {
-        if (!$this->removeTag) {
-            $this->removeTag = new RemoveTag($this->_provider);
-        }
-        return $this->removeTag;
+        return new RemoveTag($this->_provider);
     }
 
     /**
@@ -464,10 +321,7 @@ class Photos
      */
     public function reorderAlbums(): ReorderAlbums
     {
-        if (!$this->reorderAlbums) {
-            $this->reorderAlbums = new ReorderAlbums($this->_provider);
-        }
-        return $this->reorderAlbums;
+        return new ReorderAlbums($this->_provider);
     }
 
     /**
@@ -475,10 +329,7 @@ class Photos
      */
     public function reorderPhotos(): ReorderPhotos
     {
-        if (!$this->reorderPhotos) {
-            $this->reorderPhotos = new ReorderPhotos($this->_provider);
-        }
-        return $this->reorderPhotos;
+        return new ReorderPhotos($this->_provider);
     }
 
     /**
@@ -486,10 +337,7 @@ class Photos
      */
     public function report(): Report
     {
-        if (!$this->report) {
-            $this->report = new Report($this->_provider);
-        }
-        return $this->report;
+        return new Report($this->_provider);
     }
 
     /**
@@ -497,10 +345,7 @@ class Photos
      */
     public function reportComment(): ReportComment
     {
-        if (!$this->reportComment) {
-            $this->reportComment = new ReportComment($this->_provider);
-        }
-        return $this->reportComment;
+        return new ReportComment($this->_provider);
     }
 
     /**
@@ -508,10 +353,7 @@ class Photos
      */
     public function restore(): Restore
     {
-        if (!$this->restore) {
-            $this->restore = new Restore($this->_provider);
-        }
-        return $this->restore;
+        return new Restore($this->_provider);
     }
 
     /**
@@ -519,10 +361,7 @@ class Photos
      */
     public function restoreComment(): RestoreComment
     {
-        if (!$this->restoreComment) {
-            $this->restoreComment = new RestoreComment($this->_provider);
-        }
-        return $this->restoreComment;
+        return new RestoreComment($this->_provider);
     }
 
     /**
@@ -530,10 +369,7 @@ class Photos
      */
     public function save(): Save
     {
-        if (!$this->save) {
-            $this->save = new Save($this->_provider);
-        }
-        return $this->save;
+        return new Save($this->_provider);
     }
 
     /**
@@ -541,10 +377,7 @@ class Photos
      */
     public function saveMarketAlbumPhoto(): SaveMarketAlbumPhoto
     {
-        if (!$this->saveMarketAlbumPhoto) {
-            $this->saveMarketAlbumPhoto = new SaveMarketAlbumPhoto($this->_provider);
-        }
-        return $this->saveMarketAlbumPhoto;
+        return new SaveMarketAlbumPhoto($this->_provider);
     }
 
     /**
@@ -552,10 +385,7 @@ class Photos
      */
     public function saveMarketPhoto(): SaveMarketPhoto
     {
-        if (!$this->saveMarketPhoto) {
-            $this->saveMarketPhoto = new SaveMarketPhoto($this->_provider);
-        }
-        return $this->saveMarketPhoto;
+        return new SaveMarketPhoto($this->_provider);
     }
 
     /**
@@ -563,10 +393,7 @@ class Photos
      */
     public function saveMessagesPhoto(): SaveMessagesPhoto
     {
-        if (!$this->saveMessagesPhoto) {
-            $this->saveMessagesPhoto = new SaveMessagesPhoto($this->_provider);
-        }
-        return $this->saveMessagesPhoto;
+        return new SaveMessagesPhoto($this->_provider);
     }
 
     /**
@@ -574,10 +401,7 @@ class Photos
      */
     public function saveOwnerCoverPhoto(): SaveOwnerCoverPhoto
     {
-        if (!$this->saveOwnerCoverPhoto) {
-            $this->saveOwnerCoverPhoto = new SaveOwnerCoverPhoto($this->_provider);
-        }
-        return $this->saveOwnerCoverPhoto;
+        return new SaveOwnerCoverPhoto($this->_provider);
     }
 
     /**
@@ -585,10 +409,7 @@ class Photos
      */
     public function saveOwnerPhoto(): SaveOwnerPhoto
     {
-        if (!$this->saveOwnerPhoto) {
-            $this->saveOwnerPhoto = new SaveOwnerPhoto($this->_provider);
-        }
-        return $this->saveOwnerPhoto;
+        return new SaveOwnerPhoto($this->_provider);
     }
 
     /**
@@ -596,10 +417,7 @@ class Photos
      */
     public function saveWallPhoto(): SaveWallPhoto
     {
-        if (!$this->saveWallPhoto) {
-            $this->saveWallPhoto = new SaveWallPhoto($this->_provider);
-        }
-        return $this->saveWallPhoto;
+        return new SaveWallPhoto($this->_provider);
     }
 
     /**
@@ -607,10 +425,7 @@ class Photos
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
 }

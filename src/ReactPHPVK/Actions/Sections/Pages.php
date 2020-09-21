@@ -17,15 +17,6 @@ class Pages
 {
     private Provider $_provider;
 
-    private ?Pages\ClearCache $clearCache = null;
-    private ?Pages\Get $get = null;
-    private ?Pages\GetHistory $getHistory = null;
-    private ?Pages\GetTitles $getTitles = null;
-    private ?Pages\GetVersion $getVersion = null;
-    private ?Pages\ParseWiki $parseWiki = null;
-    private ?Pages\Save $save = null;
-    private ?Pages\SaveAccess $saveAccess = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -36,10 +27,7 @@ class Pages
      */
     public function clearCache(): ClearCache
     {
-        if (!$this->clearCache) {
-            $this->clearCache = new ClearCache($this->_provider);
-        }
-        return $this->clearCache;
+        return new ClearCache($this->_provider);
     }
 
     /**
@@ -47,10 +35,7 @@ class Pages
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -58,10 +43,7 @@ class Pages
      */
     public function getHistory(): GetHistory
     {
-        if (!$this->getHistory) {
-            $this->getHistory = new GetHistory($this->_provider);
-        }
-        return $this->getHistory;
+        return new GetHistory($this->_provider);
     }
 
     /**
@@ -69,10 +51,7 @@ class Pages
      */
     public function getTitles(): GetTitles
     {
-        if (!$this->getTitles) {
-            $this->getTitles = new GetTitles($this->_provider);
-        }
-        return $this->getTitles;
+        return new GetTitles($this->_provider);
     }
 
     /**
@@ -80,10 +59,7 @@ class Pages
      */
     public function getVersion(): GetVersion
     {
-        if (!$this->getVersion) {
-            $this->getVersion = new GetVersion($this->_provider);
-        }
-        return $this->getVersion;
+        return new GetVersion($this->_provider);
     }
 
     /**
@@ -91,10 +67,7 @@ class Pages
      */
     public function parseWiki(): ParseWiki
     {
-        if (!$this->parseWiki) {
-            $this->parseWiki = new ParseWiki($this->_provider);
-        }
-        return $this->parseWiki;
+        return new ParseWiki($this->_provider);
     }
 
     /**
@@ -102,10 +75,7 @@ class Pages
      */
     public function save(): Save
     {
-        if (!$this->save) {
-            $this->save = new Save($this->_provider);
-        }
-        return $this->save;
+        return new Save($this->_provider);
     }
 
     /**
@@ -113,10 +83,7 @@ class Pages
      */
     public function saveAccess(): SaveAccess
     {
-        if (!$this->saveAccess) {
-            $this->saveAccess = new SaveAccess($this->_provider);
-        }
-        return $this->saveAccess;
+        return new SaveAccess($this->_provider);
     }
 
 }

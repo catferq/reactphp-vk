@@ -33,31 +33,6 @@ class Video
 {
     private Provider $_provider;
 
-    private ?Video\Add $add = null;
-    private ?Video\AddAlbum $addAlbum = null;
-    private ?Video\AddToAlbum $addToAlbum = null;
-    private ?Video\CreateComment $createComment = null;
-    private ?Video\Delete $delete = null;
-    private ?Video\DeleteAlbum $deleteAlbum = null;
-    private ?Video\DeleteComment $deleteComment = null;
-    private ?Video\Edit $edit = null;
-    private ?Video\EditAlbum $editAlbum = null;
-    private ?Video\EditComment $editComment = null;
-    private ?Video\Get $get = null;
-    private ?Video\GetAlbumById $getAlbumById = null;
-    private ?Video\GetAlbums $getAlbums = null;
-    private ?Video\GetAlbumsByVideo $getAlbumsByVideo = null;
-    private ?Video\GetComments $getComments = null;
-    private ?Video\RemoveFromAlbum $removeFromAlbum = null;
-    private ?Video\ReorderAlbums $reorderAlbums = null;
-    private ?Video\ReorderVideos $reorderVideos = null;
-    private ?Video\Report $report = null;
-    private ?Video\ReportComment $reportComment = null;
-    private ?Video\Restore $restore = null;
-    private ?Video\RestoreComment $restoreComment = null;
-    private ?Video\Save $save = null;
-    private ?Video\Search $search = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -68,10 +43,7 @@ class Video
      */
     public function add(): Add
     {
-        if (!$this->add) {
-            $this->add = new Add($this->_provider);
-        }
-        return $this->add;
+        return new Add($this->_provider);
     }
 
     /**
@@ -79,10 +51,7 @@ class Video
      */
     public function addAlbum(): AddAlbum
     {
-        if (!$this->addAlbum) {
-            $this->addAlbum = new AddAlbum($this->_provider);
-        }
-        return $this->addAlbum;
+        return new AddAlbum($this->_provider);
     }
 
     /**
@@ -90,10 +59,7 @@ class Video
      */
     public function addToAlbum(): AddToAlbum
     {
-        if (!$this->addToAlbum) {
-            $this->addToAlbum = new AddToAlbum($this->_provider);
-        }
-        return $this->addToAlbum;
+        return new AddToAlbum($this->_provider);
     }
 
     /**
@@ -101,10 +67,7 @@ class Video
      */
     public function createComment(): CreateComment
     {
-        if (!$this->createComment) {
-            $this->createComment = new CreateComment($this->_provider);
-        }
-        return $this->createComment;
+        return new CreateComment($this->_provider);
     }
 
     /**
@@ -112,10 +75,7 @@ class Video
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -123,10 +83,7 @@ class Video
      */
     public function deleteAlbum(): DeleteAlbum
     {
-        if (!$this->deleteAlbum) {
-            $this->deleteAlbum = new DeleteAlbum($this->_provider);
-        }
-        return $this->deleteAlbum;
+        return new DeleteAlbum($this->_provider);
     }
 
     /**
@@ -134,10 +91,7 @@ class Video
      */
     public function deleteComment(): DeleteComment
     {
-        if (!$this->deleteComment) {
-            $this->deleteComment = new DeleteComment($this->_provider);
-        }
-        return $this->deleteComment;
+        return new DeleteComment($this->_provider);
     }
 
     /**
@@ -145,10 +99,7 @@ class Video
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -156,10 +107,7 @@ class Video
      */
     public function editAlbum(): EditAlbum
     {
-        if (!$this->editAlbum) {
-            $this->editAlbum = new EditAlbum($this->_provider);
-        }
-        return $this->editAlbum;
+        return new EditAlbum($this->_provider);
     }
 
     /**
@@ -167,10 +115,7 @@ class Video
      */
     public function editComment(): EditComment
     {
-        if (!$this->editComment) {
-            $this->editComment = new EditComment($this->_provider);
-        }
-        return $this->editComment;
+        return new EditComment($this->_provider);
     }
 
     /**
@@ -178,10 +123,7 @@ class Video
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -189,10 +131,7 @@ class Video
      */
     public function getAlbumById(): GetAlbumById
     {
-        if (!$this->getAlbumById) {
-            $this->getAlbumById = new GetAlbumById($this->_provider);
-        }
-        return $this->getAlbumById;
+        return new GetAlbumById($this->_provider);
     }
 
     /**
@@ -200,10 +139,7 @@ class Video
      */
     public function getAlbums(): GetAlbums
     {
-        if (!$this->getAlbums) {
-            $this->getAlbums = new GetAlbums($this->_provider);
-        }
-        return $this->getAlbums;
+        return new GetAlbums($this->_provider);
     }
 
     /**
@@ -211,10 +147,7 @@ class Video
      */
     public function getAlbumsByVideo(): GetAlbumsByVideo
     {
-        if (!$this->getAlbumsByVideo) {
-            $this->getAlbumsByVideo = new GetAlbumsByVideo($this->_provider);
-        }
-        return $this->getAlbumsByVideo;
+        return new GetAlbumsByVideo($this->_provider);
     }
 
     /**
@@ -222,10 +155,7 @@ class Video
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -233,10 +163,7 @@ class Video
      */
     public function removeFromAlbum(): RemoveFromAlbum
     {
-        if (!$this->removeFromAlbum) {
-            $this->removeFromAlbum = new RemoveFromAlbum($this->_provider);
-        }
-        return $this->removeFromAlbum;
+        return new RemoveFromAlbum($this->_provider);
     }
 
     /**
@@ -244,10 +171,7 @@ class Video
      */
     public function reorderAlbums(): ReorderAlbums
     {
-        if (!$this->reorderAlbums) {
-            $this->reorderAlbums = new ReorderAlbums($this->_provider);
-        }
-        return $this->reorderAlbums;
+        return new ReorderAlbums($this->_provider);
     }
 
     /**
@@ -255,10 +179,7 @@ class Video
      */
     public function reorderVideos(): ReorderVideos
     {
-        if (!$this->reorderVideos) {
-            $this->reorderVideos = new ReorderVideos($this->_provider);
-        }
-        return $this->reorderVideos;
+        return new ReorderVideos($this->_provider);
     }
 
     /**
@@ -266,10 +187,7 @@ class Video
      */
     public function report(): Report
     {
-        if (!$this->report) {
-            $this->report = new Report($this->_provider);
-        }
-        return $this->report;
+        return new Report($this->_provider);
     }
 
     /**
@@ -277,10 +195,7 @@ class Video
      */
     public function reportComment(): ReportComment
     {
-        if (!$this->reportComment) {
-            $this->reportComment = new ReportComment($this->_provider);
-        }
-        return $this->reportComment;
+        return new ReportComment($this->_provider);
     }
 
     /**
@@ -288,10 +203,7 @@ class Video
      */
     public function restore(): Restore
     {
-        if (!$this->restore) {
-            $this->restore = new Restore($this->_provider);
-        }
-        return $this->restore;
+        return new Restore($this->_provider);
     }
 
     /**
@@ -299,10 +211,7 @@ class Video
      */
     public function restoreComment(): RestoreComment
     {
-        if (!$this->restoreComment) {
-            $this->restoreComment = new RestoreComment($this->_provider);
-        }
-        return $this->restoreComment;
+        return new RestoreComment($this->_provider);
     }
 
     /**
@@ -310,10 +219,7 @@ class Video
      */
     public function save(): Save
     {
-        if (!$this->save) {
-            $this->save = new Save($this->_provider);
-        }
-        return $this->save;
+        return new Save($this->_provider);
     }
 
     /**
@@ -321,10 +227,7 @@ class Video
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
 }

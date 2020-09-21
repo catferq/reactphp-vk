@@ -15,13 +15,6 @@ class Polls
 {
     private Provider $_provider;
 
-    private ?Polls\AddVote $addVote = null;
-    private ?Polls\Create $create = null;
-    private ?Polls\DeleteVote $deleteVote = null;
-    private ?Polls\Edit $edit = null;
-    private ?Polls\GetById $getById = null;
-    private ?Polls\GetVoters $getVoters = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -32,10 +25,7 @@ class Polls
      */
     public function addVote(): AddVote
     {
-        if (!$this->addVote) {
-            $this->addVote = new AddVote($this->_provider);
-        }
-        return $this->addVote;
+        return new AddVote($this->_provider);
     }
 
     /**
@@ -43,10 +33,7 @@ class Polls
      */
     public function create(): Create
     {
-        if (!$this->create) {
-            $this->create = new Create($this->_provider);
-        }
-        return $this->create;
+        return new Create($this->_provider);
     }
 
     /**
@@ -54,10 +41,7 @@ class Polls
      */
     public function deleteVote(): DeleteVote
     {
-        if (!$this->deleteVote) {
-            $this->deleteVote = new DeleteVote($this->_provider);
-        }
-        return $this->deleteVote;
+        return new DeleteVote($this->_provider);
     }
 
     /**
@@ -65,10 +49,7 @@ class Polls
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -76,10 +57,7 @@ class Polls
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -87,10 +65,7 @@ class Polls
      */
     public function getVoters(): GetVoters
     {
-        if (!$this->getVoters) {
-            $this->getVoters = new GetVoters($this->_provider);
-        }
-        return $this->getVoters;
+        return new GetVoters($this->_provider);
     }
 
 }

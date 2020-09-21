@@ -31,29 +31,6 @@ class Fave
 {
     private Provider $_provider;
 
-    private ?Fave\AddArticle $addArticle = null;
-    private ?Fave\AddLink $addLink = null;
-    private ?Fave\AddPage $addPage = null;
-    private ?Fave\AddPost $addPost = null;
-    private ?Fave\AddProduct $addProduct = null;
-    private ?Fave\AddTag $addTag = null;
-    private ?Fave\AddVideo $addVideo = null;
-    private ?Fave\EditTag $editTag = null;
-    private ?Fave\Get $get = null;
-    private ?Fave\GetPages $getPages = null;
-    private ?Fave\GetTags $getTags = null;
-    private ?Fave\MarkSeen $markSeen = null;
-    private ?Fave\RemoveArticle $removeArticle = null;
-    private ?Fave\RemoveLink $removeLink = null;
-    private ?Fave\RemovePage $removePage = null;
-    private ?Fave\RemovePost $removePost = null;
-    private ?Fave\RemoveProduct $removeProduct = null;
-    private ?Fave\RemoveTag $removeTag = null;
-    private ?Fave\ReorderTags $reorderTags = null;
-    private ?Fave\SetPageTags $setPageTags = null;
-    private ?Fave\SetTags $setTags = null;
-    private ?Fave\TrackPageInteraction $trackPageInteraction = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -64,10 +41,7 @@ class Fave
      */
     public function addArticle(): AddArticle
     {
-        if (!$this->addArticle) {
-            $this->addArticle = new AddArticle($this->_provider);
-        }
-        return $this->addArticle;
+        return new AddArticle($this->_provider);
     }
 
     /**
@@ -75,10 +49,7 @@ class Fave
      */
     public function addLink(): AddLink
     {
-        if (!$this->addLink) {
-            $this->addLink = new AddLink($this->_provider);
-        }
-        return $this->addLink;
+        return new AddLink($this->_provider);
     }
 
     /**
@@ -86,10 +57,7 @@ class Fave
      */
     public function addPage(): AddPage
     {
-        if (!$this->addPage) {
-            $this->addPage = new AddPage($this->_provider);
-        }
-        return $this->addPage;
+        return new AddPage($this->_provider);
     }
 
     /**
@@ -97,10 +65,7 @@ class Fave
      */
     public function addPost(): AddPost
     {
-        if (!$this->addPost) {
-            $this->addPost = new AddPost($this->_provider);
-        }
-        return $this->addPost;
+        return new AddPost($this->_provider);
     }
 
     /**
@@ -108,10 +73,7 @@ class Fave
      */
     public function addProduct(): AddProduct
     {
-        if (!$this->addProduct) {
-            $this->addProduct = new AddProduct($this->_provider);
-        }
-        return $this->addProduct;
+        return new AddProduct($this->_provider);
     }
 
     /**
@@ -119,10 +81,7 @@ class Fave
      */
     public function addTag(): AddTag
     {
-        if (!$this->addTag) {
-            $this->addTag = new AddTag($this->_provider);
-        }
-        return $this->addTag;
+        return new AddTag($this->_provider);
     }
 
     /**
@@ -130,10 +89,7 @@ class Fave
      */
     public function addVideo(): AddVideo
     {
-        if (!$this->addVideo) {
-            $this->addVideo = new AddVideo($this->_provider);
-        }
-        return $this->addVideo;
+        return new AddVideo($this->_provider);
     }
 
     /**
@@ -141,10 +97,7 @@ class Fave
      */
     public function editTag(): EditTag
     {
-        if (!$this->editTag) {
-            $this->editTag = new EditTag($this->_provider);
-        }
-        return $this->editTag;
+        return new EditTag($this->_provider);
     }
 
     /**
@@ -152,10 +105,7 @@ class Fave
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -163,10 +113,7 @@ class Fave
      */
     public function getPages(): GetPages
     {
-        if (!$this->getPages) {
-            $this->getPages = new GetPages($this->_provider);
-        }
-        return $this->getPages;
+        return new GetPages($this->_provider);
     }
 
     /**
@@ -174,10 +121,7 @@ class Fave
      */
     public function getTags(): GetTags
     {
-        if (!$this->getTags) {
-            $this->getTags = new GetTags($this->_provider);
-        }
-        return $this->getTags;
+        return new GetTags($this->_provider);
     }
 
     /**
@@ -185,10 +129,7 @@ class Fave
      */
     public function markSeen(): MarkSeen
     {
-        if (!$this->markSeen) {
-            $this->markSeen = new MarkSeen($this->_provider);
-        }
-        return $this->markSeen;
+        return new MarkSeen($this->_provider);
     }
 
     /**
@@ -196,10 +137,7 @@ class Fave
      */
     public function removeArticle(): RemoveArticle
     {
-        if (!$this->removeArticle) {
-            $this->removeArticle = new RemoveArticle($this->_provider);
-        }
-        return $this->removeArticle;
+        return new RemoveArticle($this->_provider);
     }
 
     /**
@@ -207,10 +145,7 @@ class Fave
      */
     public function removeLink(): RemoveLink
     {
-        if (!$this->removeLink) {
-            $this->removeLink = new RemoveLink($this->_provider);
-        }
-        return $this->removeLink;
+        return new RemoveLink($this->_provider);
     }
 
     /**
@@ -218,10 +153,7 @@ class Fave
      */
     public function removePage(): RemovePage
     {
-        if (!$this->removePage) {
-            $this->removePage = new RemovePage($this->_provider);
-        }
-        return $this->removePage;
+        return new RemovePage($this->_provider);
     }
 
     /**
@@ -229,10 +161,7 @@ class Fave
      */
     public function removePost(): RemovePost
     {
-        if (!$this->removePost) {
-            $this->removePost = new RemovePost($this->_provider);
-        }
-        return $this->removePost;
+        return new RemovePost($this->_provider);
     }
 
     /**
@@ -240,10 +169,7 @@ class Fave
      */
     public function removeProduct(): RemoveProduct
     {
-        if (!$this->removeProduct) {
-            $this->removeProduct = new RemoveProduct($this->_provider);
-        }
-        return $this->removeProduct;
+        return new RemoveProduct($this->_provider);
     }
 
     /**
@@ -251,10 +177,7 @@ class Fave
      */
     public function removeTag(): RemoveTag
     {
-        if (!$this->removeTag) {
-            $this->removeTag = new RemoveTag($this->_provider);
-        }
-        return $this->removeTag;
+        return new RemoveTag($this->_provider);
     }
 
     /**
@@ -262,10 +185,7 @@ class Fave
      */
     public function reorderTags(): ReorderTags
     {
-        if (!$this->reorderTags) {
-            $this->reorderTags = new ReorderTags($this->_provider);
-        }
-        return $this->reorderTags;
+        return new ReorderTags($this->_provider);
     }
 
     /**
@@ -273,10 +193,7 @@ class Fave
      */
     public function setPageTags(): SetPageTags
     {
-        if (!$this->setPageTags) {
-            $this->setPageTags = new SetPageTags($this->_provider);
-        }
-        return $this->setPageTags;
+        return new SetPageTags($this->_provider);
     }
 
     /**
@@ -284,10 +201,7 @@ class Fave
      */
     public function setTags(): SetTags
     {
-        if (!$this->setTags) {
-            $this->setTags = new SetTags($this->_provider);
-        }
-        return $this->setTags;
+        return new SetTags($this->_provider);
     }
 
     /**
@@ -295,10 +209,7 @@ class Fave
      */
     public function trackPageInteraction(): TrackPageInteraction
     {
-        if (!$this->trackPageInteraction) {
-            $this->trackPageInteraction = new TrackPageInteraction($this->_provider);
-        }
-        return $this->trackPageInteraction;
+        return new TrackPageInteraction($this->_provider);
     }
 
 }

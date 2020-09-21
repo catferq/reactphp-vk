@@ -12,10 +12,6 @@ class Storage
 {
     private Provider $_provider;
 
-    private ?Storage\Get $get = null;
-    private ?Storage\GetKeys $getKeys = null;
-    private ?Storage\Set $set = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -26,10 +22,7 @@ class Storage
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -37,10 +30,7 @@ class Storage
      */
     public function getKeys(): GetKeys
     {
-        if (!$this->getKeys) {
-            $this->getKeys = new GetKeys($this->_provider);
-        }
-        return $this->getKeys;
+        return new GetKeys($this->_provider);
     }
 
     /**
@@ -48,10 +38,7 @@ class Storage
      */
     public function set(): Set
     {
-        if (!$this->set) {
-            $this->set = new Set($this->_provider);
-        }
-        return $this->set;
+        return new Set($this->_provider);
     }
 
 }

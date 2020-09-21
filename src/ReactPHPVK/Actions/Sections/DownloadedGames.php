@@ -10,8 +10,6 @@ class DownloadedGames
 {
     private Provider $_provider;
 
-    private ?DownloadedGames\GetPaidStatus $getPaidStatus = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -22,10 +20,7 @@ class DownloadedGames
      */
     public function getPaidStatus(): GetPaidStatus
     {
-        if (!$this->getPaidStatus) {
-            $this->getPaidStatus = new GetPaidStatus($this->_provider);
-        }
-        return $this->getPaidStatus;
+        return new GetPaidStatus($this->_provider);
     }
 
 }

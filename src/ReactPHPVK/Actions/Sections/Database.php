@@ -21,19 +21,6 @@ class Database
 {
     private Provider $_provider;
 
-    private ?Database\GetChairs $getChairs = null;
-    private ?Database\GetCities $getCities = null;
-    private ?Database\GetCitiesById $getCitiesById = null;
-    private ?Database\GetCountries $getCountries = null;
-    private ?Database\GetCountriesById $getCountriesById = null;
-    private ?Database\GetFaculties $getFaculties = null;
-    private ?Database\GetMetroStations $getMetroStations = null;
-    private ?Database\GetMetroStationsById $getMetroStationsById = null;
-    private ?Database\GetRegions $getRegions = null;
-    private ?Database\GetSchoolClasses $getSchoolClasses = null;
-    private ?Database\GetSchools $getSchools = null;
-    private ?Database\GetUniversities $getUniversities = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -44,10 +31,7 @@ class Database
      */
     public function getChairs(): GetChairs
     {
-        if (!$this->getChairs) {
-            $this->getChairs = new GetChairs($this->_provider);
-        }
-        return $this->getChairs;
+        return new GetChairs($this->_provider);
     }
 
     /**
@@ -55,10 +39,7 @@ class Database
      */
     public function getCities(): GetCities
     {
-        if (!$this->getCities) {
-            $this->getCities = new GetCities($this->_provider);
-        }
-        return $this->getCities;
+        return new GetCities($this->_provider);
     }
 
     /**
@@ -66,10 +47,7 @@ class Database
      */
     public function getCitiesById(): GetCitiesById
     {
-        if (!$this->getCitiesById) {
-            $this->getCitiesById = new GetCitiesById($this->_provider);
-        }
-        return $this->getCitiesById;
+        return new GetCitiesById($this->_provider);
     }
 
     /**
@@ -77,10 +55,7 @@ class Database
      */
     public function getCountries(): GetCountries
     {
-        if (!$this->getCountries) {
-            $this->getCountries = new GetCountries($this->_provider);
-        }
-        return $this->getCountries;
+        return new GetCountries($this->_provider);
     }
 
     /**
@@ -88,10 +63,7 @@ class Database
      */
     public function getCountriesById(): GetCountriesById
     {
-        if (!$this->getCountriesById) {
-            $this->getCountriesById = new GetCountriesById($this->_provider);
-        }
-        return $this->getCountriesById;
+        return new GetCountriesById($this->_provider);
     }
 
     /**
@@ -99,10 +71,7 @@ class Database
      */
     public function getFaculties(): GetFaculties
     {
-        if (!$this->getFaculties) {
-            $this->getFaculties = new GetFaculties($this->_provider);
-        }
-        return $this->getFaculties;
+        return new GetFaculties($this->_provider);
     }
 
     /**
@@ -110,10 +79,7 @@ class Database
      */
     public function getMetroStations(): GetMetroStations
     {
-        if (!$this->getMetroStations) {
-            $this->getMetroStations = new GetMetroStations($this->_provider);
-        }
-        return $this->getMetroStations;
+        return new GetMetroStations($this->_provider);
     }
 
     /**
@@ -121,10 +87,7 @@ class Database
      */
     public function getMetroStationsById(): GetMetroStationsById
     {
-        if (!$this->getMetroStationsById) {
-            $this->getMetroStationsById = new GetMetroStationsById($this->_provider);
-        }
-        return $this->getMetroStationsById;
+        return new GetMetroStationsById($this->_provider);
     }
 
     /**
@@ -132,10 +95,7 @@ class Database
      */
     public function getRegions(): GetRegions
     {
-        if (!$this->getRegions) {
-            $this->getRegions = new GetRegions($this->_provider);
-        }
-        return $this->getRegions;
+        return new GetRegions($this->_provider);
     }
 
     /**
@@ -143,10 +103,7 @@ class Database
      */
     public function getSchoolClasses(): GetSchoolClasses
     {
-        if (!$this->getSchoolClasses) {
-            $this->getSchoolClasses = new GetSchoolClasses($this->_provider);
-        }
-        return $this->getSchoolClasses;
+        return new GetSchoolClasses($this->_provider);
     }
 
     /**
@@ -154,10 +111,7 @@ class Database
      */
     public function getSchools(): GetSchools
     {
-        if (!$this->getSchools) {
-            $this->getSchools = new GetSchools($this->_provider);
-        }
-        return $this->getSchools;
+        return new GetSchools($this->_provider);
     }
 
     /**
@@ -165,10 +119,7 @@ class Database
      */
     public function getUniversities(): GetUniversities
     {
-        if (!$this->getUniversities) {
-            $this->getUniversities = new GetUniversities($this->_provider);
-        }
-        return $this->getUniversities;
+        return new GetUniversities($this->_provider);
     }
 
 }

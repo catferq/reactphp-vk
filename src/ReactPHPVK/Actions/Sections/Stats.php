@@ -12,10 +12,6 @@ class Stats
 {
     private Provider $_provider;
 
-    private ?Stats\Get $get = null;
-    private ?Stats\GetPostReach $getPostReach = null;
-    private ?Stats\TrackVisitor $trackVisitor = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -26,10 +22,7 @@ class Stats
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -37,10 +30,7 @@ class Stats
      */
     public function getPostReach(): GetPostReach
     {
-        if (!$this->getPostReach) {
-            $this->getPostReach = new GetPostReach($this->_provider);
-        }
-        return $this->getPostReach;
+        return new GetPostReach($this->_provider);
     }
 
     /**
@@ -48,10 +38,7 @@ class Stats
      */
     public function trackVisitor(): TrackVisitor
     {
-        if (!$this->trackVisitor) {
-            $this->trackVisitor = new TrackVisitor($this->_provider);
-        }
-        return $this->trackVisitor;
+        return new TrackVisitor($this->_provider);
     }
 
 }

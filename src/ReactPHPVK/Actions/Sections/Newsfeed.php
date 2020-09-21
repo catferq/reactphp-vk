@@ -24,22 +24,6 @@ class Newsfeed
 {
     private Provider $_provider;
 
-    private ?Newsfeed\AddBan $addBan = null;
-    private ?Newsfeed\DeleteBan $deleteBan = null;
-    private ?Newsfeed\DeleteList $deleteList = null;
-    private ?Newsfeed\Get $get = null;
-    private ?Newsfeed\GetBanned $getBanned = null;
-    private ?Newsfeed\GetComments $getComments = null;
-    private ?Newsfeed\GetLists $getLists = null;
-    private ?Newsfeed\GetMentions $getMentions = null;
-    private ?Newsfeed\GetRecommended $getRecommended = null;
-    private ?Newsfeed\GetSuggestedSources $getSuggestedSources = null;
-    private ?Newsfeed\IgnoreItem $ignoreItem = null;
-    private ?Newsfeed\SaveList $saveList = null;
-    private ?Newsfeed\Search $search = null;
-    private ?Newsfeed\UnignoreItem $unignoreItem = null;
-    private ?Newsfeed\Unsubscribe $unsubscribe = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -50,10 +34,7 @@ class Newsfeed
      */
     public function addBan(): AddBan
     {
-        if (!$this->addBan) {
-            $this->addBan = new AddBan($this->_provider);
-        }
-        return $this->addBan;
+        return new AddBan($this->_provider);
     }
 
     /**
@@ -61,10 +42,7 @@ class Newsfeed
      */
     public function deleteBan(): DeleteBan
     {
-        if (!$this->deleteBan) {
-            $this->deleteBan = new DeleteBan($this->_provider);
-        }
-        return $this->deleteBan;
+        return new DeleteBan($this->_provider);
     }
 
     /**
@@ -72,10 +50,7 @@ class Newsfeed
      */
     public function deleteList(): DeleteList
     {
-        if (!$this->deleteList) {
-            $this->deleteList = new DeleteList($this->_provider);
-        }
-        return $this->deleteList;
+        return new DeleteList($this->_provider);
     }
 
     /**
@@ -83,10 +58,7 @@ class Newsfeed
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -94,10 +66,7 @@ class Newsfeed
      */
     public function getBanned(): GetBanned
     {
-        if (!$this->getBanned) {
-            $this->getBanned = new GetBanned($this->_provider);
-        }
-        return $this->getBanned;
+        return new GetBanned($this->_provider);
     }
 
     /**
@@ -105,10 +74,7 @@ class Newsfeed
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -116,10 +82,7 @@ class Newsfeed
      */
     public function getLists(): GetLists
     {
-        if (!$this->getLists) {
-            $this->getLists = new GetLists($this->_provider);
-        }
-        return $this->getLists;
+        return new GetLists($this->_provider);
     }
 
     /**
@@ -127,10 +90,7 @@ class Newsfeed
      */
     public function getMentions(): GetMentions
     {
-        if (!$this->getMentions) {
-            $this->getMentions = new GetMentions($this->_provider);
-        }
-        return $this->getMentions;
+        return new GetMentions($this->_provider);
     }
 
     /**
@@ -138,10 +98,7 @@ class Newsfeed
      */
     public function getRecommended(): GetRecommended
     {
-        if (!$this->getRecommended) {
-            $this->getRecommended = new GetRecommended($this->_provider);
-        }
-        return $this->getRecommended;
+        return new GetRecommended($this->_provider);
     }
 
     /**
@@ -149,10 +106,7 @@ class Newsfeed
      */
     public function getSuggestedSources(): GetSuggestedSources
     {
-        if (!$this->getSuggestedSources) {
-            $this->getSuggestedSources = new GetSuggestedSources($this->_provider);
-        }
-        return $this->getSuggestedSources;
+        return new GetSuggestedSources($this->_provider);
     }
 
     /**
@@ -160,10 +114,7 @@ class Newsfeed
      */
     public function ignoreItem(): IgnoreItem
     {
-        if (!$this->ignoreItem) {
-            $this->ignoreItem = new IgnoreItem($this->_provider);
-        }
-        return $this->ignoreItem;
+        return new IgnoreItem($this->_provider);
     }
 
     /**
@@ -171,10 +122,7 @@ class Newsfeed
      */
     public function saveList(): SaveList
     {
-        if (!$this->saveList) {
-            $this->saveList = new SaveList($this->_provider);
-        }
-        return $this->saveList;
+        return new SaveList($this->_provider);
     }
 
     /**
@@ -182,10 +130,7 @@ class Newsfeed
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
     /**
@@ -193,10 +138,7 @@ class Newsfeed
      */
     public function unignoreItem(): UnignoreItem
     {
-        if (!$this->unignoreItem) {
-            $this->unignoreItem = new UnignoreItem($this->_provider);
-        }
-        return $this->unignoreItem;
+        return new UnignoreItem($this->_provider);
     }
 
     /**
@@ -204,10 +146,7 @@ class Newsfeed
      */
     public function unsubscribe(): Unsubscribe
     {
-        if (!$this->unsubscribe) {
-            $this->unsubscribe = new Unsubscribe($this->_provider);
-        }
-        return $this->unsubscribe;
+        return new Unsubscribe($this->_provider);
     }
 
 }

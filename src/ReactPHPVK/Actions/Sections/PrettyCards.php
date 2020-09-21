@@ -15,13 +15,6 @@ class PrettyCards
 {
     private Provider $_provider;
 
-    private ?PrettyCards\Create $create = null;
-    private ?PrettyCards\Delete $delete = null;
-    private ?PrettyCards\Edit $edit = null;
-    private ?PrettyCards\Get $get = null;
-    private ?PrettyCards\GetById $getById = null;
-    private ?PrettyCards\GetUploadURL $getUploadURL = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -32,10 +25,7 @@ class PrettyCards
      */
     public function create(): Create
     {
-        if (!$this->create) {
-            $this->create = new Create($this->_provider);
-        }
-        return $this->create;
+        return new Create($this->_provider);
     }
 
     /**
@@ -43,10 +33,7 @@ class PrettyCards
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -54,10 +41,7 @@ class PrettyCards
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -65,10 +49,7 @@ class PrettyCards
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -76,10 +57,7 @@ class PrettyCards
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -87,10 +65,7 @@ class PrettyCards
      */
     public function getUploadURL(): GetUploadURL
     {
-        if (!$this->getUploadURL) {
-            $this->getUploadURL = new GetUploadURL($this->_provider);
-        }
-        return $this->getUploadURL;
+        return new GetUploadURL($this->_provider);
     }
 
 }

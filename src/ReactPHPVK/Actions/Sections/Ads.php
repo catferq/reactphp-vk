@@ -46,44 +46,6 @@ class Ads
 {
     private Provider $_provider;
 
-    private ?Ads\AddOfficeUsers $addOfficeUsers = null;
-    private ?Ads\CheckLink $checkLink = null;
-    private ?Ads\CreateAds $createAds = null;
-    private ?Ads\CreateCampaigns $createCampaigns = null;
-    private ?Ads\CreateClients $createClients = null;
-    private ?Ads\CreateTargetGroup $createTargetGroup = null;
-    private ?Ads\DeleteAds $deleteAds = null;
-    private ?Ads\DeleteCampaigns $deleteCampaigns = null;
-    private ?Ads\DeleteClients $deleteClients = null;
-    private ?Ads\DeleteTargetGroup $deleteTargetGroup = null;
-    private ?Ads\GetAccounts $getAccounts = null;
-    private ?Ads\GetAds $getAds = null;
-    private ?Ads\GetAdsLayout $getAdsLayout = null;
-    private ?Ads\GetAdsTargeting $getAdsTargeting = null;
-    private ?Ads\GetBudget $getBudget = null;
-    private ?Ads\GetCampaigns $getCampaigns = null;
-    private ?Ads\GetCategories $getCategories = null;
-    private ?Ads\GetClients $getClients = null;
-    private ?Ads\GetDemographics $getDemographics = null;
-    private ?Ads\GetFloodStats $getFloodStats = null;
-    private ?Ads\GetLookalikeRequests $getLookalikeRequests = null;
-    private ?Ads\GetMusicians $getMusicians = null;
-    private ?Ads\GetOfficeUsers $getOfficeUsers = null;
-    private ?Ads\GetPostsReach $getPostsReach = null;
-    private ?Ads\GetRejectionReason $getRejectionReason = null;
-    private ?Ads\GetStatistics $getStatistics = null;
-    private ?Ads\GetSuggestions $getSuggestions = null;
-    private ?Ads\GetTargetGroups $getTargetGroups = null;
-    private ?Ads\GetTargetingStats $getTargetingStats = null;
-    private ?Ads\GetUploadURL $getUploadURL = null;
-    private ?Ads\GetVideoUploadURL $getVideoUploadURL = null;
-    private ?Ads\ImportTargetContacts $importTargetContacts = null;
-    private ?Ads\RemoveOfficeUsers $removeOfficeUsers = null;
-    private ?Ads\UpdateAds $updateAds = null;
-    private ?Ads\UpdateCampaigns $updateCampaigns = null;
-    private ?Ads\UpdateClients $updateClients = null;
-    private ?Ads\UpdateTargetGroup $updateTargetGroup = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -94,10 +56,7 @@ class Ads
      */
     public function addOfficeUsers(): AddOfficeUsers
     {
-        if (!$this->addOfficeUsers) {
-            $this->addOfficeUsers = new AddOfficeUsers($this->_provider);
-        }
-        return $this->addOfficeUsers;
+        return new AddOfficeUsers($this->_provider);
     }
 
     /**
@@ -105,10 +64,7 @@ class Ads
      */
     public function checkLink(): CheckLink
     {
-        if (!$this->checkLink) {
-            $this->checkLink = new CheckLink($this->_provider);
-        }
-        return $this->checkLink;
+        return new CheckLink($this->_provider);
     }
 
     /**
@@ -116,10 +72,7 @@ class Ads
      */
     public function createAds(): CreateAds
     {
-        if (!$this->createAds) {
-            $this->createAds = new CreateAds($this->_provider);
-        }
-        return $this->createAds;
+        return new CreateAds($this->_provider);
     }
 
     /**
@@ -127,10 +80,7 @@ class Ads
      */
     public function createCampaigns(): CreateCampaigns
     {
-        if (!$this->createCampaigns) {
-            $this->createCampaigns = new CreateCampaigns($this->_provider);
-        }
-        return $this->createCampaigns;
+        return new CreateCampaigns($this->_provider);
     }
 
     /**
@@ -138,10 +88,7 @@ class Ads
      */
     public function createClients(): CreateClients
     {
-        if (!$this->createClients) {
-            $this->createClients = new CreateClients($this->_provider);
-        }
-        return $this->createClients;
+        return new CreateClients($this->_provider);
     }
 
     /**
@@ -149,10 +96,7 @@ class Ads
      */
     public function createTargetGroup(): CreateTargetGroup
     {
-        if (!$this->createTargetGroup) {
-            $this->createTargetGroup = new CreateTargetGroup($this->_provider);
-        }
-        return $this->createTargetGroup;
+        return new CreateTargetGroup($this->_provider);
     }
 
     /**
@@ -160,10 +104,7 @@ class Ads
      */
     public function deleteAds(): DeleteAds
     {
-        if (!$this->deleteAds) {
-            $this->deleteAds = new DeleteAds($this->_provider);
-        }
-        return $this->deleteAds;
+        return new DeleteAds($this->_provider);
     }
 
     /**
@@ -171,10 +112,7 @@ class Ads
      */
     public function deleteCampaigns(): DeleteCampaigns
     {
-        if (!$this->deleteCampaigns) {
-            $this->deleteCampaigns = new DeleteCampaigns($this->_provider);
-        }
-        return $this->deleteCampaigns;
+        return new DeleteCampaigns($this->_provider);
     }
 
     /**
@@ -182,10 +120,7 @@ class Ads
      */
     public function deleteClients(): DeleteClients
     {
-        if (!$this->deleteClients) {
-            $this->deleteClients = new DeleteClients($this->_provider);
-        }
-        return $this->deleteClients;
+        return new DeleteClients($this->_provider);
     }
 
     /**
@@ -193,10 +128,7 @@ class Ads
      */
     public function deleteTargetGroup(): DeleteTargetGroup
     {
-        if (!$this->deleteTargetGroup) {
-            $this->deleteTargetGroup = new DeleteTargetGroup($this->_provider);
-        }
-        return $this->deleteTargetGroup;
+        return new DeleteTargetGroup($this->_provider);
     }
 
     /**
@@ -204,10 +136,7 @@ class Ads
      */
     public function getAccounts(): GetAccounts
     {
-        if (!$this->getAccounts) {
-            $this->getAccounts = new GetAccounts($this->_provider);
-        }
-        return $this->getAccounts;
+        return new GetAccounts($this->_provider);
     }
 
     /**
@@ -215,10 +144,7 @@ class Ads
      */
     public function getAds(): GetAds
     {
-        if (!$this->getAds) {
-            $this->getAds = new GetAds($this->_provider);
-        }
-        return $this->getAds;
+        return new GetAds($this->_provider);
     }
 
     /**
@@ -226,10 +152,7 @@ class Ads
      */
     public function getAdsLayout(): GetAdsLayout
     {
-        if (!$this->getAdsLayout) {
-            $this->getAdsLayout = new GetAdsLayout($this->_provider);
-        }
-        return $this->getAdsLayout;
+        return new GetAdsLayout($this->_provider);
     }
 
     /**
@@ -237,10 +160,7 @@ class Ads
      */
     public function getAdsTargeting(): GetAdsTargeting
     {
-        if (!$this->getAdsTargeting) {
-            $this->getAdsTargeting = new GetAdsTargeting($this->_provider);
-        }
-        return $this->getAdsTargeting;
+        return new GetAdsTargeting($this->_provider);
     }
 
     /**
@@ -248,10 +168,7 @@ class Ads
      */
     public function getBudget(): GetBudget
     {
-        if (!$this->getBudget) {
-            $this->getBudget = new GetBudget($this->_provider);
-        }
-        return $this->getBudget;
+        return new GetBudget($this->_provider);
     }
 
     /**
@@ -259,10 +176,7 @@ class Ads
      */
     public function getCampaigns(): GetCampaigns
     {
-        if (!$this->getCampaigns) {
-            $this->getCampaigns = new GetCampaigns($this->_provider);
-        }
-        return $this->getCampaigns;
+        return new GetCampaigns($this->_provider);
     }
 
     /**
@@ -270,10 +184,7 @@ class Ads
      */
     public function getCategories(): GetCategories
     {
-        if (!$this->getCategories) {
-            $this->getCategories = new GetCategories($this->_provider);
-        }
-        return $this->getCategories;
+        return new GetCategories($this->_provider);
     }
 
     /**
@@ -281,10 +192,7 @@ class Ads
      */
     public function getClients(): GetClients
     {
-        if (!$this->getClients) {
-            $this->getClients = new GetClients($this->_provider);
-        }
-        return $this->getClients;
+        return new GetClients($this->_provider);
     }
 
     /**
@@ -292,10 +200,7 @@ class Ads
      */
     public function getDemographics(): GetDemographics
     {
-        if (!$this->getDemographics) {
-            $this->getDemographics = new GetDemographics($this->_provider);
-        }
-        return $this->getDemographics;
+        return new GetDemographics($this->_provider);
     }
 
     /**
@@ -303,10 +208,7 @@ class Ads
      */
     public function getFloodStats(): GetFloodStats
     {
-        if (!$this->getFloodStats) {
-            $this->getFloodStats = new GetFloodStats($this->_provider);
-        }
-        return $this->getFloodStats;
+        return new GetFloodStats($this->_provider);
     }
 
     /**
@@ -314,10 +216,7 @@ class Ads
      */
     public function getLookalikeRequests(): GetLookalikeRequests
     {
-        if (!$this->getLookalikeRequests) {
-            $this->getLookalikeRequests = new GetLookalikeRequests($this->_provider);
-        }
-        return $this->getLookalikeRequests;
+        return new GetLookalikeRequests($this->_provider);
     }
 
     /**
@@ -325,10 +224,7 @@ class Ads
      */
     public function getMusicians(): GetMusicians
     {
-        if (!$this->getMusicians) {
-            $this->getMusicians = new GetMusicians($this->_provider);
-        }
-        return $this->getMusicians;
+        return new GetMusicians($this->_provider);
     }
 
     /**
@@ -336,10 +232,7 @@ class Ads
      */
     public function getOfficeUsers(): GetOfficeUsers
     {
-        if (!$this->getOfficeUsers) {
-            $this->getOfficeUsers = new GetOfficeUsers($this->_provider);
-        }
-        return $this->getOfficeUsers;
+        return new GetOfficeUsers($this->_provider);
     }
 
     /**
@@ -347,10 +240,7 @@ class Ads
      */
     public function getPostsReach(): GetPostsReach
     {
-        if (!$this->getPostsReach) {
-            $this->getPostsReach = new GetPostsReach($this->_provider);
-        }
-        return $this->getPostsReach;
+        return new GetPostsReach($this->_provider);
     }
 
     /**
@@ -358,10 +248,7 @@ class Ads
      */
     public function getRejectionReason(): GetRejectionReason
     {
-        if (!$this->getRejectionReason) {
-            $this->getRejectionReason = new GetRejectionReason($this->_provider);
-        }
-        return $this->getRejectionReason;
+        return new GetRejectionReason($this->_provider);
     }
 
     /**
@@ -369,10 +256,7 @@ class Ads
      */
     public function getStatistics(): GetStatistics
     {
-        if (!$this->getStatistics) {
-            $this->getStatistics = new GetStatistics($this->_provider);
-        }
-        return $this->getStatistics;
+        return new GetStatistics($this->_provider);
     }
 
     /**
@@ -380,10 +264,7 @@ class Ads
      */
     public function getSuggestions(): GetSuggestions
     {
-        if (!$this->getSuggestions) {
-            $this->getSuggestions = new GetSuggestions($this->_provider);
-        }
-        return $this->getSuggestions;
+        return new GetSuggestions($this->_provider);
     }
 
     /**
@@ -391,10 +272,7 @@ class Ads
      */
     public function getTargetGroups(): GetTargetGroups
     {
-        if (!$this->getTargetGroups) {
-            $this->getTargetGroups = new GetTargetGroups($this->_provider);
-        }
-        return $this->getTargetGroups;
+        return new GetTargetGroups($this->_provider);
     }
 
     /**
@@ -402,10 +280,7 @@ class Ads
      */
     public function getTargetingStats(): GetTargetingStats
     {
-        if (!$this->getTargetingStats) {
-            $this->getTargetingStats = new GetTargetingStats($this->_provider);
-        }
-        return $this->getTargetingStats;
+        return new GetTargetingStats($this->_provider);
     }
 
     /**
@@ -413,10 +288,7 @@ class Ads
      */
     public function getUploadURL(): GetUploadURL
     {
-        if (!$this->getUploadURL) {
-            $this->getUploadURL = new GetUploadURL($this->_provider);
-        }
-        return $this->getUploadURL;
+        return new GetUploadURL($this->_provider);
     }
 
     /**
@@ -424,10 +296,7 @@ class Ads
      */
     public function getVideoUploadURL(): GetVideoUploadURL
     {
-        if (!$this->getVideoUploadURL) {
-            $this->getVideoUploadURL = new GetVideoUploadURL($this->_provider);
-        }
-        return $this->getVideoUploadURL;
+        return new GetVideoUploadURL($this->_provider);
     }
 
     /**
@@ -435,10 +304,7 @@ class Ads
      */
     public function importTargetContacts(): ImportTargetContacts
     {
-        if (!$this->importTargetContacts) {
-            $this->importTargetContacts = new ImportTargetContacts($this->_provider);
-        }
-        return $this->importTargetContacts;
+        return new ImportTargetContacts($this->_provider);
     }
 
     /**
@@ -446,10 +312,7 @@ class Ads
      */
     public function removeOfficeUsers(): RemoveOfficeUsers
     {
-        if (!$this->removeOfficeUsers) {
-            $this->removeOfficeUsers = new RemoveOfficeUsers($this->_provider);
-        }
-        return $this->removeOfficeUsers;
+        return new RemoveOfficeUsers($this->_provider);
     }
 
     /**
@@ -457,10 +320,7 @@ class Ads
      */
     public function updateAds(): UpdateAds
     {
-        if (!$this->updateAds) {
-            $this->updateAds = new UpdateAds($this->_provider);
-        }
-        return $this->updateAds;
+        return new UpdateAds($this->_provider);
     }
 
     /**
@@ -468,10 +328,7 @@ class Ads
      */
     public function updateCampaigns(): UpdateCampaigns
     {
-        if (!$this->updateCampaigns) {
-            $this->updateCampaigns = new UpdateCampaigns($this->_provider);
-        }
-        return $this->updateCampaigns;
+        return new UpdateCampaigns($this->_provider);
     }
 
     /**
@@ -479,10 +336,7 @@ class Ads
      */
     public function updateClients(): UpdateClients
     {
-        if (!$this->updateClients) {
-            $this->updateClients = new UpdateClients($this->_provider);
-        }
-        return $this->updateClients;
+        return new UpdateClients($this->_provider);
     }
 
     /**
@@ -490,10 +344,7 @@ class Ads
      */
     public function updateTargetGroup(): UpdateTargetGroup
     {
-        if (!$this->updateTargetGroup) {
-            $this->updateTargetGroup = new UpdateTargetGroup($this->_provider);
-        }
-        return $this->updateTargetGroup;
+        return new UpdateTargetGroup($this->_provider);
     }
 
 }

@@ -27,25 +27,6 @@ class Friends
 {
     private Provider $_provider;
 
-    private ?Friends\Add $add = null;
-    private ?Friends\AddList $addList = null;
-    private ?Friends\AreFriends $areFriends = null;
-    private ?Friends\Delete $delete = null;
-    private ?Friends\DeleteAllRequests $deleteAllRequests = null;
-    private ?Friends\DeleteList $deleteList = null;
-    private ?Friends\Edit $edit = null;
-    private ?Friends\EditList $editList = null;
-    private ?Friends\Get $get = null;
-    private ?Friends\GetAppUsers $getAppUsers = null;
-    private ?Friends\GetByPhones $getByPhones = null;
-    private ?Friends\GetLists $getLists = null;
-    private ?Friends\GetMutual $getMutual = null;
-    private ?Friends\GetOnline $getOnline = null;
-    private ?Friends\GetRecent $getRecent = null;
-    private ?Friends\GetRequests $getRequests = null;
-    private ?Friends\GetSuggestions $getSuggestions = null;
-    private ?Friends\Search $search = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -56,10 +37,7 @@ class Friends
      */
     public function add(): Add
     {
-        if (!$this->add) {
-            $this->add = new Add($this->_provider);
-        }
-        return $this->add;
+        return new Add($this->_provider);
     }
 
     /**
@@ -67,10 +45,7 @@ class Friends
      */
     public function addList(): AddList
     {
-        if (!$this->addList) {
-            $this->addList = new AddList($this->_provider);
-        }
-        return $this->addList;
+        return new AddList($this->_provider);
     }
 
     /**
@@ -78,10 +53,7 @@ class Friends
      */
     public function areFriends(): AreFriends
     {
-        if (!$this->areFriends) {
-            $this->areFriends = new AreFriends($this->_provider);
-        }
-        return $this->areFriends;
+        return new AreFriends($this->_provider);
     }
 
     /**
@@ -89,10 +61,7 @@ class Friends
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -100,10 +69,7 @@ class Friends
      */
     public function deleteAllRequests(): DeleteAllRequests
     {
-        if (!$this->deleteAllRequests) {
-            $this->deleteAllRequests = new DeleteAllRequests($this->_provider);
-        }
-        return $this->deleteAllRequests;
+        return new DeleteAllRequests($this->_provider);
     }
 
     /**
@@ -111,10 +77,7 @@ class Friends
      */
     public function deleteList(): DeleteList
     {
-        if (!$this->deleteList) {
-            $this->deleteList = new DeleteList($this->_provider);
-        }
-        return $this->deleteList;
+        return new DeleteList($this->_provider);
     }
 
     /**
@@ -122,10 +85,7 @@ class Friends
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -133,10 +93,7 @@ class Friends
      */
     public function editList(): EditList
     {
-        if (!$this->editList) {
-            $this->editList = new EditList($this->_provider);
-        }
-        return $this->editList;
+        return new EditList($this->_provider);
     }
 
     /**
@@ -144,10 +101,7 @@ class Friends
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -155,10 +109,7 @@ class Friends
      */
     public function getAppUsers(): GetAppUsers
     {
-        if (!$this->getAppUsers) {
-            $this->getAppUsers = new GetAppUsers($this->_provider);
-        }
-        return $this->getAppUsers;
+        return new GetAppUsers($this->_provider);
     }
 
     /**
@@ -166,10 +117,7 @@ class Friends
      */
     public function getByPhones(): GetByPhones
     {
-        if (!$this->getByPhones) {
-            $this->getByPhones = new GetByPhones($this->_provider);
-        }
-        return $this->getByPhones;
+        return new GetByPhones($this->_provider);
     }
 
     /**
@@ -177,10 +125,7 @@ class Friends
      */
     public function getLists(): GetLists
     {
-        if (!$this->getLists) {
-            $this->getLists = new GetLists($this->_provider);
-        }
-        return $this->getLists;
+        return new GetLists($this->_provider);
     }
 
     /**
@@ -188,10 +133,7 @@ class Friends
      */
     public function getMutual(): GetMutual
     {
-        if (!$this->getMutual) {
-            $this->getMutual = new GetMutual($this->_provider);
-        }
-        return $this->getMutual;
+        return new GetMutual($this->_provider);
     }
 
     /**
@@ -199,10 +141,7 @@ class Friends
      */
     public function getOnline(): GetOnline
     {
-        if (!$this->getOnline) {
-            $this->getOnline = new GetOnline($this->_provider);
-        }
-        return $this->getOnline;
+        return new GetOnline($this->_provider);
     }
 
     /**
@@ -210,10 +149,7 @@ class Friends
      */
     public function getRecent(): GetRecent
     {
-        if (!$this->getRecent) {
-            $this->getRecent = new GetRecent($this->_provider);
-        }
-        return $this->getRecent;
+        return new GetRecent($this->_provider);
     }
 
     /**
@@ -221,10 +157,7 @@ class Friends
      */
     public function getRequests(): GetRequests
     {
-        if (!$this->getRequests) {
-            $this->getRequests = new GetRequests($this->_provider);
-        }
-        return $this->getRequests;
+        return new GetRequests($this->_provider);
     }
 
     /**
@@ -232,10 +165,7 @@ class Friends
      */
     public function getSuggestions(): GetSuggestions
     {
-        if (!$this->getSuggestions) {
-            $this->getSuggestions = new GetSuggestions($this->_provider);
-        }
-        return $this->getSuggestions;
+        return new GetSuggestions($this->_provider);
     }
 
     /**
@@ -243,10 +173,7 @@ class Friends
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
 }

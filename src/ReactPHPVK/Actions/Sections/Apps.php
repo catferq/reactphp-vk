@@ -19,17 +19,6 @@ class Apps
 {
     private Provider $_provider;
 
-    private ?Apps\DeleteAppRequests $deleteAppRequests = null;
-    private ?Apps\Get $get = null;
-    private ?Apps\GetCatalog $getCatalog = null;
-    private ?Apps\GetFriendsList $getFriendsList = null;
-    private ?Apps\GetLeaderboard $getLeaderboard = null;
-    private ?Apps\GetScopes $getScopes = null;
-    private ?Apps\GetScore $getScore = null;
-    private ?Apps\PromoHasActiveGift $promoHasActiveGift = null;
-    private ?Apps\PromoUseGift $promoUseGift = null;
-    private ?Apps\SendRequest $sendRequest = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -40,10 +29,7 @@ class Apps
      */
     public function deleteAppRequests(): DeleteAppRequests
     {
-        if (!$this->deleteAppRequests) {
-            $this->deleteAppRequests = new DeleteAppRequests($this->_provider);
-        }
-        return $this->deleteAppRequests;
+        return new DeleteAppRequests($this->_provider);
     }
 
     /**
@@ -51,10 +37,7 @@ class Apps
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -62,10 +45,7 @@ class Apps
      */
     public function getCatalog(): GetCatalog
     {
-        if (!$this->getCatalog) {
-            $this->getCatalog = new GetCatalog($this->_provider);
-        }
-        return $this->getCatalog;
+        return new GetCatalog($this->_provider);
     }
 
     /**
@@ -73,10 +53,7 @@ class Apps
      */
     public function getFriendsList(): GetFriendsList
     {
-        if (!$this->getFriendsList) {
-            $this->getFriendsList = new GetFriendsList($this->_provider);
-        }
-        return $this->getFriendsList;
+        return new GetFriendsList($this->_provider);
     }
 
     /**
@@ -84,10 +61,7 @@ class Apps
      */
     public function getLeaderboard(): GetLeaderboard
     {
-        if (!$this->getLeaderboard) {
-            $this->getLeaderboard = new GetLeaderboard($this->_provider);
-        }
-        return $this->getLeaderboard;
+        return new GetLeaderboard($this->_provider);
     }
 
     /**
@@ -95,10 +69,7 @@ class Apps
      */
     public function getScopes(): GetScopes
     {
-        if (!$this->getScopes) {
-            $this->getScopes = new GetScopes($this->_provider);
-        }
-        return $this->getScopes;
+        return new GetScopes($this->_provider);
     }
 
     /**
@@ -106,10 +77,7 @@ class Apps
      */
     public function getScore(): GetScore
     {
-        if (!$this->getScore) {
-            $this->getScore = new GetScore($this->_provider);
-        }
-        return $this->getScore;
+        return new GetScore($this->_provider);
     }
 
     /**
@@ -117,10 +85,7 @@ class Apps
      */
     public function promoHasActiveGift(): PromoHasActiveGift
     {
-        if (!$this->promoHasActiveGift) {
-            $this->promoHasActiveGift = new PromoHasActiveGift($this->_provider);
-        }
-        return $this->promoHasActiveGift;
+        return new PromoHasActiveGift($this->_provider);
     }
 
     /**
@@ -128,10 +93,7 @@ class Apps
      */
     public function promoUseGift(): PromoUseGift
     {
-        if (!$this->promoUseGift) {
-            $this->promoUseGift = new PromoUseGift($this->_provider);
-        }
-        return $this->promoUseGift;
+        return new PromoUseGift($this->_provider);
     }
 
     /**
@@ -139,10 +101,7 @@ class Apps
      */
     public function sendRequest(): SendRequest
     {
-        if (!$this->sendRequest) {
-            $this->sendRequest = new SendRequest($this->_provider);
-        }
-        return $this->sendRequest;
+        return new SendRequest($this->_provider);
     }
 
 }

@@ -11,9 +11,6 @@ class Widgets
 {
     private Provider $_provider;
 
-    private ?Widgets\GetComments $getComments = null;
-    private ?Widgets\GetPages $getPages = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -24,10 +21,7 @@ class Widgets
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -35,10 +29,7 @@ class Widgets
      */
     public function getPages(): GetPages
     {
-        if (!$this->getPages) {
-            $this->getPages = new GetPages($this->_provider);
-        }
-        return $this->getPages;
+        return new GetPages($this->_provider);
     }
 
 }

@@ -101,7 +101,7 @@ class GetTransactionsHistory
      * @param bool $withClear
      * @return Promise
      */
-    public function execute(bool $withClear = true): Promise
+    public function execute(bool $withClear = false): Promise
     {
         $params = [];
 

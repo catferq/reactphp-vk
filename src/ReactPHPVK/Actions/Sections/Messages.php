@@ -46,44 +46,6 @@ class Messages
 {
     private Provider $_provider;
 
-    private ?Messages\AddChatUser $addChatUser = null;
-    private ?Messages\AllowMessagesFromGroup $allowMessagesFromGroup = null;
-    private ?Messages\CreateChat $createChat = null;
-    private ?Messages\Delete $delete = null;
-    private ?Messages\DeleteChatPhoto $deleteChatPhoto = null;
-    private ?Messages\DeleteConversation $deleteConversation = null;
-    private ?Messages\DenyMessagesFromGroup $denyMessagesFromGroup = null;
-    private ?Messages\Edit $edit = null;
-    private ?Messages\EditChat $editChat = null;
-    private ?Messages\GetByConversationMessageId $getByConversationMessageId = null;
-    private ?Messages\GetById $getById = null;
-    private ?Messages\GetChatPreview $getChatPreview = null;
-    private ?Messages\GetConversationMembers $getConversationMembers = null;
-    private ?Messages\GetConversations $getConversations = null;
-    private ?Messages\GetConversationsById $getConversationsById = null;
-    private ?Messages\GetHistory $getHistory = null;
-    private ?Messages\GetHistoryAttachments $getHistoryAttachments = null;
-    private ?Messages\GetInviteLink $getInviteLink = null;
-    private ?Messages\GetLastActivity $getLastActivity = null;
-    private ?Messages\GetLongPollHistory $getLongPollHistory = null;
-    private ?Messages\GetLongPollServer $getLongPollServer = null;
-    private ?Messages\IsMessagesFromGroupAllowed $isMessagesFromGroupAllowed = null;
-    private ?Messages\JoinChatByInviteLink $joinChatByInviteLink = null;
-    private ?Messages\MarkAsAnsweredConversation $markAsAnsweredConversation = null;
-    private ?Messages\MarkAsImportant $markAsImportant = null;
-    private ?Messages\MarkAsImportantConversation $markAsImportantConversation = null;
-    private ?Messages\MarkAsRead $markAsRead = null;
-    private ?Messages\Pin $pin = null;
-    private ?Messages\RemoveChatUser $removeChatUser = null;
-    private ?Messages\Restore $restore = null;
-    private ?Messages\Search $search = null;
-    private ?Messages\SearchConversations $searchConversations = null;
-    private ?Messages\Send $send = null;
-    private ?Messages\SendMessageEventAnswer $sendMessageEventAnswer = null;
-    private ?Messages\SetActivity $setActivity = null;
-    private ?Messages\SetChatPhoto $setChatPhoto = null;
-    private ?Messages\Unpin $unpin = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -94,10 +56,7 @@ class Messages
      */
     public function addChatUser(): AddChatUser
     {
-        if (!$this->addChatUser) {
-            $this->addChatUser = new AddChatUser($this->_provider);
-        }
-        return $this->addChatUser;
+        return new AddChatUser($this->_provider);
     }
 
     /**
@@ -105,10 +64,7 @@ class Messages
      */
     public function allowMessagesFromGroup(): AllowMessagesFromGroup
     {
-        if (!$this->allowMessagesFromGroup) {
-            $this->allowMessagesFromGroup = new AllowMessagesFromGroup($this->_provider);
-        }
-        return $this->allowMessagesFromGroup;
+        return new AllowMessagesFromGroup($this->_provider);
     }
 
     /**
@@ -116,10 +72,7 @@ class Messages
      */
     public function createChat(): CreateChat
     {
-        if (!$this->createChat) {
-            $this->createChat = new CreateChat($this->_provider);
-        }
-        return $this->createChat;
+        return new CreateChat($this->_provider);
     }
 
     /**
@@ -127,10 +80,7 @@ class Messages
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -138,10 +88,7 @@ class Messages
      */
     public function deleteChatPhoto(): DeleteChatPhoto
     {
-        if (!$this->deleteChatPhoto) {
-            $this->deleteChatPhoto = new DeleteChatPhoto($this->_provider);
-        }
-        return $this->deleteChatPhoto;
+        return new DeleteChatPhoto($this->_provider);
     }
 
     /**
@@ -149,10 +96,7 @@ class Messages
      */
     public function deleteConversation(): DeleteConversation
     {
-        if (!$this->deleteConversation) {
-            $this->deleteConversation = new DeleteConversation($this->_provider);
-        }
-        return $this->deleteConversation;
+        return new DeleteConversation($this->_provider);
     }
 
     /**
@@ -160,10 +104,7 @@ class Messages
      */
     public function denyMessagesFromGroup(): DenyMessagesFromGroup
     {
-        if (!$this->denyMessagesFromGroup) {
-            $this->denyMessagesFromGroup = new DenyMessagesFromGroup($this->_provider);
-        }
-        return $this->denyMessagesFromGroup;
+        return new DenyMessagesFromGroup($this->_provider);
     }
 
     /**
@@ -171,10 +112,7 @@ class Messages
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -182,10 +120,7 @@ class Messages
      */
     public function editChat(): EditChat
     {
-        if (!$this->editChat) {
-            $this->editChat = new EditChat($this->_provider);
-        }
-        return $this->editChat;
+        return new EditChat($this->_provider);
     }
 
     /**
@@ -193,10 +128,7 @@ class Messages
      */
     public function getByConversationMessageId(): GetByConversationMessageId
     {
-        if (!$this->getByConversationMessageId) {
-            $this->getByConversationMessageId = new GetByConversationMessageId($this->_provider);
-        }
-        return $this->getByConversationMessageId;
+        return new GetByConversationMessageId($this->_provider);
     }
 
     /**
@@ -204,10 +136,7 @@ class Messages
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -215,10 +144,7 @@ class Messages
      */
     public function getChatPreview(): GetChatPreview
     {
-        if (!$this->getChatPreview) {
-            $this->getChatPreview = new GetChatPreview($this->_provider);
-        }
-        return $this->getChatPreview;
+        return new GetChatPreview($this->_provider);
     }
 
     /**
@@ -226,10 +152,7 @@ class Messages
      */
     public function getConversationMembers(): GetConversationMembers
     {
-        if (!$this->getConversationMembers) {
-            $this->getConversationMembers = new GetConversationMembers($this->_provider);
-        }
-        return $this->getConversationMembers;
+        return new GetConversationMembers($this->_provider);
     }
 
     /**
@@ -237,10 +160,7 @@ class Messages
      */
     public function getConversations(): GetConversations
     {
-        if (!$this->getConversations) {
-            $this->getConversations = new GetConversations($this->_provider);
-        }
-        return $this->getConversations;
+        return new GetConversations($this->_provider);
     }
 
     /**
@@ -248,10 +168,7 @@ class Messages
      */
     public function getConversationsById(): GetConversationsById
     {
-        if (!$this->getConversationsById) {
-            $this->getConversationsById = new GetConversationsById($this->_provider);
-        }
-        return $this->getConversationsById;
+        return new GetConversationsById($this->_provider);
     }
 
     /**
@@ -259,10 +176,7 @@ class Messages
      */
     public function getHistory(): GetHistory
     {
-        if (!$this->getHistory) {
-            $this->getHistory = new GetHistory($this->_provider);
-        }
-        return $this->getHistory;
+        return new GetHistory($this->_provider);
     }
 
     /**
@@ -270,10 +184,7 @@ class Messages
      */
     public function getHistoryAttachments(): GetHistoryAttachments
     {
-        if (!$this->getHistoryAttachments) {
-            $this->getHistoryAttachments = new GetHistoryAttachments($this->_provider);
-        }
-        return $this->getHistoryAttachments;
+        return new GetHistoryAttachments($this->_provider);
     }
 
     /**
@@ -281,10 +192,7 @@ class Messages
      */
     public function getInviteLink(): GetInviteLink
     {
-        if (!$this->getInviteLink) {
-            $this->getInviteLink = new GetInviteLink($this->_provider);
-        }
-        return $this->getInviteLink;
+        return new GetInviteLink($this->_provider);
     }
 
     /**
@@ -292,10 +200,7 @@ class Messages
      */
     public function getLastActivity(): GetLastActivity
     {
-        if (!$this->getLastActivity) {
-            $this->getLastActivity = new GetLastActivity($this->_provider);
-        }
-        return $this->getLastActivity;
+        return new GetLastActivity($this->_provider);
     }
 
     /**
@@ -303,10 +208,7 @@ class Messages
      */
     public function getLongPollHistory(): GetLongPollHistory
     {
-        if (!$this->getLongPollHistory) {
-            $this->getLongPollHistory = new GetLongPollHistory($this->_provider);
-        }
-        return $this->getLongPollHistory;
+        return new GetLongPollHistory($this->_provider);
     }
 
     /**
@@ -314,10 +216,7 @@ class Messages
      */
     public function getLongPollServer(): GetLongPollServer
     {
-        if (!$this->getLongPollServer) {
-            $this->getLongPollServer = new GetLongPollServer($this->_provider);
-        }
-        return $this->getLongPollServer;
+        return new GetLongPollServer($this->_provider);
     }
 
     /**
@@ -325,10 +224,7 @@ class Messages
      */
     public function isMessagesFromGroupAllowed(): IsMessagesFromGroupAllowed
     {
-        if (!$this->isMessagesFromGroupAllowed) {
-            $this->isMessagesFromGroupAllowed = new IsMessagesFromGroupAllowed($this->_provider);
-        }
-        return $this->isMessagesFromGroupAllowed;
+        return new IsMessagesFromGroupAllowed($this->_provider);
     }
 
     /**
@@ -336,10 +232,7 @@ class Messages
      */
     public function joinChatByInviteLink(): JoinChatByInviteLink
     {
-        if (!$this->joinChatByInviteLink) {
-            $this->joinChatByInviteLink = new JoinChatByInviteLink($this->_provider);
-        }
-        return $this->joinChatByInviteLink;
+        return new JoinChatByInviteLink($this->_provider);
     }
 
     /**
@@ -347,10 +240,7 @@ class Messages
      */
     public function markAsAnsweredConversation(): MarkAsAnsweredConversation
     {
-        if (!$this->markAsAnsweredConversation) {
-            $this->markAsAnsweredConversation = new MarkAsAnsweredConversation($this->_provider);
-        }
-        return $this->markAsAnsweredConversation;
+        return new MarkAsAnsweredConversation($this->_provider);
     }
 
     /**
@@ -358,10 +248,7 @@ class Messages
      */
     public function markAsImportant(): MarkAsImportant
     {
-        if (!$this->markAsImportant) {
-            $this->markAsImportant = new MarkAsImportant($this->_provider);
-        }
-        return $this->markAsImportant;
+        return new MarkAsImportant($this->_provider);
     }
 
     /**
@@ -369,10 +256,7 @@ class Messages
      */
     public function markAsImportantConversation(): MarkAsImportantConversation
     {
-        if (!$this->markAsImportantConversation) {
-            $this->markAsImportantConversation = new MarkAsImportantConversation($this->_provider);
-        }
-        return $this->markAsImportantConversation;
+        return new MarkAsImportantConversation($this->_provider);
     }
 
     /**
@@ -380,10 +264,7 @@ class Messages
      */
     public function markAsRead(): MarkAsRead
     {
-        if (!$this->markAsRead) {
-            $this->markAsRead = new MarkAsRead($this->_provider);
-        }
-        return $this->markAsRead;
+        return new MarkAsRead($this->_provider);
     }
 
     /**
@@ -391,10 +272,7 @@ class Messages
      */
     public function pin(): Pin
     {
-        if (!$this->pin) {
-            $this->pin = new Pin($this->_provider);
-        }
-        return $this->pin;
+        return new Pin($this->_provider);
     }
 
     /**
@@ -402,10 +280,7 @@ class Messages
      */
     public function removeChatUser(): RemoveChatUser
     {
-        if (!$this->removeChatUser) {
-            $this->removeChatUser = new RemoveChatUser($this->_provider);
-        }
-        return $this->removeChatUser;
+        return new RemoveChatUser($this->_provider);
     }
 
     /**
@@ -413,10 +288,7 @@ class Messages
      */
     public function restore(): Restore
     {
-        if (!$this->restore) {
-            $this->restore = new Restore($this->_provider);
-        }
-        return $this->restore;
+        return new Restore($this->_provider);
     }
 
     /**
@@ -424,10 +296,7 @@ class Messages
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
     /**
@@ -435,10 +304,7 @@ class Messages
      */
     public function searchConversations(): SearchConversations
     {
-        if (!$this->searchConversations) {
-            $this->searchConversations = new SearchConversations($this->_provider);
-        }
-        return $this->searchConversations;
+        return new SearchConversations($this->_provider);
     }
 
     /**
@@ -446,10 +312,7 @@ class Messages
      */
     public function send(): Send
     {
-        if (!$this->send) {
-            $this->send = new Send($this->_provider);
-        }
-        return $this->send;
+        return new Send($this->_provider);
     }
 
     /**
@@ -457,10 +320,7 @@ class Messages
      */
     public function sendMessageEventAnswer(): SendMessageEventAnswer
     {
-        if (!$this->sendMessageEventAnswer) {
-            $this->sendMessageEventAnswer = new SendMessageEventAnswer($this->_provider);
-        }
-        return $this->sendMessageEventAnswer;
+        return new SendMessageEventAnswer($this->_provider);
     }
 
     /**
@@ -468,10 +328,7 @@ class Messages
      */
     public function setActivity(): SetActivity
     {
-        if (!$this->setActivity) {
-            $this->setActivity = new SetActivity($this->_provider);
-        }
-        return $this->setActivity;
+        return new SetActivity($this->_provider);
     }
 
     /**
@@ -479,10 +336,7 @@ class Messages
      */
     public function setChatPhoto(): SetChatPhoto
     {
-        if (!$this->setChatPhoto) {
-            $this->setChatPhoto = new SetChatPhoto($this->_provider);
-        }
-        return $this->setChatPhoto;
+        return new SetChatPhoto($this->_provider);
     }
 
     /**
@@ -490,10 +344,7 @@ class Messages
      */
     public function unpin(): Unpin
     {
-        if (!$this->unpin) {
-            $this->unpin = new Unpin($this->_provider);
-        }
-        return $this->unpin;
+        return new Unpin($this->_provider);
     }
 
 }

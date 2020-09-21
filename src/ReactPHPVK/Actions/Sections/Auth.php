@@ -11,9 +11,6 @@ class Auth
 {
     private Provider $_provider;
 
-    private ?Auth\CheckPhone $checkPhone = null;
-    private ?Auth\Restore $restore = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -24,10 +21,7 @@ class Auth
      */
     public function checkPhone(): CheckPhone
     {
-        if (!$this->checkPhone) {
-            $this->checkPhone = new CheckPhone($this->_provider);
-        }
-        return $this->checkPhone;
+        return new CheckPhone($this->_provider);
     }
 
     /**
@@ -35,10 +29,7 @@ class Auth
      */
     public function restore(): Restore
     {
-        if (!$this->restore) {
-            $this->restore = new Restore($this->_provider);
-        }
-        return $this->restore;
+        return new Restore($this->_provider);
     }
 
 }

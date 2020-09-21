@@ -15,13 +15,6 @@ class Leads
 {
     private Provider $_provider;
 
-    private ?Leads\CheckUser $checkUser = null;
-    private ?Leads\Complete $complete = null;
-    private ?Leads\GetStats $getStats = null;
-    private ?Leads\GetUsers $getUsers = null;
-    private ?Leads\MetricHit $metricHit = null;
-    private ?Leads\Start $start = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -32,10 +25,7 @@ class Leads
      */
     public function checkUser(): CheckUser
     {
-        if (!$this->checkUser) {
-            $this->checkUser = new CheckUser($this->_provider);
-        }
-        return $this->checkUser;
+        return new CheckUser($this->_provider);
     }
 
     /**
@@ -43,10 +33,7 @@ class Leads
      */
     public function complete(): Complete
     {
-        if (!$this->complete) {
-            $this->complete = new Complete($this->_provider);
-        }
-        return $this->complete;
+        return new Complete($this->_provider);
     }
 
     /**
@@ -54,10 +41,7 @@ class Leads
      */
     public function getStats(): GetStats
     {
-        if (!$this->getStats) {
-            $this->getStats = new GetStats($this->_provider);
-        }
-        return $this->getStats;
+        return new GetStats($this->_provider);
     }
 
     /**
@@ -65,10 +49,7 @@ class Leads
      */
     public function getUsers(): GetUsers
     {
-        if (!$this->getUsers) {
-            $this->getUsers = new GetUsers($this->_provider);
-        }
-        return $this->getUsers;
+        return new GetUsers($this->_provider);
     }
 
     /**
@@ -76,10 +57,7 @@ class Leads
      */
     public function metricHit(): MetricHit
     {
-        if (!$this->metricHit) {
-            $this->metricHit = new MetricHit($this->_provider);
-        }
-        return $this->metricHit;
+        return new MetricHit($this->_provider);
     }
 
     /**
@@ -87,10 +65,7 @@ class Leads
      */
     public function start(): Start
     {
-        if (!$this->start) {
-            $this->start = new Start($this->_provider);
-        }
-        return $this->start;
+        return new Start($this->_provider);
     }
 
 }

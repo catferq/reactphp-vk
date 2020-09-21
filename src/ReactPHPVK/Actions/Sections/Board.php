@@ -22,20 +22,6 @@ class Board
 {
     private Provider $_provider;
 
-    private ?Board\AddTopic $addTopic = null;
-    private ?Board\CloseTopic $closeTopic = null;
-    private ?Board\CreateComment $createComment = null;
-    private ?Board\DeleteComment $deleteComment = null;
-    private ?Board\DeleteTopic $deleteTopic = null;
-    private ?Board\EditComment $editComment = null;
-    private ?Board\EditTopic $editTopic = null;
-    private ?Board\FixTopic $fixTopic = null;
-    private ?Board\GetComments $getComments = null;
-    private ?Board\GetTopics $getTopics = null;
-    private ?Board\OpenTopic $openTopic = null;
-    private ?Board\RestoreComment $restoreComment = null;
-    private ?Board\UnfixTopic $unfixTopic = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -46,10 +32,7 @@ class Board
      */
     public function addTopic(): AddTopic
     {
-        if (!$this->addTopic) {
-            $this->addTopic = new AddTopic($this->_provider);
-        }
-        return $this->addTopic;
+        return new AddTopic($this->_provider);
     }
 
     /**
@@ -57,10 +40,7 @@ class Board
      */
     public function closeTopic(): CloseTopic
     {
-        if (!$this->closeTopic) {
-            $this->closeTopic = new CloseTopic($this->_provider);
-        }
-        return $this->closeTopic;
+        return new CloseTopic($this->_provider);
     }
 
     /**
@@ -68,10 +48,7 @@ class Board
      */
     public function createComment(): CreateComment
     {
-        if (!$this->createComment) {
-            $this->createComment = new CreateComment($this->_provider);
-        }
-        return $this->createComment;
+        return new CreateComment($this->_provider);
     }
 
     /**
@@ -79,10 +56,7 @@ class Board
      */
     public function deleteComment(): DeleteComment
     {
-        if (!$this->deleteComment) {
-            $this->deleteComment = new DeleteComment($this->_provider);
-        }
-        return $this->deleteComment;
+        return new DeleteComment($this->_provider);
     }
 
     /**
@@ -90,10 +64,7 @@ class Board
      */
     public function deleteTopic(): DeleteTopic
     {
-        if (!$this->deleteTopic) {
-            $this->deleteTopic = new DeleteTopic($this->_provider);
-        }
-        return $this->deleteTopic;
+        return new DeleteTopic($this->_provider);
     }
 
     /**
@@ -101,10 +72,7 @@ class Board
      */
     public function editComment(): EditComment
     {
-        if (!$this->editComment) {
-            $this->editComment = new EditComment($this->_provider);
-        }
-        return $this->editComment;
+        return new EditComment($this->_provider);
     }
 
     /**
@@ -112,10 +80,7 @@ class Board
      */
     public function editTopic(): EditTopic
     {
-        if (!$this->editTopic) {
-            $this->editTopic = new EditTopic($this->_provider);
-        }
-        return $this->editTopic;
+        return new EditTopic($this->_provider);
     }
 
     /**
@@ -123,10 +88,7 @@ class Board
      */
     public function fixTopic(): FixTopic
     {
-        if (!$this->fixTopic) {
-            $this->fixTopic = new FixTopic($this->_provider);
-        }
-        return $this->fixTopic;
+        return new FixTopic($this->_provider);
     }
 
     /**
@@ -134,10 +96,7 @@ class Board
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -145,10 +104,7 @@ class Board
      */
     public function getTopics(): GetTopics
     {
-        if (!$this->getTopics) {
-            $this->getTopics = new GetTopics($this->_provider);
-        }
-        return $this->getTopics;
+        return new GetTopics($this->_provider);
     }
 
     /**
@@ -156,10 +112,7 @@ class Board
      */
     public function openTopic(): OpenTopic
     {
-        if (!$this->openTopic) {
-            $this->openTopic = new OpenTopic($this->_provider);
-        }
-        return $this->openTopic;
+        return new OpenTopic($this->_provider);
     }
 
     /**
@@ -167,10 +120,7 @@ class Board
      */
     public function restoreComment(): RestoreComment
     {
-        if (!$this->restoreComment) {
-            $this->restoreComment = new RestoreComment($this->_provider);
-        }
-        return $this->restoreComment;
+        return new RestoreComment($this->_provider);
     }
 
     /**
@@ -178,10 +128,7 @@ class Board
      */
     public function unfixTopic(): UnfixTopic
     {
-        if (!$this->unfixTopic) {
-            $this->unfixTopic = new UnfixTopic($this->_provider);
-        }
-        return $this->unfixTopic;
+        return new UnfixTopic($this->_provider);
     }
 
 }

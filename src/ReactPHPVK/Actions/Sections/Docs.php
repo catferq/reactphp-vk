@@ -20,18 +20,6 @@ class Docs
 {
     private Provider $_provider;
 
-    private ?Docs\Add $add = null;
-    private ?Docs\Delete $delete = null;
-    private ?Docs\Edit $edit = null;
-    private ?Docs\Get $get = null;
-    private ?Docs\GetById $getById = null;
-    private ?Docs\GetMessagesUploadServer $getMessagesUploadServer = null;
-    private ?Docs\GetTypes $getTypes = null;
-    private ?Docs\GetUploadServer $getUploadServer = null;
-    private ?Docs\GetWallUploadServer $getWallUploadServer = null;
-    private ?Docs\Save $save = null;
-    private ?Docs\Search $search = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -42,10 +30,7 @@ class Docs
      */
     public function add(): Add
     {
-        if (!$this->add) {
-            $this->add = new Add($this->_provider);
-        }
-        return $this->add;
+        return new Add($this->_provider);
     }
 
     /**
@@ -53,10 +38,7 @@ class Docs
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -64,10 +46,7 @@ class Docs
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -75,10 +54,7 @@ class Docs
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -86,10 +62,7 @@ class Docs
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -97,10 +70,7 @@ class Docs
      */
     public function getMessagesUploadServer(): GetMessagesUploadServer
     {
-        if (!$this->getMessagesUploadServer) {
-            $this->getMessagesUploadServer = new GetMessagesUploadServer($this->_provider);
-        }
-        return $this->getMessagesUploadServer;
+        return new GetMessagesUploadServer($this->_provider);
     }
 
     /**
@@ -108,10 +78,7 @@ class Docs
      */
     public function getTypes(): GetTypes
     {
-        if (!$this->getTypes) {
-            $this->getTypes = new GetTypes($this->_provider);
-        }
-        return $this->getTypes;
+        return new GetTypes($this->_provider);
     }
 
     /**
@@ -119,10 +86,7 @@ class Docs
      */
     public function getUploadServer(): GetUploadServer
     {
-        if (!$this->getUploadServer) {
-            $this->getUploadServer = new GetUploadServer($this->_provider);
-        }
-        return $this->getUploadServer;
+        return new GetUploadServer($this->_provider);
     }
 
     /**
@@ -130,10 +94,7 @@ class Docs
      */
     public function getWallUploadServer(): GetWallUploadServer
     {
-        if (!$this->getWallUploadServer) {
-            $this->getWallUploadServer = new GetWallUploadServer($this->_provider);
-        }
-        return $this->getWallUploadServer;
+        return new GetWallUploadServer($this->_provider);
     }
 
     /**
@@ -141,10 +102,7 @@ class Docs
      */
     public function save(): Save
     {
-        if (!$this->save) {
-            $this->save = new Save($this->_provider);
-        }
-        return $this->save;
+        return new Save($this->_provider);
     }
 
     /**
@@ -152,10 +110,7 @@ class Docs
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
 }

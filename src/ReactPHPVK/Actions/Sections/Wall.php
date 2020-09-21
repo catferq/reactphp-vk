@@ -32,30 +32,6 @@ class Wall
 {
     private Provider $_provider;
 
-    private ?Wall\CloseComments $closeComments = null;
-    private ?Wall\CreateComment $createComment = null;
-    private ?Wall\Delete $delete = null;
-    private ?Wall\DeleteComment $deleteComment = null;
-    private ?Wall\Edit $edit = null;
-    private ?Wall\EditAdsStealth $editAdsStealth = null;
-    private ?Wall\EditComment $editComment = null;
-    private ?Wall\Get $get = null;
-    private ?Wall\GetById $getById = null;
-    private ?Wall\GetComment $getComment = null;
-    private ?Wall\GetComments $getComments = null;
-    private ?Wall\GetReposts $getReposts = null;
-    private ?Wall\OpenComments $openComments = null;
-    private ?Wall\Pin $pin = null;
-    private ?Wall\Post $post = null;
-    private ?Wall\PostAdsStealth $postAdsStealth = null;
-    private ?Wall\ReportComment $reportComment = null;
-    private ?Wall\ReportPost $reportPost = null;
-    private ?Wall\Repost $repost = null;
-    private ?Wall\Restore $restore = null;
-    private ?Wall\RestoreComment $restoreComment = null;
-    private ?Wall\Search $search = null;
-    private ?Wall\Unpin $unpin = null;
-
     public function __construct(Provider $provider)
     {
         $this->_provider = $provider;
@@ -66,10 +42,7 @@ class Wall
      */
     public function closeComments(): CloseComments
     {
-        if (!$this->closeComments) {
-            $this->closeComments = new CloseComments($this->_provider);
-        }
-        return $this->closeComments;
+        return new CloseComments($this->_provider);
     }
 
     /**
@@ -77,10 +50,7 @@ class Wall
      */
     public function createComment(): CreateComment
     {
-        if (!$this->createComment) {
-            $this->createComment = new CreateComment($this->_provider);
-        }
-        return $this->createComment;
+        return new CreateComment($this->_provider);
     }
 
     /**
@@ -88,10 +58,7 @@ class Wall
      */
     public function delete(): Delete
     {
-        if (!$this->delete) {
-            $this->delete = new Delete($this->_provider);
-        }
-        return $this->delete;
+        return new Delete($this->_provider);
     }
 
     /**
@@ -99,10 +66,7 @@ class Wall
      */
     public function deleteComment(): DeleteComment
     {
-        if (!$this->deleteComment) {
-            $this->deleteComment = new DeleteComment($this->_provider);
-        }
-        return $this->deleteComment;
+        return new DeleteComment($this->_provider);
     }
 
     /**
@@ -110,10 +74,7 @@ class Wall
      */
     public function edit(): Edit
     {
-        if (!$this->edit) {
-            $this->edit = new Edit($this->_provider);
-        }
-        return $this->edit;
+        return new Edit($this->_provider);
     }
 
     /**
@@ -121,10 +82,7 @@ class Wall
      */
     public function editAdsStealth(): EditAdsStealth
     {
-        if (!$this->editAdsStealth) {
-            $this->editAdsStealth = new EditAdsStealth($this->_provider);
-        }
-        return $this->editAdsStealth;
+        return new EditAdsStealth($this->_provider);
     }
 
     /**
@@ -132,10 +90,7 @@ class Wall
      */
     public function editComment(): EditComment
     {
-        if (!$this->editComment) {
-            $this->editComment = new EditComment($this->_provider);
-        }
-        return $this->editComment;
+        return new EditComment($this->_provider);
     }
 
     /**
@@ -143,10 +98,7 @@ class Wall
      */
     public function get(): Get
     {
-        if (!$this->get) {
-            $this->get = new Get($this->_provider);
-        }
-        return $this->get;
+        return new Get($this->_provider);
     }
 
     /**
@@ -154,10 +106,7 @@ class Wall
      */
     public function getById(): GetById
     {
-        if (!$this->getById) {
-            $this->getById = new GetById($this->_provider);
-        }
-        return $this->getById;
+        return new GetById($this->_provider);
     }
 
     /**
@@ -165,10 +114,7 @@ class Wall
      */
     public function getComment(): GetComment
     {
-        if (!$this->getComment) {
-            $this->getComment = new GetComment($this->_provider);
-        }
-        return $this->getComment;
+        return new GetComment($this->_provider);
     }
 
     /**
@@ -176,10 +122,7 @@ class Wall
      */
     public function getComments(): GetComments
     {
-        if (!$this->getComments) {
-            $this->getComments = new GetComments($this->_provider);
-        }
-        return $this->getComments;
+        return new GetComments($this->_provider);
     }
 
     /**
@@ -187,10 +130,7 @@ class Wall
      */
     public function getReposts(): GetReposts
     {
-        if (!$this->getReposts) {
-            $this->getReposts = new GetReposts($this->_provider);
-        }
-        return $this->getReposts;
+        return new GetReposts($this->_provider);
     }
 
     /**
@@ -198,10 +138,7 @@ class Wall
      */
     public function openComments(): OpenComments
     {
-        if (!$this->openComments) {
-            $this->openComments = new OpenComments($this->_provider);
-        }
-        return $this->openComments;
+        return new OpenComments($this->_provider);
     }
 
     /**
@@ -209,10 +146,7 @@ class Wall
      */
     public function pin(): Pin
     {
-        if (!$this->pin) {
-            $this->pin = new Pin($this->_provider);
-        }
-        return $this->pin;
+        return new Pin($this->_provider);
     }
 
     /**
@@ -220,10 +154,7 @@ class Wall
      */
     public function post(): Post
     {
-        if (!$this->post) {
-            $this->post = new Post($this->_provider);
-        }
-        return $this->post;
+        return new Post($this->_provider);
     }
 
     /**
@@ -231,10 +162,7 @@ class Wall
      */
     public function postAdsStealth(): PostAdsStealth
     {
-        if (!$this->postAdsStealth) {
-            $this->postAdsStealth = new PostAdsStealth($this->_provider);
-        }
-        return $this->postAdsStealth;
+        return new PostAdsStealth($this->_provider);
     }
 
     /**
@@ -242,10 +170,7 @@ class Wall
      */
     public function reportComment(): ReportComment
     {
-        if (!$this->reportComment) {
-            $this->reportComment = new ReportComment($this->_provider);
-        }
-        return $this->reportComment;
+        return new ReportComment($this->_provider);
     }
 
     /**
@@ -253,10 +178,7 @@ class Wall
      */
     public function reportPost(): ReportPost
     {
-        if (!$this->reportPost) {
-            $this->reportPost = new ReportPost($this->_provider);
-        }
-        return $this->reportPost;
+        return new ReportPost($this->_provider);
     }
 
     /**
@@ -264,10 +186,7 @@ class Wall
      */
     public function repost(): Repost
     {
-        if (!$this->repost) {
-            $this->repost = new Repost($this->_provider);
-        }
-        return $this->repost;
+        return new Repost($this->_provider);
     }
 
     /**
@@ -275,10 +194,7 @@ class Wall
      */
     public function restore(): Restore
     {
-        if (!$this->restore) {
-            $this->restore = new Restore($this->_provider);
-        }
-        return $this->restore;
+        return new Restore($this->_provider);
     }
 
     /**
@@ -286,10 +202,7 @@ class Wall
      */
     public function restoreComment(): RestoreComment
     {
-        if (!$this->restoreComment) {
-            $this->restoreComment = new RestoreComment($this->_provider);
-        }
-        return $this->restoreComment;
+        return new RestoreComment($this->_provider);
     }
 
     /**
@@ -297,10 +210,7 @@ class Wall
      */
     public function search(): Search
     {
-        if (!$this->search) {
-            $this->search = new Search($this->_provider);
-        }
-        return $this->search;
+        return new Search($this->_provider);
     }
 
     /**
@@ -308,10 +218,7 @@ class Wall
      */
     public function unpin(): Unpin
     {
-        if (!$this->unpin) {
-            $this->unpin = new Unpin($this->_provider);
-        }
-        return $this->unpin;
+        return new Unpin($this->_provider);
     }
 
 }
